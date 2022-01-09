@@ -8,8 +8,9 @@
       <img id="moon" alt="moon" src="@/assets/img/german_faller_moon.png">
       <img id="astronaut" alt="moon" src="@/assets/img/german_faller_astronaut_1.png">
 
+      <img id="circle" alt="moon" src="@/assets/img/german_faller_circle.svg">
       <div id="slogan">
-        <div>
+        <div style="text-align: end;">
           I MAKE <br>
           THINGS <br>
           HAPPEN
@@ -29,12 +30,12 @@ export default {
 <style scoped lang="scss">
 #home{
   position: relative;
-  height: 90vh;
+  height: 95vh;
 
   #banner, #banner-cover  {
     position: absolute;
     top: 0;
-    height: 90vh;
+    height: 95vh;
     width: 100%;
     object-fit: cover;
   }
@@ -45,7 +46,7 @@ export default {
 
   #moon{
     display: none;
-    position: relative;
+    position: absolute;
     width: 175px;
     height: 175px;
     left: 1150px;
@@ -53,16 +54,17 @@ export default {
   }
 
   #astronaut{
-    position: relative;
+    position: absolute;
     width: 178px;
     height: 172px;
-    left: -20px;
+    left: 200px;
     top: 573px;
   }
 
   #slogan{
-    position: relative;
-    top: 200px;
+    position: absolute;
+    width: 100%;
+    top: 400px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: end;
@@ -77,7 +79,14 @@ export default {
       line-height: 84px;
       text-align: end;
     }
+  }
 
+  #circle{
+    position: absolute;
+    width: 473px;
+    height: 473px;
+    left: calc(50% - 473px/2);
+    top: 330px;
   }
 
   @media (min-width: 1440px) {
@@ -85,7 +94,7 @@ export default {
   }
 
   .container{
-    height: 90vh;
+    height: 95vh;
   }
 }
 
