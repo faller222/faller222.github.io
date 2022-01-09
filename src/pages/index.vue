@@ -1,19 +1,14 @@
 <template>
-  <div class="container">
+  <div>
     <Brand/>
     <Navigation/>
+    <section-home/>
     <br>
     <br>
     <br>
     <br>
     <br>
 
-    <h1 id="home">Home</h1>
-    <button @click="change('home')">Ir</button>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <h1 id="about">About me</h1>
     <button @click="change('about')">Ir</button>
