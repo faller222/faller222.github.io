@@ -93,7 +93,6 @@ export default {
 
   .container{
     height: 95vh;
-    position: relative;
   }
 }
 </style>

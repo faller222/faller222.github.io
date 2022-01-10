@@ -29,11 +29,16 @@ body, html{
     box-shadow: 0 0 1px #c4c4c4 inset;
   }
 }
+h1, h2, h3{
+  margin: 0;
+}
 
 .container{
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
+
+  position: relative;
 }
 
 
@@ -50,7 +55,6 @@ nav {
 
 header{
   h1{
-    margin: 0;
     text-align: center;
     font-style: normal;
     font-weight: 700;
