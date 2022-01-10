@@ -10,22 +10,28 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 
-export default Vue.extend({
+export default {
   name: 'IndexPage',
   mounted() {
-    window.onscroll = function (e: any) {
+
+    this.$ga.page({
+      page: '/',
+      title: 'Home page',
+      location: window.location.href
+    })
+
+    window.onscroll = function (e) {
       // console.log('scrollY', window.scrollY)
     }
   },
   methods: {
-    change(hash: string) {
+    change(hash) {
       window.history.pushState("", "", '#' + hash);
       console.log(this.$router)
       this.$router.push('#' + hash)
     }
   }
-})
+}
 </script>
