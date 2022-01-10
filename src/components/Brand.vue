@@ -1,7 +1,7 @@
 <template>
-  <div :class=" {'brand-header':true, 'fade-out':faded}">
+  <header :class="{'fade-out':faded}">
     <h1>GERMÁN FALLER</h1>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -30,24 +30,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.brand-header {
+header {
   padding-top: 70px;
   min-height: 130px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-  transition: all .4s ease;
-
-  h1{
-    margin: 0;
-    text-align: center;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 50px;
-    line-height: 60px;
-  }
 
   &.fade-out {
     top: -130px;

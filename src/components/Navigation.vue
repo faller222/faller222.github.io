@@ -1,11 +1,13 @@
 <template>
-  <div class="navigation fixed container" :class="{'fade-in':!faded}">
+  <nav :class="{'fade-in':!faded}">
+    <div class="grid">
       <nuxt-link :class="{'active':$route.hash==='#home'}" :to="{ path: '/', hash:'#home'}">Home</nuxt-link>
       <nuxt-link :class="{'active':$route.hash==='#about'}" :to="{ path: '/', hash:'#about'}">About me</nuxt-link>
       <nuxt-link :class="{'active':$route.hash==='#skills'}" :to="{ path: '/', hash:'#skills'}">Skills</nuxt-link>
       <nuxt-link :class="{'active':$route.hash==='#experience'}" :to="{ path: '/', hash:'#experience'}">Experience</nuxt-link>
       <nuxt-link :class="{'active':$route.hash==='#contact'}" :to="{ path: '/', hash:'#contact'}">Contact me</nuxt-link>
-  </div>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -34,52 +36,32 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.navigation {
-
-  &.fixed{
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-  }
-
-  transition: all .4s ease;
-
-  margin-top: 45px;
+nav {
+  margin-top: 0;
   text-align: center;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 30px;
 
-  display: grid;
-  grid-auto-flow: column;
+  padding: 10px;
+  background-color: #002C2380;
 
-  grid-gap: 50px;
-  width: fit-content;
+  .grid{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 50px;
+    width: fit-content;
 
-  margin-right: auto;
-  margin-left: auto;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+
+
 
   &.fade-in {
     top: 130px;
-  }
-
-  a{
-    text-decoration: none;
-
-    &:visited{
-      color: #FFFFFF;
-    }
-
-    &:hover{
-      color: #00ffce;
-    }
-
-    &.active{
-      color: #00ffce;
-    }
   }
 }
 </style>

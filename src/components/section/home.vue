@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <section id="home">
 
     <img id="banner" alt="banner" src="@/assets/img/german_faller_banner.webp">
     <img id="banner-cover" alt="banner_cover" src="@/assets/img/german_faller_banner_cover.svg">
@@ -10,15 +10,15 @@
 
       <img id="circle" alt="moon" src="@/assets/img/german_faller_circle.svg">
       <div id="slogan">
-        <div style="text-align: end;">
-          I MAKE <br>
-          THINGS <br>
-          HAPPEN
-        </div>
+<!--        <div style="text-align: end;">-->
+<!--          I MAKE <br>-->
+<!--          THINGS <br>-->
+<!--          HAPPEN-->
+<!--        </div>-->
       </div>
     </div>
 
-  </div>
+  </section>
 </template>
 
 <script>
@@ -29,8 +29,6 @@ export default {
 
 <style scoped lang="scss">
 #home{
-  position: relative;
-  height: 95vh;
 
   #banner, #banner-cover  {
     position: absolute;
@@ -97,7 +95,4 @@ export default {
     height: 95vh;
   }
 }
-
-
-
 </style>
