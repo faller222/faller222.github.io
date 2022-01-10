@@ -10,11 +10,11 @@
 
       <img id="circle" alt="moon" src="@/assets/img/german_faller_circle.svg">
       <div id="slogan">
-<!--        <div style="text-align: end;">-->
-<!--          I MAKE <br>-->
-<!--          THINGS <br>-->
-<!--          HAPPEN-->
-<!--        </div>-->
+        <div style="text-align: end;">
+          I MAKE <br>
+          THINGS <br>
+          HAPPEN
+        </div>
       </div>
     </div>
 
@@ -93,6 +93,7 @@ export default {
 
   .container{
     height: 95vh;
+    position: relative;
   }
 }
 </style>
