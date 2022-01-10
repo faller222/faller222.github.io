@@ -10,6 +10,7 @@
     <div class="container">
       <img id="astronaut" alt="moon" src="@/assets/img/german_faller_astronaut_2.png">
 
+        Work in Progress
     </div>
   </section>
 </template>
