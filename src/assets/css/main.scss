@@ -66,18 +66,17 @@ header{
 nav{
   a{
     text-decoration: none;
+    color: #FFFFFF;
 
     &:visited{
       color: #FFFFFF;
     }
 
+    &.active,
     &:hover{
       color: #00FFCE;
     }
 
-    &.active{
-      color: #00FFCE;
-    }
   }
 }
 
