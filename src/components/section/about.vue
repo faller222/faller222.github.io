@@ -15,12 +15,15 @@
       <div class="right">
 
         <p>
-          Hello! my name is Germán. I was born on February 19, 1993, in the city of Dolores located within Soriano,
+          Hello! my name is Germán. I was born on February 19, 1993, in the city of <a
+          href="https://goo.gl/maps/sxypckYk4vXqwgb28" target="_blank">Dolores</a> located within Soriano,
           Uruguay.
           For various reasons, I currently reside in Montevideo.
           From an early age I began to be curious about technology, and from my adolescence the passion for programming
           surfaced in me.
-          That is why today I am a Computer Engineer, graduated from the University of the Republic.
+          That is why today I am a Computer Engineer, graduated from the <a href="https://udelar.edu.uy/"
+                                                                            target="_blank">University of the
+          Republic</a>.
         </p>
 
         <p>
@@ -33,23 +36,29 @@
 
 
         <div>
-          <a href="https://www.linkedin.com/in/faller222/" target="_blank"><img alt="linkedin"
-                                                                                src="@/assets/img/network/german_faller_linkedin.svg"></a>
+          <a class="sn" href="https://www.linkedin.com/in/faller222/" target="_blank">
+            <img alt="linkedin"
+                 src="@/assets/img/network/german_faller_linkedin.svg"></a>
 
-          <a href="https://stackoverflow.com/users/9300379/" target="_blank"><img alt="stackoverflow"
-                                                                                  src="@/assets/img/network/german_faller_stackoverflow.svg"></a>
+          <a class="sn" href="https://stackoverflow.com/users/9300379/" target="_blank">
+            <img alt="stackoverflow"
+                 src="@/assets/img/network/german_faller_stackoverflow.svg"></a>
 
-          <a href="https://github.com/faller222/" target="_blank"><img alt="github"
-                                                                       src="@/assets/img/network/german_faller_github.svg"></a>
+          <a class="sn" href="https://github.com/faller222/" target="_blank">
+            <img alt="github"
+                 src="@/assets/img/network/german_faller_github.svg"></a>
 
-          <a href="https://gitlab.fing.edu.uy/german.faller/" target="_blank"><img alt="College Repository"
-                                                                                   src="@/assets/img/network/german_faller_college.svg"></a>
+          <a class="sn" href="https://gitlab.fing.edu.uy/german.faller/" target="_blank">
+            <img alt="College Repository"
+                 src="@/assets/img/network/german_faller_college.svg"></a>
 
-          <a href="https://www.instagram.com/faller222/" target="_blank"><img alt="instagram"
-                                                                              src="@/assets/img/network/german_faller_instagram.svg"></a>
+          <a class="sn" href="https://www.instagram.com/faller222/" target="_blank">
+            <img alt="instagram"
+                 src="@/assets/img/network/german_faller_instagram.svg"></a>
 
-          <a href="https://twitter.com/faller222/" target="_blank"><img alt="twitter"
-                                                                        src="@/assets/img/network/german_faller_twitter.svg"></a>
+          <a class="sn" href="https://twitter.com/faller222/" target="_blank">
+            <img alt="twitter"
+                 src="@/assets/img/network/german_faller_twitter.svg"></a>
         </div>
 
         <nuxt-link class="btn-contact" :to="{ path: '/', hash:'#contact'}">CONTACT ME</nuxt-link>
@@ -135,7 +144,7 @@ export default {
     text-align: center;
   }
 
-  a {
+  .sn {
     img {
       width: 34.9px;
       height: 32.13px;
@@ -149,13 +158,13 @@ export default {
     }
   }
 
-  .left{
+  .left {
     width: 40%;
     display: inline-flex;
     height: 100px;
   }
 
-  .right{
+  .right {
     display: inline-flex;
     width: 50%;
     flex-direction: column;
