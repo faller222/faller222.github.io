@@ -3,6 +3,6 @@ npm run generate
 
 cd ..
 
-cp -r src/dist/* docs/
+cp -rT src/dist docs/
 git add .
 git commit -m "Deploy"
