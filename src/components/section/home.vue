@@ -8,13 +8,11 @@
       <img id="moon" alt="moon" src="@/assets/img/german_faller_moon.png">
       <img id="astronaut" alt="moon" src="@/assets/img/german_faller_astronaut_1.png">
 
-      <img id="circle" alt="moon" src="@/assets/img/german_faller_circle.svg">
-      <div id="slogan">
-        <div style="text-align: end;">
-          I MAKE <br>
-          THINGS <br>
-          HAPPEN
-        </div>
+      <div class="logo">
+        <img alt="moon" src="@/assets/img/german_faller_circle.svg">
+        <span class="line">I MAKE</span>
+        <span class="line">THINGS</span>
+        <span class="line">HAPPEN</span>
       </div>
     </div>
 
@@ -33,7 +31,7 @@ export default {
   #banner, #banner-cover  {
     position: absolute;
     top: 0;
-    height: 95vh;
+    height: 100%;
     width: 100%;
     object-fit: cover;
   }
@@ -59,16 +57,55 @@ export default {
     top: 573px;
   }
 
+  .logo{
+    $logo-size: 473px;
+
+    position: absolute;
+    width: $logo-size;
+    height: $logo-size;
+    left: calc(50% -  #{$logo-size} / 2);
+
+    top: 330px;
+
+    img{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
+    .line{
+      position: absolute;
+      height: 289px;
+
+      font-style: normal;
+      font-weight: 800;
+      font-size: 72px;
+      line-height: 84px;
+
+      white-space: pre;
+
+      left: 63%;
+
+      &:nth-child(2) {
+        top: 42%;
+      }
+      &:nth-child(3) {
+        top: 61%;
+      }
+      &:nth-child(4) {
+        top: 80%;
+      }
+    }
+
+  }
+
   #slogan{
     position: absolute;
     width: 100%;
     top: 400px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: end;
 
-
-    div{
+    .line{
+      display: block;
       height: 289px;
 
       font-style: normal;
