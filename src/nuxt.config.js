@@ -15,8 +15,19 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+    ],
+
+    script: [
+      {src: "https://www.googletagmanager.com/gtag/js?id=G-MND0S9FGM9", async: true},
+      {
+        innerHTML:
+`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-MND0S9FGM9');`
+      }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -34,9 +45,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
-    // https://google-analytics.nuxtjs.org
-    '@nuxtjs/google-analytics'
+    '@nuxt/typescript-build'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
