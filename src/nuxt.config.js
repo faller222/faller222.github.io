@@ -11,7 +11,9 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { name: 'author', content: 'Germán Faller' },
+      { name: 'description', content: 'Computer Systems Engineer Germán Faller\'s Site' },
+      { name: 'googlebot', content: 'notranslate' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
