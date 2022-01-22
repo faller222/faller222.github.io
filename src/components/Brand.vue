@@ -31,11 +31,11 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  padding-top: 70px;
-  min-height: 130px;
+  padding-top: 3rem;
+  min-height: 6rem;
 
   &.fade-out {
-    top: -130px;
+    top: -6rem;
   }
 }
 </style>
