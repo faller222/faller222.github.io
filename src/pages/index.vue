@@ -6,7 +6,7 @@
     <section-about/>
 <!--        <section-skills/>-->
 <!--        <section-experience/>-->
-<!--        <section-contact/>-->
+    <section-contact/>
   </div>
 </template>
 
