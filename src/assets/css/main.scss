@@ -87,6 +87,20 @@ nav{
   }
 }
 
+a{
+  text-decoration: none;
+  color: #002C23;
+
+  &:visited{
+    color: #002C23;
+  }
+
+  &.active,
+  &:hover{
+    color: #00FFCE;
+  }
+}
+
 section{
   position: relative;
   min-height: 95vh;

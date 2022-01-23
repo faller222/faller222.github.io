@@ -3,7 +3,7 @@
     <Brand/>
     <Navigation/>
     <section-home/>
-<!--     <section-about/>-->
+    <section-about/>
 <!--        <section-skills/>-->
 <!--        <section-experience/>-->
 <!--        <section-contact/>-->
