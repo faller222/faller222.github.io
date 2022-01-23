@@ -10,7 +10,7 @@ export default {
     title: "Germán Faller's Site",
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0' },
       { name: 'author', content: 'Germán Faller' },
       { name: 'description', content: 'Computer Systems Engineer Germán Faller\'s Site' },
       { name: 'googlebot', content: 'notranslate' },

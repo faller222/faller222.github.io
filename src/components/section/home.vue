@@ -60,12 +60,12 @@ export default {
 
     .slogan {
       position: absolute;
-      top: 10.5rem;
+      top: 10rem;
       left: 15rem;
 
       .line {
         font-size: 3.5rem;
-        line-height: 4rem;
+        line-height: 4.5rem;
 
         white-space: pre;
 
