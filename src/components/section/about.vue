@@ -27,27 +27,31 @@
         <p>Do you want us to get to know each other better?</p>
 
         <div class="social">
-          <a class="sn" href="https://www.linkedin.com/in/faller222/" target="_blank">
+          <a href="https://www.linkedin.com/in/faller222/" target="_blank">
             <img alt="linkedin"
                  src="@/assets/img/network/german_faller_linkedin.svg"></a>
 
-          <a class="sn" href="https://stackoverflow.com/users/9300379/" target="_blank">
+          <a href="https://stackoverflow.com/users/9300379/" target="_blank">
             <img alt="stackoverflow"
                  src="@/assets/img/network/german_faller_stackoverflow.svg"></a>
 
-          <a class="sn" href="https://github.com/faller222/" target="_blank">
+          <a href="https://github.com/faller222/" target="_blank">
             <img alt="github"
                  src="@/assets/img/network/german_faller_github.svg"></a>
 
-          <a class="sn" href="https://gitlab.fing.edu.uy/german.faller/" target="_blank">
+          <a href="https://gitlab.fing.edu.uy/german.faller/" target="_blank">
             <img alt="College Repository"
                  src="@/assets/img/network/german_faller_college.svg"></a>
 
-          <a class="sn" href="https://www.instagram.com/faller222/" target="_blank">
+          <a href="https://instagram.com/_u/faller222/" target="_blank">
             <img alt="instagram"
                  src="@/assets/img/network/german_faller_instagram.svg"></a>
 
-          <a class="sn" href="https://twitter.com/faller222/" target="_blank">
+          <a href="instagram://user?username=faller222">
+            <img alt="instagram"
+                 src="@/assets/img/network/german_faller_instagram.svg"></a>
+
+          <a href="https://twitter.com/faller222/" target="_blank">
             <img alt="twitter"
                  src="@/assets/img/network/german_faller_twitter.svg"></a>
         </div>
