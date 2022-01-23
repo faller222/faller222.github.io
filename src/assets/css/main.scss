@@ -4,6 +4,11 @@
 *{
   font-family: Roboto, sans-serif;
   box-sizing: border-box;
+
+  &::selection {
+    background-color: #00FFCE;
+    color: #002C23;
+  }
 }
 
 body, html{
