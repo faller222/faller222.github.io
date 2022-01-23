@@ -27,7 +27,7 @@
         <p>Do you want us to get to know each other better?</p>
 
         <div class="social">
-          <a href="https://www.linkedin.com/in/faller222/" target="_blank">
+          <a href="https://linkedin.com/in/faller222/" target="_blank">
             <img alt="linkedin"
                  src="@/assets/img/network/german_faller_linkedin.svg"></a>
 
@@ -44,10 +44,6 @@
                  src="@/assets/img/network/german_faller_college.svg"></a>
 
           <a href="https://instagram.com/_u/faller222/" target="_blank">
-            <img alt="instagram"
-                 src="@/assets/img/network/german_faller_instagram.svg"></a>
-
-          <a href="instagram://user?username=faller222">
             <img alt="instagram"
                  src="@/assets/img/network/german_faller_instagram.svg"></a>
 
