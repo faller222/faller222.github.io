@@ -14,12 +14,10 @@
         </div>
       </div>
 
-      <!--      <img id="moon" alt="moon" src="@/assets/img/german_faller_moon.png">-->
-      <!--      <img id="astronaut" alt="moon" src="@/assets/img/german_faller_astronaut_1.png">-->
-
+      <img id="moon" alt="moon" src="@/assets/img/german_faller_moon.png">
+      <img id="astronaut" alt="moon" src="@/assets/img/german_faller_astronaut_1.png">
 
     </div>
-
   </section>
 </template>
 
@@ -80,22 +78,22 @@ export default {
   }
 
 
-  //#moon{
-  //  display: none;
-  //  position: absolute;
-  //  width: 175px;
-  //  height: 175px;
-  //  left: 1150px;
-  //  top: 264px;
-  //}
-  //
-  //#astronaut{
-  //  position: absolute;
-  //  width: 178px;
-  //  height: 172px;
-  //  left: 200px;
-  //  top: 573px;
-  //}
+  #moon{
+    position: absolute;
+    width: 8rem;
+    height: 8rem;
+    right: 4rem;
+    top: 5rem;
+  }
+
+  #astronaut{
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    left: 4rem;
+    bottom: 5rem;
+  }
+
   //
   //.logo{
   //  user-select: none;
@@ -173,8 +171,14 @@ export default {
       margin-top: 14rem;
     }
 
-    #moon {
-      display: inline
+    #moon{
+      right: 2rem;
+      top: 12rem;
+    }
+
+    #astronaut{
+      left: 6rem;
+      bottom: 12rem;
     }
   }
 
