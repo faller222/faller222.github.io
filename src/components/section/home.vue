@@ -43,7 +43,7 @@ export default {
   }
 
   .logo {
-    $logo-size: 24rem;
+    $logo-size: 20rem;
     width: $logo-size;
     height: $logo-size;
     margin: 45% auto 4rem;
@@ -58,12 +58,12 @@ export default {
 
     .slogan {
       position: absolute;
-      top: 10rem;
-      left: 15rem;
+      top: 8.7rem;
+      left: 12.5rem;
 
       .line {
-        font-size: 3.5rem;
-        line-height: 4.5rem;
+        font-size: 2.5rem;
+        line-height: 3.5rem;
 
         white-space: pre;
 
@@ -83,7 +83,7 @@ export default {
     width: 8rem;
     height: 8rem;
     right: 4rem;
-    top: 5rem;
+    top: 6rem;
   }
 
   #astronaut{
@@ -93,76 +93,6 @@ export default {
     left: 4rem;
     bottom: 5rem;
   }
-
-  //
-  //.logo{
-  //  user-select: none;
-  //
-  //  $logo-size: 473px;
-  //
-  //  position: absolute;
-  //  width: $logo-size;
-  //  height: $logo-size;
-  //  left: calc(50% -  #{$logo-size} / 2);
-  //
-  //  top: 330px;
-  //
-  //  img{
-  //    position: absolute;
-  //    height: 100%;
-  //    width: 100%;
-  //  }
-  //
-  //  .line{
-  //    position: absolute;
-  //    height: 289px;
-  //
-  //    font-style: normal;
-  //    font-weight: 800;
-  //    font-size: 72px;
-  //    line-height: 84px;
-  //
-  //    white-space: pre;
-  //
-  //    left: 63%;
-  //
-  //    &:nth-child(2) {
-  //      top: 42%;
-  //    }
-  //    &:nth-child(3) {
-  //      top: 61%;
-  //    }
-  //    &:nth-child(4) {
-  //      top: 80%;
-  //    }
-  //  }
-  //
-  //}
-  //
-  //#slogan{
-  //  position: absolute;
-  //  width: 100%;
-  //  top: 400px;
-  //
-  //  .line{
-  //    display: block;
-  //    height: 289px;
-  //
-  //    font-style: normal;
-  //    font-weight: 800;
-  //    font-size: 72px;
-  //    line-height: 84px;
-  //    text-align: end;
-  //  }
-  //}
-  //
-  //#circle{
-  //  position: absolute;
-  //  width: 473px;
-  //  height: 473px;
-  //  left: calc(50% - 473px/2);
-  //  top: 330px;
-  //}
 
   @media (min-width: 768px) {
     //Small screens, laptops

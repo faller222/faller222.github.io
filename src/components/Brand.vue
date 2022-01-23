@@ -31,11 +31,13 @@ export default {
 
 <style lang="scss" scoped>
 header {
+  background-color: #002C23;
   padding: 1rem;
 
   @media (min-width: 768px) {
     //Small screens, laptops
 
+    background-color: transparent;
     padding-top: 3rem;
     min-height: 6rem;
 

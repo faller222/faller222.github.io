@@ -64,7 +64,7 @@ nav {
     display: inline-block;
     float: right;
     padding:  0.5rem;
-    background-color: #A3A3A3;
+    background-color: #00FFCE80;
     border-radius: 5px;
 
     .icon-bar {
