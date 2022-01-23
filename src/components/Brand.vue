@@ -31,11 +31,22 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  padding-top: 3rem;
-  min-height: 6rem;
+  padding: 1rem;
 
-  &.fade-out {
-    top: -6rem;
+  @media (min-width: 768px) {
+    //Small screens, laptops
+
+    padding-top: 3rem;
+    min-height: 6rem;
+
+    h1{
+      text-align: center;
+      line-height: 3rem;
+    }
+
+    &.fade-out {
+      top: -6rem;
+    }
   }
 }
 </style>
