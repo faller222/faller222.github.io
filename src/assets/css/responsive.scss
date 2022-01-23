@@ -4,30 +4,35 @@ body, html {
 }
 
 @media (min-width: 320px) {
+  //Mobile devices
   body, html {
     font-size: 12px;
   }
 }
 
 @media (min-width: 480px) {
+  //iPads, Tablets
   body, html {
     font-size: 14px;
   }
 }
 
 @media (min-width: 768px) {
+  //Small screens, laptops
   body, html {
     font-size: 16px;
   }
 }
 
 @media (min-width: 1024px) {
+  //Desktops, large screens
   body, html {
     font-size: 18px;
   }
 }
 
 @media (min-width: 1200px) {
+  //Extra large screens, TV
   body, html {
     font-size: 20px;
   }

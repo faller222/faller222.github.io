@@ -99,12 +99,13 @@ nav{
 
 section{
   position: relative;
-  height: 95vh;
+  min-height: 95vh;
   padding-top: 2.5rem;
+  overflow: hidden;
 
 
   &:last-child{
-    height: 100vh;
+    min-height: 100vh;
   }
 
 }

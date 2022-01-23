@@ -3,10 +3,10 @@
     <Brand/>
     <Navigation/>
     <section-home/>
-    <section-about/>
-    <section-skills/>
-    <section-experience/>
-    <section-contact/>
+    <!-- <section-about/> -->
+    <!--    <section-skills/>-->
+    <!--    <section-experience/>-->
+    <!--    <section-contact/>-->
   </div>
 </template>
 
