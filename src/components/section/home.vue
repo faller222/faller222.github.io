@@ -22,6 +22,8 @@
 </template>
 
 <script>
+const delta = 20;
+
 export default {
   name: "home"
 }
@@ -78,20 +80,24 @@ export default {
   }
 
 
-  #moon{
+  #moon {
     position: absolute;
     width: 8rem;
     height: 8rem;
     right: 4rem;
     top: 6rem;
+
+    transition: all 2s ease;
   }
 
-  #astronaut{
+  #astronaut {
     position: absolute;
     width: 10rem;
     height: 10rem;
     left: 4rem;
     bottom: 5rem;
+
+    transition: all 1s ease;
   }
 
   @media (min-width: 768px) {
@@ -101,12 +107,12 @@ export default {
       margin-top: 14rem;
     }
 
-    #moon{
+    #moon {
       right: 2rem;
       top: 12rem;
     }
 
-    #astronaut{
+    #astronaut {
       left: 6rem;
       bottom: 12rem;
     }

@@ -66,8 +66,23 @@ gtag('config', 'G-MND0S9FGM9');`
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    icon: {
+      /* icon options */
+      source: 'static/icon.png'
+    },
+    meta: {
+      name: 'Germán Faller\'s Site',
+      author: 'Germán Faller',
+      description: 'Computer Systems Engineer Germán Faller\'s Site',
+      lang: 'en',
+      nativeUI: true
+    },
     manifest: {
-      lang: 'en'
+      name: 'Germán Faller\'s Site',
+      short_name: 'Germán Faller',
+      description: 'Computer Systems Engineer Germán Faller\'s Site',
+      lang: 'en',
+      background_color: '#00FFCE'
     }
   },
 
