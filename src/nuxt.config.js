@@ -90,6 +90,10 @@ gtag('config', 'G-MND0S9FGM9');`
   build: {
   },
 
+  server: {
+    host: "0.0.0.0"
+  },
+
   googleAnalytics: {
     id: 'G-MND0S9FGM9'
   }
