@@ -40,16 +40,16 @@ export default {
       return `transform: translateX(${x}px) translateY(${y}px);`
     },
     styleAstronaut() {
-      const x = this.x / 10
-      const y = this.y / 10
+      const x = 4 + this.x / 200
+      const y = 5 + this.y / -200
 
-      return `transform: translateX(${x}px) translateY(${y}px);`
+      return `left: ${x}rem; bottom:${y}rem;`
     },
     styleMoon() {
-      const x = this.x / -10
-      const y = this.y / -10
+      const x = 2 + this.x / 200
+      const y = 12 + this.y / -200
 
-      return `transform: translateX(${x}px) translateY(${y}px);`
+      return `right: ${x}rem; top:${y}rem;`
     }
   },
   data() {
@@ -136,6 +136,8 @@ export default {
     height: 8rem;
     right: 4rem;
     top: 6rem;
+
+    animation: moveM 10s infinite linear 2s;
   }
 
   #astronaut {
@@ -144,6 +146,24 @@ export default {
     height: 10rem;
     left: 4rem;
     bottom: 5rem;
+
+    animation: moveA 10s infinite linear 2s;
+  }
+
+  @keyframes moveA {
+    0% { transform: rotate(15deg) translateX(-25%) translateY(0px);}
+    25% { transform: rotate(0deg) translateX(0px) translateY(25%);}
+    50% { transform: rotate(-15deg) translateX(25%) translateY(0px);}
+    75% { transform: rotate(0deg) translateX(0px) translateY(25%);}
+    100% { transform: rotate(15deg) translateX(-25%) translateY(0px);}
+  }
+
+  @keyframes moveM {
+    0% { transform: rotate(-15deg) translateX(25%) translateY(0px);}
+    25% { transform: rotate(0deg) translateX(0px) translateY(25%);}
+    50% { transform: rotate(15deg) translateX(-25%) translateY(0px);}
+    75% { transform: rotate(0deg) translateX(0px) translateY(25%);}
+    100% { transform: rotate(-15deg) translateX(25%) translateY(0px);}
   }
 
   @media (min-width: 768px) {
