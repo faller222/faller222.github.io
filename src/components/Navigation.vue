@@ -103,7 +103,13 @@ nav {
 
   &.responsive a {
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    font-size: 3rem;
+
+    &:nth-child(2){
+      margin-top: 3rem;
+    }
   }
 }
 
