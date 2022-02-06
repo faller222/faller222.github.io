@@ -9,7 +9,7 @@
     <div class="container content">
 
       <img id="german" alt="German Faller" src="@/assets/img/german_faller.png">
-      <div>
+      <div id="info">
         <p>
           Hello! my name is German. I was born on February 19, 1993 in the city of
           <a href="https://goo.gl/maps/sxypckYk4vXqwgb28" target="_blank">Dolores-Soriano, Uruguay</a>.
@@ -70,30 +70,43 @@ export default {
 #about {
   background-color: #FFFFFF;
   color: #000000;
+  display: flex;
+  flex-direction: column;
 
   .content {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
-    #german{
+    #german {
       height: 16rem;
       width: 16rem;
       margin: 1rem;
     }
 
-    p{
+    #info {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-evenly;
+    }
+
+    p {
       padding: 0 1.5rem;
     }
 
-    .social{
+    .social {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
       padding: 20px;
 
-      a img{
+      a img {
         height: 2rem;
         width: 2rem;
       }
