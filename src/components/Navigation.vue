@@ -59,6 +59,7 @@ nav {
   a {
     display: none;
   }
+
   .logo {
     margin-top: 1rem;
     margin-bottom: 4rem;
@@ -117,7 +118,9 @@ nav {
       top: 6rem;
     }
 
-    .menu{
+    .menu {
+      padding: 1rem 2rem;
+      position: relative;
       display: flex;
       justify-content: space-around;
     }
