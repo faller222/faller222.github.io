@@ -45,6 +45,7 @@ export default {
       }
     },
     menu() {
+      window.navigator.vibrate(200);
       this.menuExpanded = !this.menuExpanded
       document.body.style.overflowY = this.menuExpanded ? 'hidden' : '';
     }
