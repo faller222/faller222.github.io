@@ -28,14 +28,14 @@ export default {
   name: "home",
   computed:{
     styleLogo() {
-      const x = (this.x + window.innerWidth) / -200
-      const y = (this.y + window.innerHeight) / -200
+      const x = (this.x + window.innerWidth) / -50
+      const y = (this.y + window.innerHeight) / -50
 
       return `transform: translateX(${x}px) translateY(${y}px);`
     },
     styleSlogan() {
-      const x = (this.x - window.innerWidth) / 200
-      const y = (this.y - window.innerHeight) / 200
+      const x = (this.x - window.innerWidth) / 50
+      const y = (this.y - window.innerHeight) / 50
 
       return `transform: translateX(${x}px) translateY(${y}px);`
     },
