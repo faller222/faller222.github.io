@@ -8,4 +8,5 @@ mkdir docs
 echo www.faller.com.uy > docs/CNAME
 cp -rT src/dist docs/
 git add .
-git commit -m "Deploy"
+git commit -m "Deploy  -  "$1
+git push

@@ -34,6 +34,10 @@ header {
   background-color: #002C23;
   padding: 1rem;
 
+  h1{
+    margin-left: 1rem;
+  }
+
   @media (min-width: 768px) {
     //Small screens, laptops
 
@@ -44,6 +48,7 @@ header {
     h1{
       text-align: center;
       line-height: 3rem;
+      margin-left: 0;
     }
 
     &.fade-out {

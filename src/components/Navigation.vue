@@ -1,11 +1,10 @@
 <template>
   <nav :class="{'fade-in':!faded,'responsive':menuExpanded}">
     <div class="menu">
+      <h1 class="logo" v-if="menuExpanded">GERMÁN FALLER</h1>
       <a href="javascript:void(0);" class="icon" @click="menu">
-        <span class="icon-bar"/>
-        <span class="icon-bar"/>
-        <span class="icon-bar"/>
-        <span class="icon-bar"/>
+        <img v-if="menuExpanded" alt="german_faller_menu_close_icon" src="@/assets/img/german_faller_menu_close_icon.svg">
+        <img v-else alt="german_faller_menu_icon" src="@/assets/img/german_faller_menu_icon.svg">
       </a>
       <nuxt-link @click.native='handler' :class="{'active':$route.hash==='#home'}" :to="{ path: '/', hash:'#home'}">Home</nuxt-link>
       <nuxt-link @click.native='handler' :class="{'active':$route.hash==='#about'}" :to="{ path: '/', hash:'#about'}">About me</nuxt-link>
@@ -59,31 +58,19 @@ nav {
   a {
     display: none;
   }
+  .logo {
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+  }
 
   .icon {
     display: inline-block;
-    float: right;
-    padding:  0.5rem;
-    background-color: #00FFCE80;
-    border-radius: 5px;
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
 
-    .icon-bar {
-      background-color: #FFFFFF;
-      display: block;
-      width: 1.5rem;
-      height: 0.2rem;
-      border-radius: 5px;
-    }
-
-    .icon-bar + .icon-bar {
-      margin-top: 0.2rem;
-    }
-
-    &:hover {
-      background-color: rgba(0,44,35,0.5);
-      .icon-bar {
-        background-color: #00FFCE;
-      }
+    img {
+      width: 2rem;
     }
   }
 
@@ -91,7 +78,10 @@ nav {
     max-width: 1200px;
     margin-right: auto;
     margin-left: auto;
-    padding: 1rem;
+    padding: 0 2rem;
+
+    position: absolute;
+    width: 100%;
   }
 }
 
@@ -101,15 +91,11 @@ nav {
     height: 100vh;
   }
 
-  &.responsive a {
+  &.responsive a:not(.icon) {
     display: block;
     margin-bottom: 2rem;
     margin-left: 2rem;
     font-size: 3rem;
-
-    &:nth-child(2){
-      margin-top: 3rem;
-    }
   }
 }
 
@@ -121,6 +107,7 @@ nav {
       display: inline-block;
     }
 
+    .logo,
     .icon {
       display: none;
     }
