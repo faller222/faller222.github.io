@@ -1,21 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import "normalize.css";
 @import "responsive.scss";
 
-*{
+* {
   font-family: Roboto, sans-serif;
   box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scrollbar-color: #00FFCE #002C23;
 
   &::selection {
     background-color: #00FFCE;
     color: #002C23;
   }
-}
-
-body, html{
-  height: 100%;
-  background-color: #002C23;
-  color: #FFFFFF;
-  margin: 0;
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -31,26 +30,40 @@ body, html{
   }
 
   &::-webkit-scrollbar-track {
-    box-shadow: 0 0 1px #c4c4c4 inset;
+    box-shadow: 0 0 1px #C4C4C4 inset;
   }
 }
 
-h1, h2, h3{
+body, html {
+  height: 100%;
+  background-color: #002C23;
+  color: #FFFFFF;
   margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1rem;
   font-weight: 700;
 }
 
 h1 {
   font-size: 2.5rem;
 }
+
 h2 {
   font-size: 1.7rem;
 }
+
 h3 {
   font-size: 1.3rem;
 }
 
-.container{
+img{
+  user-select: none;
+  pointer-events: none;
+}
+
+.container {
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
@@ -65,52 +78,54 @@ nav {
   left: 0;
   z-index: 1030;
 
-  transition: all .4s ease;
+  transition: all .6s ease;
 }
 
-nav{
-  a{
+nav {
+  a {
     text-decoration: none;
     color: #FFFFFF;
 
     font-size: 1.2rem;
     font-weight: 700;
 
-    &:visited{
+    &:visited {
       color: #FFFFFF;
     }
 
     &.active,
-    &:hover{
+    &:hover {
       color: #00FFCE;
     }
   }
 }
 
-a{
+a {
   text-decoration: none;
   color: #002C23;
 
-  &:visited{
+  &:visited {
     color: #002C23;
   }
 
   &.active,
-  &:hover{
+  &:hover {
     color: #00FFCE;
   }
 }
 
-section{
+section {
   position: relative;
   min-height: 95vh;
-  padding-top: 2.5rem;
+  padding: 4rem 0;
   overflow: hidden;
-
-
-  //&:last-child{
-  //  min-height: 100vh;
-  //}
-
 }
 
+input, textarea {
+  outline: none;
+  border-radius: 0;
+
+  &:invalid { box-shadow: none; }
+
+  &:focus { border: 1px solid; }
+}
