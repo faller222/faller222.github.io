@@ -28,14 +28,14 @@ export default {
   name: "home",
   computed:{
     styleLogo() {
-      const x = (this.x + window.innerWidth) / -50
-      const y = (this.y + window.innerHeight) / -50
+      const x = (this.x + window.innerWidth) / -100
+      const y = (this.y + window.innerHeight) / -100
 
       return `transform: translateX(${x}px) translateY(${y}px);`
     },
     styleSlogan() {
-      const x = (this.x - window.innerWidth) / 50
-      const y = (this.y - window.innerHeight) / 50
+      const x = (this.x - window.innerWidth) / 100
+      const y = (this.y - window.innerHeight) / 100
 
       return `transform: translateX(${x}px) translateY(${y}px);`
     },
@@ -67,8 +67,8 @@ export default {
       //Alpha -180 - 180
       //Beta -180 - 180
       //Gamma -90 - 90
-      const x = Math.abs(e.alpha) * 5
-      const y = Math.abs(e.gamma) * 5
+      const x = (Math.abs(e.alpha)-90) * 5
+      const y = (Math.abs(e.gamma)-45) * 5
 
       this.move(x, y)
     }.bind(this), true)
