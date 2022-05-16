@@ -8,8 +8,10 @@
       <div class="logo">
         <img alt="GF-logo" src="@/assets/img/german_faller_circle.svg" :style="styleLogo">
         <div class="slogan" :style="styleSlogan">
-          <span class="line">I MAKE {{alpha}}</span>
-          <span class="line">THINGS {{gamma}}</span>
+          <span class="line">{{alpha}}</span>
+          <span class="line">{{gamma}}</span>
+          <span class="line">I MAKE</span>
+          <span class="line">THINGS</span>
           <span class="line">HAPPEN</span>
         </div>
       </div>
@@ -54,8 +56,8 @@ export default {
   },
   data() {
     return {
-      alpha: null,
-      gamma: null,
+      alpha: 999,
+      gamma: 999,
       x: null,
       y: null
     }
@@ -69,8 +71,8 @@ export default {
       //Alpha -180 - 180
       //Beta -180 - 180
       //Gamma -90 - 90
-      const alpha = e.alpha
-      const gamma = e.gamma
+      this.alpha = e.alpha
+      this.gamma = e.gamma
       const x = (Math.abs(e.alpha)-90) * 5
       const y = (Math.abs(e.gamma)-45) * 5
 
