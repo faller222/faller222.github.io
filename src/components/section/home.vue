@@ -8,8 +8,6 @@
       <div class="logo">
         <img alt="GF-logo" src="@/assets/img/german_faller_circle.svg" :style="styleLogo">
         <div class="slogan" :style="styleSlogan">
-          <span class="line">{{alpha}}</span>
-          <span class="line">{{gamma}}</span>
           <span class="line">I MAKE</span>
           <span class="line">THINGS</span>
           <span class="line">HAPPEN</span>
@@ -56,8 +54,6 @@ export default {
   },
   data() {
     return {
-      alpha: 999,
-      gamma: 999,
       x: null,
       y: null
     }
@@ -68,13 +64,8 @@ export default {
     }.bind(this),true)
 
     window.addEventListener('deviceorientation', function (e) {
-      //Alpha -180 - 180
-      //Beta -180 - 180
-      //Gamma -90 - 90
-      this.alpha = e.alpha
-      this.gamma = e.gamma
-      const x = (Math.abs(e.alpha)-90) * 5
-      const y = (Math.abs(e.gamma)-45) * 5
+      const x = (Math.abs(e.alpha) % 180 - 90) * 4
+      const y = ((Math.abs(e.beta) + Math.abs(e.gamma)) % 90 - 45) * 4
 
       this.move(x, y)
     }.bind(this), true)
