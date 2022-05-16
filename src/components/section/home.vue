@@ -24,6 +24,10 @@
 <script>
 const delta = 20;
 
+function helper(degrees){
+  return Math.sin(degrees * Math.PI / 180)
+}
+
 export default {
   name: "home",
   computed:{
@@ -64,8 +68,8 @@ export default {
     }.bind(this),true)
 
     window.addEventListener('deviceorientation', function (e) {
-      const x = (Math.abs(e.alpha) % 180 - 90) * 4
-      const y = ((Math.abs(e.beta) + Math.abs(e.gamma)) % 90 - 45) * 4
+      const x = helper(e.alpha) * 1000
+      const y = (helper(e.beta) + helper(e.gamma)) * 500
 
       this.move(x, y)
     }.bind(this), true)
