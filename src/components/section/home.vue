@@ -67,8 +67,8 @@ export default {
       //Alpha -180 - 180
       //Beta -180 - 180
       //Gamma -90 - 90
-      const x = (Math.abs(e.alpha) - 90 ) * 5
-      const y = (90 - e.gamma) * 5
+      const x = Math.abs(e.alpha) * 5
+      const y = Math.abs(e.gamma) * 5
 
       this.move(x, y)
     }.bind(this), true)
