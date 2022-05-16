@@ -64,8 +64,11 @@ export default {
     }.bind(this),true)
 
     window.addEventListener('deviceorientation', function (e) {
-      const x = (e.alpha + 180) % 360 * 2
-      const y = (e.beta + e.gamma) * 5
+      //Alpha -180 - 180
+      //Beta -180 - 180
+      //Gamma -90 - 90
+      const x = (Math.abs(e.alpha) - 90 ) * 5
+      const y = (90 - e.gamma) * 5
 
       this.move(x, y)
     }.bind(this), true)
