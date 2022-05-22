@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import {vibrate} from '@/common/Utils'
+
 export default {
   name: "Menu",
   data() {
@@ -45,7 +47,8 @@ export default {
       }
     },
     menu() {
-      window.navigator.vibrate(50);
+      vibrate(50)
+
       this.menuExpanded = !this.menuExpanded
       document.body.style.overflowY = this.menuExpanded ? 'hidden' : '';
     }
