@@ -128,6 +128,12 @@ export default {
         border-radius: 0 0 0.5rem 0.5rem;
       }
     }
+
+    #astronauts{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
 
