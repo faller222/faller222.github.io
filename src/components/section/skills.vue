@@ -31,12 +31,13 @@
 </template>
 
 <script>
-const skills = [['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
+const skills = [
   ['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
-  ['Angular', 'Bowe2r', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
-  ['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
-  ['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
-  ['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express']]
+  ['Fuse services works','Genexus','Git','Gitlab','Grunt','Hibernate','Infinispan','JAVAEE','jBoss','JBPM kie-Server'],
+  ['Jira','JMS','JSF','JPA','Kanban','Karaf','Kubernetes','Mercurial','MongoDB','MySQL'],
+  ['NodeJS','Nuxt','OutSytems','OSGI','Postgres','Primefaces','ReactJS','Richfaces','SAP CAI','Scala'],
+  ['Scrum','Scrumban','Sequelize','Solr','Spring-Boot','SQLServer','SVN','Swagger','SwitchYard','Vaadin'],
+  ['Vagrant','Vue','Vuex','Watson','Web sockets','WildFly','WS-Addressing','WS-RESTful','WS-Security','WS-SOAP']]
 export default {
   name: "skills",
   computed:{
@@ -103,13 +104,14 @@ export default {
       margin-right: 4rem;
 
       display: flex;
-      row-gap: 1rem;
+
       flex-direction: row;
       flex-wrap: nowrap;
       overflow-x: scroll;
 
       .card{
-        width: calc( 33% - 2rem );
+        //width: calc( 33% - 2rem );
+        flex: 0 0 calc( 33% - 2rem );
         margin: 1rem;
 
         display: block;
