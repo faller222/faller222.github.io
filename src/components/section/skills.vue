@@ -112,7 +112,7 @@ export default {
       .card{
         //width: calc( 33% - 2rem );
         flex: 0 0 calc( 33% - 2rem );
-        margin: 1rem;
+        margin-bottom: 1rem;
 
         display: block;
         background-color:  #FFFFFF;
@@ -124,11 +124,12 @@ export default {
           text-align: center;
         }
 
-        &:first-child{
-          margin-left: 0;
+        &:first-child {
+          border-radius: 1rem 0 0 1rem;
         }
-        &:last-child{
-          margin-right: 0;
+
+        &:last-child {
+          border-radius: 0 1rem 1rem 0;
         }
       }
     }
@@ -151,20 +152,32 @@ export default {
     .container {
       position: relative;
 
-      .cards{
+      .cards {
         flex-wrap: wrap;
 
-        .card{
+        .card {
+          margin-left: 1rem;
+          margin-right: 1rem;
 
-          &:first-child{
-            margin-left: 1rem;
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: 1rem 0 0 0;
           }
-          &:last-child{
-            margin-right: 1rem;
+
+          &:nth-child(3) {
+            border-radius: 0 1rem 0 0;
+          }
+
+          &:nth-child(4) {
+            border-radius: 0 0 0 1rem;
+          }
+
+          &:last-child {
+            border-radius: 0 0 1rem 0;
           }
         }
       }
-
     }
   }
 }
