@@ -137,7 +137,7 @@ export default {
       position: absolute;
       width: 15rem;
       height: 15rem;
-      left: 2rem;
+      left: 0.5rem;
       bottom: 2rem;
     }
   }

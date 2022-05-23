@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {vibrate} from '@/common/Utils'
+import {vibrate} from '../common/Utils'
 
 export default {
   name: "Menu",
