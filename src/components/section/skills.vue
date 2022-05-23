@@ -1,49 +1,168 @@
 <template>
   <section id="skills">
-    <div class="name">
-      <div>
-        <h1>SKILLS</h1>
+    <img id="banner-cover" alt="banner_cover" src="@/assets/img/german_faller_banner_cover.svg">
+
+    <div class="title">
+      <div class="container">
+        <h2>SKILLS</h2>
+        <img id="saturn" alt="saturn" src="@/assets/img/german_faller_saturn.svg">
       </div>
     </div>
 
-    <div class="container">
-      Work in Progress
 
+    <div class="container">
+      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+        going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
+        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+      <div class="cards">
+        <div class="card" v-for="g in skills">
+          <p v-for="s in g">{{s}}</p>
+        </div>
+      </div>
+
+      <img id="telescope" alt="telescope" src="@/assets/img/german_faller_telescope.svg">
     </div>
   </section>
 </template>
 
 <script>
+const skills = [['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
+  ['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
+  ['Angular', 'Bowe2r', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
+  ['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
+  ['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express'],
+  ['Angular', 'Bower', 'Camel', 'Camunda', 'CI/CD', 'Cloud Foundry', 'Docker', 'Docker-compose', 'EJB', 'Express']]
 export default {
-  name: "skills"
+  name: "skills",
+  computed:{
+    skills() {
+      return skills
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 #skills {
+  padding-top: 1rem;
+  overflow: visible;
 
-  .name {
-    margin-top: 90px;
-    text-align: end;
+  #banner-cover {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 
-    div {
+    opacity: 0.6;
+    z-index: -1;
+  }
+
+  .title {
+    background-color: #002C23;
+    color: #FFFFFF;
+
+    .container {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
 
-      background-color: #002C23;
-      color: #FFFFFF;
-      padding: 25px;
-
-      h1 {
-        width: 240px;
-        background-color: #c4001d;
-        box-shadow: 31px 45px 0 5px #002c23 inset;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 64px;
-        line-height: 75px;
-        text-align: left;
+      h2 {
+        display: inline-block;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
       }
+
+      #saturn {
+        position: absolute;
+        right: 2rem;
+        top: -3.5rem;
+        width: 9rem;
+        height: 9rem;
+      }
+    }
+
+  }
+
+  .container{
+    padding-bottom: 10rem;
+
+    p {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+
+    .cards {
+      margin-left: 4rem;
+      margin-right: 4rem;
+
+      display: flex;
+      row-gap: 1rem;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+
+      .card{
+        width: calc( 33% - 2rem );
+        margin: 1rem;
+
+        display: block;
+        background-color:  #FFFFFF;
+        color: #002C23;
+        padding: 3rem;
+
+        p{
+          padding: 0;
+          text-align: center;
+        }
+
+        &:first-child{
+          margin-left: 0;
+        }
+        &:last-child{
+          margin-right: 0;
+        }
+      }
+    }
+
+    #telescope {
+      position: absolute;
+      width: 15rem;
+      height: 15rem;
+      left: 2rem;
+      bottom: 2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    //Small screens, laptops
+    .content {
+      flex-direction: row;
+    }
+
+    .container {
+      position: relative;
+
+      .cards{
+        flex-wrap: wrap;
+
+        .card{
+
+          &:first-child{
+            margin-left: 1rem;
+          }
+          &:last-child{
+            margin-right: 1rem;
+          }
+        }
+      }
+
     }
   }
 }

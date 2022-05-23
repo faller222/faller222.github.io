@@ -4,7 +4,7 @@
     <Navigation/>
     <section-home/>
     <section-about/>
-<!--        <section-skills/>-->
+    <section-skills/>
 <!--        <section-experience/>-->
     <section-contact/>
   </div>
