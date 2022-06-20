@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {vibrate} from '../common/Utils'
+import {vibrate,isInViewport} from '../common/Utils'
 
 export default {
   name: "Menu",
@@ -40,6 +40,18 @@ export default {
   methods: {
     handleScroll() {
       this.scroll = window.scrollY
+      //
+      // if (isInViewport(document.getElementById('home'))) {
+      //   this.$router.push({path: '/', hash: '#home'});
+      // } else if (isInViewport(document.getElementById('about'))) {
+      //   this.$router.push({path: '/', hash: '#about'});
+      // } else if (isInViewport(document.getElementById('contact'))) {
+      //   this.$router.push({path: '/', hash: '#contact'});
+      // } else if (isInViewport(document.getElementById('experience'))) {
+      //   this.$router.push({path: '/', hash: '#experience'});
+      // } else if (isInViewport(document.getElementById('skills'))) {
+      //   this.$router.push({path: '/', hash: '#skills'});
+      // }
     },
     handler(pointerEvent){
       if(this.menuExpanded) {

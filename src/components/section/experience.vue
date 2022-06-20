@@ -1,16 +1,27 @@
 <template>
   <section id="experience">
-
-    <div class="name">
-      <div>
-        <h1>EXPERIENCE</h1>
+    <div class="title">
+      <div class="container">
+        <h2>WORK EXPERIENCE</h2>
+        <img id="rocket" alt="rocket" src="@/assets/img/german_faller_rocket.svg">
       </div>
     </div>
+    <div class="container content">
 
-    <div class="container">
-      Work in Progress
-
+      <a href="/Curriculum%20Vitae%20-%20German%20Faller%20EN.pdf" download="" class="btn-contact">Download resume</a>
     </div>
+
+
+<!--    <div class="title">-->
+<!--      <div class="container">-->
+<!--        <h2>ACADEMIC EXPERIENCE</h2>-->
+<!--        <img id="astronaut_saturn" alt="astronaut_saturn" src="@/assets/img/german_faller_astronaut_saturn.svg">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="container content">-->
+
+<!--      Work in Progress-->
+<!--    </div>-->
   </section>
 </template>
 
@@ -24,40 +35,102 @@ export default {
 #experience {
   background-color: #FFFFFF;
   color: #000000;
+  display: flex;
+  flex-direction: column;
 
-  .name {
-    margin-top: 90px;
-    text-align: end;
+  .content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
-    div {
+    #german {
+      height: 16rem;
+      width: 16rem;
+      margin: 1rem;
+    }
+
+    #info {
       display: flex;
-      justify-content: flex-end;
+      flex: 1;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-evenly;
+    }
 
-      background-color: #002C23;
+    p {
+      padding: 0 1.5rem;
+    }
+
+    .social {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 20px;
+
+      a img {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+
+    .btn-contact {
+      display: block;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 0.5rem;
+      background-color: #002c23;
       color: #FFFFFF;
-      padding: 25px;
-      width: 60%;
+      text-decoration: none;
+      text-align: center;
 
-      h1 {
-        width: 300px;
-        background-color: #c4001d;
-        box-shadow: 10px 23px 0 5px #002c23 inset;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 36px;
-        line-height: 50px;
-        text-align: left;
+      &:after {
+        margin-left: 0.5rem;
+        content: '>';
       }
     }
   }
 
-  #rocket{
-    position: absolute;
-    width: 323px;
-    height: 277px;
-    right: 200px;
-    top: -240px;
+  .title {
+    background-color: #002C23;
+    color: #FFFFFF;
 
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+
+      h2 {
+        display: inline-block;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+  }
+
+  @media (min-width: 768px) {
+    //Small screens, laptops
+    .content {
+      flex-direction: row;
+    }
+
+    .container {
+      position: relative;
+
+      #astronaut_saturn,
+      #rocket {
+        position: absolute;
+        right: 4rem;
+        top: -3.5rem;
+        width: 12rem;
+        height: 12rem;
+      }
+    }
   }
 }
 </style>

@@ -112,12 +112,12 @@ export default {
       .card{
         //width: calc( 33% - 2rem );
         flex: 0 0 calc( 33% - 2rem );
-        margin-bottom: 1rem;
+        //margin-bottom: 1rem;
 
         display: block;
         background-color:  #FFFFFF;
         color: #002C23;
-        padding: 3rem;
+        padding: 2rem;
 
         p{
           padding: 0;
@@ -125,11 +125,11 @@ export default {
         }
 
         &:first-child {
-          border-radius: 1rem 0 0 1rem;
+          border-radius: 1rem 0 0 0;
         }
 
         &:last-child {
-          border-radius: 0 1rem 1rem 0;
+          border-radius: 0 1rem 0 0;
         }
       }
     }
@@ -158,7 +158,9 @@ export default {
         .card {
           margin-left: 1rem;
           margin-right: 1rem;
+          margin-bottom: 1rem;
 
+          padding: 3rem;
           border-radius: 0;
 
           &:first-child {
