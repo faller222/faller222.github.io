@@ -48,6 +48,6 @@
   ],
   "start_url": "/?standalone=true",
   "display": "standalone",
-  "background_color": "#00FFCE",
+  "background_color": "#002C23",
   "lang": "en"
 }

@@ -82,7 +82,7 @@ gtag('config', 'G-MND0S9FGM9');`
       short_name: 'Germán Faller',
       description: 'Computer Systems Engineer Germán Faller\'s Site',
       lang: 'en',
-      background_color: '#00FFCE'
+      background_color: '#002C23'
     }
   },
 
