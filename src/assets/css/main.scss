@@ -118,6 +118,11 @@ section {
   min-height: 95vh;
   padding: 4rem 0;
   overflow: hidden;
+
+  @media print {
+    page-break-before: always;
+    display: block;
+  }
 }
 
 input, textarea {

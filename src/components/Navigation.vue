@@ -102,6 +102,12 @@ nav {
   }
 }
 
+@media print {
+  nav{
+    display: none;
+  }
+}
+
 @media screen and (max-width: 767px) {
   &.responsive {
     background-color: rgba(0, 44, 35, 0.95);

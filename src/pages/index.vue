@@ -7,6 +7,7 @@
     <section-skills/>
     <section-experience/>
     <section-contact/>
+    <my-footer/>
   </div>
 </template>
 

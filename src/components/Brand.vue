@@ -55,5 +55,11 @@ header {
       top: -6rem;
     }
   }
+
+  @media print {
+    h1 {
+      display: none !important;
+    }
+  }
 }
 </style>

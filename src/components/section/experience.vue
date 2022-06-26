@@ -6,9 +6,21 @@
         <img id="rocket" alt="rocket" src="@/assets/img/german_faller_rocket.svg">
       </div>
     </div>
-    <div class="container content">
+    <div class="container">
 
-      <a href="/Curriculum%20Vitae%20-%20German%20Faller%20EN.pdf" download="" class="btn-contact">Download resume</a>
+
+      <article class="xp" v-for="item in xp">
+        <div class="date">{{item.from}} - {{item.to}}</div>
+        <div class="title">{{item.project}}, {{item.company}}, {{item.location}}, {{item.level}}</div>
+        <div class="description">{{item.description}}</div>
+        <div class="tech">
+          <h4>Technologies:</h4>
+          {{item.technologies.join(', ')}}
+        </div>
+      </article>
+
+
+      <a href="/Curriculum%20Vitae%20-%20German%20Faller%20EN.pdf" download="" class="btn">Download resume</a>
     </div>
 
 
@@ -26,8 +38,13 @@
 </template>
 
 <script>
+import {xp} from '@/common/xp'
+
 export default {
-  name: "experience"
+  name: "experience",
+  data() {
+    return {xp: xp.slice().reverse()}
+  }
 }
 </script>
 
@@ -38,61 +55,42 @@ export default {
   display: flex;
   flex-direction: column;
 
-  .content {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+  .xp {
+    padding: 1rem;
 
-    #german {
-      height: 16rem;
-      width: 16rem;
-      margin: 1rem;
+    .date {
+      font-weight: 700;
     }
 
-    #info {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      height: 100%;
-      justify-content: space-evenly;
+    .title {
+      background-color: inherit;
+      color: inherit;
     }
 
-    p {
-      padding: 0 1.5rem;
-    }
-
-    .social {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      padding: 20px;
-
-      a img {
-        height: 2rem;
-        width: 2rem;
-      }
-    }
-
-    .btn-contact {
-      display: block;
-      padding: 1rem;
-      margin: 1rem;
-      border-radius: 0.5rem;
-      background-color: #002c23;
-      color: #FFFFFF;
-      text-decoration: none;
-      text-align: center;
-
-      &:after {
-        margin-left: 0.5rem;
-        content: '>';
+    .tech {
+      h4 {
+        margin-bottom: 0;
+        margin-top: 0.5rem;
       }
     }
   }
+
+  .btn {
+    display: block;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    background-color: #002c23;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center;
+
+    &:after {
+      margin-left: 0.5rem;
+      content: '>';
+    }
+  }
+
 
   .title {
     background-color: #002C23;
@@ -130,6 +128,19 @@ export default {
         width: 12rem;
         height: 12rem;
       }
+    }
+  }
+
+  @media print {
+
+    article {
+      break-inside: avoid-page;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .btn {
+      display: none;
     }
   }
 }
