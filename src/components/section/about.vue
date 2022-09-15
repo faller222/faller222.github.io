@@ -13,7 +13,7 @@
 <!--      <img id="german" alt="German Faller" src="@/assets/img/german_faller_2.png">-->
       <div id="info">
         <p>
-          Hello! my name is German. I was born on February 19, 1993 in the city of
+          Hello! my name is Germán. I was born on February 19, 1993 in the city of
           <a href="https://goo.gl/maps/sxypckYk4vXqwgb28" target="_blank">Dolores-Soriano, Uruguay</a>.
           However, I currently reside in Montevideo. Since my childhood I began to be curious about technology
           and in my adolescence the passion for programming emerged in me. That is why today I am a Computer Engineer,
