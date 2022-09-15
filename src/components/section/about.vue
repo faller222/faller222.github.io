@@ -8,7 +8,9 @@
     </div>
     <div class="container content">
 
-      <img id="german" alt="German Faller" src="@/assets/img/german_faller.png">
+      <img id="german" alt="German Faller" src="@/assets/img/german_faller.jpg">
+<!--      <img id="german" alt="German Faller" src="@/assets/img/german_faller.png">-->
+<!--      <img id="german" alt="German Faller" src="@/assets/img/german_faller_2.png">-->
       <div id="info">
         <p>
           Hello! my name is German. I was born on February 19, 1993 in the city of
@@ -82,9 +84,10 @@ export default {
     margin-bottom: 2rem;
 
     #german {
-      height: 16rem;
+      //height: 16rem;
       width: 16rem;
       margin: 1rem;
+      border-radius: 16rem;
     }
 
     #info {
