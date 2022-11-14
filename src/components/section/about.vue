@@ -8,7 +8,8 @@
     </div>
     <div class="container content">
 
-      <img id="german" alt="German Faller" src="@/assets/img/german_faller.jpg">
+      <img id="german" alt="German Faller" src="@/assets/img/german_faller_2.jpg">
+<!--      <img id="german" alt="German Faller" src="@/assets/img/german_faller.jpg">-->
 <!--      <img id="german" alt="German Faller" src="@/assets/img/german_faller.png">-->
 <!--      <img id="german" alt="German Faller" src="@/assets/img/german_faller_2.png">-->
       <div id="info">
