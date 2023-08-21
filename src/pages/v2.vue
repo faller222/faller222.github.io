@@ -188,7 +188,7 @@ export default {
 
     background: #FFFFFF;
 
-    h2 {
+    h1 {
       background: #FFFFFF;
       color: #002C23;
     }
@@ -198,7 +198,7 @@ export default {
       color: #000000 !important;
     }
   }
-  nav {
+  header, footer, nav {
     display: none;
   }
 }

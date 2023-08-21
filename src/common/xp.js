@@ -72,12 +72,21 @@ export const xp = [
       'Genexus', 'Gitlab CI/CD', 'Jira', 'Scrum'],
   }, {
     from: '03/2022',
-    to: 'today',
+    to: '08/2022',
     company: 'Perficient',
     level: 'Specialist',
     location: 'Montevideo',
     project: 'XPO Logistics - Rating',
     description: 'Design & develop of the rating module at XPO.',
     technologies: ['GIT', 'JAVAEE', 'Liberty', 'Jira', 'Scrum'],
+  }, {
+    from: '08/2022',
+    to: 'today',
+    company: 'Perficient',
+    level: 'Specialist',
+    location: 'Montevideo',
+    project: 'PAX8 - Customer Portal',
+    description: 'Design & develop the next generation, customer portal for PAX8.',
+    technologies: ['GIT', 'VUE3', 'Micro Frontend', 'Typescript', 'Jira', 'Scrum'],
   },
 ]
