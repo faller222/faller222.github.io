@@ -3,6 +3,10 @@ body, html {
   font-size: 10px;
 }
 
+#__layout, #__nuxt {
+  height: 100%;
+}
+
 @media (min-width: 320px) {
   //Mobile devices
   body, html {

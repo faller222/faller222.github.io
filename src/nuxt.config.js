@@ -9,27 +9,29 @@ export default {
   head: {
     title: "Germán Faller's Site",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0' },
-      { name: 'author', content: 'Germán Faller' },
-      { name: 'description', content: 'Computer Systems Engineer Germán Faller\'s Site' },
-      { name: 'googlebot', content: 'notranslate' },
-      { name: 'format-detection', content: 'telephone=no' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0'},
+      {name: 'author', content: 'Germán Faller'},
+      {name: 'description', content: 'Computer Systems Engineer Germán Faller\'s Site'},
+      {name: 'googlebot', content: 'notranslate'},
+      {name: 'format-detection', content: 'telephone=no'}
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ],
 
     script: [
-      {src: "https://www.googletagmanager.com/gtag/js?id=G-MND0S9FGM9", async: true},
-      {
-        innerHTML:
-`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-MND0S9FGM9');`
-      }],
+      {src: "https://www.googletagmanager.com/gtag/js?id=G-MND0S9FGM9", async: true}
+      // {
+      //   //innerHTML: "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());  gtag('config', 'G-MND0S9FGM9');"
+      //   innerHTML: `(function() {
+      //   window.dataLayer = window.dataLayer || [];
+      //   function gtag(){dataLayer.push(arguments);}
+      //   gtag('js', new Date());
+      //   gtag('config', 'G-MND0S9FGM9');
+      // })();`
+      // }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -39,6 +41,7 @@ gtag('config', 'G-MND0S9FGM9');`
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {src: '~/plugins/marked.js', mode: 'client', ssr: false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -87,10 +90,9 @@ gtag('config', 'G-MND0S9FGM9');`
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  build: {},
 
-  generate: { fallback: '404.html' },
+  generate: {fallback: '404.html'},
 
   server: {
     host: "0.0.0.0"
