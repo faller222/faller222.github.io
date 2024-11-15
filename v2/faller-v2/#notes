@@ -1,0 +1,6 @@
+rm -rf node_modules
+
+nvm install 22
+node -v
+
+npm i
