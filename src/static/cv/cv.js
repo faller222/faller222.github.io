@@ -46,6 +46,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         "experience": [
           {
+            "company": "Favor Delivery",
+            "legalName": null,
+            "role": "Backend Developer",
+            "startDate": "29/01/2024",
+            "endDate": "04/10/2024",
+            "tasks":[
+              "Infrastructure Updates.",
+              "Integration Testing for Legacy Application.",
+              "Creation and Maintenance of Endpoints for a Menu Microservice.",
+              "Discussions on Marketing Strategies.",
+            ]
+          },
+          {
             "company": "SOFIS S.R.L.",
             "legalName": null,
             "role": "Technical Leader",
