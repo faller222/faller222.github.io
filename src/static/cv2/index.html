@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Germán Faller</title>
+    <style>
+        @page {
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: #cccccc;
+            overflow-y: scroll;
+        }
+
+        /* A4 measures 210 x 297 mm or 8.27 x 11.69 inches*/
+        .viewer {
+            width: 210mm;
+            min-height: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .print-button {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+
+        @media print {
+          .viewer {
+            box-shadow: none;
+          }
+
+          body {
+            padding: 0px;
+          }
+
+          .print-button {
+            display: none;
+          }
+
+          section {
+            padding-top: 30px;
+          }
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+
+        .section h1,
+        .section h2 {
+            margin-bottom: 5px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+        .section ul {
+            list-style: none;
+            padding: 0;
+
+        }
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        #info {
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+            font-size: small;
+            margin-right: 30px;
+        }
+
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+
+        #summary{
+            text-align: justify;
+        }
+
+        #objetive ul{
+            list-style: "- ";
+            padding-left: 30px;
+
+        }
+
+        #technologies ul {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #experience div {
+            display: grid;
+            gap: 7px;
+            grid-template-columns: auto auto 1fr 1fr;
+        }
+
+        #tasks {
+            display: grid;
+            gap: 10px;
+            row-gap: 20px;
+            grid-template-columns: 1fr auto;
+            margin-bottom: 0;
+        }
+
+        #tasks ul{
+            margin: 0;
+            list-style: "- ";
+        }
+
+        #education {
+            display: grid;
+            gap: 10px;
+            row-gap: 20px;
+            grid-template-columns: 1fr auto auto;
+        }
+
+        #personal {
+            padding-top: 20px;
+        }
+
+        #personal h2 {
+            margin-bottom: 15px;
+        }
+
+        #personal b{
+            padding-left: 15px;
+            padding-right: 10px;
+            padding-top: 5px;
+        }
+
+        #references {
+            display: grid;
+            gap: 10px;
+            row-gap: 20px;
+            grid-template-columns: auto auto auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="viewer">
+      <button class="print-button" onclick="window.print()">Print</button>
+
+      <div class="container">
+
+            <div class="section" id="profile">
+                <h1 id="name"></h1>
+                <div id="info">
+                    <span id="address"></span>|<a id="phone"></a>|<a id="mail"></a>
+                </div>
+                <p id="summary"></p>
+            </div>
+
+            <div class="section" id="objetive">
+                <h2>Objetives</h2>
+                <ul id="objetiveList"></ul>
+            </div>
+
+            <div class="section" id="technologies">
+                <h2>Skills & Technologies</h2>
+                <ul id="technologyList"></ul>
+            </div>
+
+            <div class="section" id="experience">
+                <h2>Experience</h2>
+            </div>
+
+            <div class="section" id="tasks">
+                <h2 style="grid-column: span 2">Task & Duties</h2>
+            </div>
+
+            <div class="section" id="education">
+                <h2 style="grid-column: span 3">Education</h2>
+            </div>
+
+            <div class="section" id="personal">
+                <h2>Personal Details</h2>
+            </div>
+
+            <div class="section" id="references">
+                <h2 style="grid-column: span 3">References</h2>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="cv.js"></script>
+</body>
+</html>
