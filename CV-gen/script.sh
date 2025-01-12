@@ -1,3 +1,6 @@
+nvm install 22.13
+node -v
+
 npm run generate
 
 rm -rf ../docs/L
