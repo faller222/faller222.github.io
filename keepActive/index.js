@@ -76,12 +76,13 @@ async function automateLogin() {
             name: error.name,
         };
         const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        const evidenceDir = path.join(__dirname, 'evidence');
         const screenshotPath = path.join(evidenceDir, `error-screenshot-${timestamp}.png`);
 
         notify({error: JSON.stringify(errorDetails), times: i, screenshotPath});
         console.error('Error durante la automatización:', error);
 
-        const evidenceDir = path.join(__dirname, 'evidence');
+
         await page.screenshot({path: screenshotPath});
         console.log(`Screenshot guardado: ${screenshotPath}`);
 
