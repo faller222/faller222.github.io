@@ -1,0 +1,13 @@
+node -v
+nvm install 22.13
+
+npm init --y
+
+npm i axios
+npm i puppeteer
+
+
+
+
+// 10 46
+// https://chatgpt.com/c/6785a992-0b64-8005-9af6-a74fd1d5b437
