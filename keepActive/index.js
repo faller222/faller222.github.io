@@ -1,8 +1,11 @@
-// https://chatgpt.com/c/678f029a-a670-8005-99f1-60dae0ac9473
-
 const puppeteer = require('puppeteer');
 const {notify, wait, getRdmTime} = require('./utils');
 require('./env').config();
+const path = require('path');
+const fs = require('fs');
+
+console.log("Current working directory:", process.cwd());
+console.log("Dirname:", __dirname);
 
 async function automateLogin() {
 
@@ -14,10 +17,13 @@ async function automateLogin() {
 
     notify({message: "Inicio Automatico"});
     let i = 1;
+    const browser = await puppeteer.launch({
+        executablePath: 'C:\\progra~2\\Google\\Chrome\\Application\\chrome.exe',
+        headless: true
+    });
+    //const page = await browser.newPage();
+    const page = (await browser.pages())[0];
     try {
-        const browser = await puppeteer.launch({headless: true}); // Cambia a true para modo headless
-        //const page = await browser.newPage();
-        const page = (await browser.pages())[0];
 
 
         // Navega a la URL de login
@@ -51,8 +57,8 @@ async function automateLogin() {
 
         // Espera a la redirección después del login
         await page.waitForNavigation({waitUntil: 'networkidle2'});
-        await wait(1_000);
-        await page.waitForNavigation({waitUntil: 'networkidle2'});
+        await wait(10_000);
+        //await page.waitForNavigation({waitUntil: 'networkidle2'});
         console.log('Inicio de sesión completado con éxito.');
 
 
@@ -69,9 +75,16 @@ async function automateLogin() {
             stack: error.stack,
             name: error.name,
         };
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        const screenshotPath = path.join(evidenceDir, `error-screenshot-${timestamp}.png`);
 
-        notify({error: JSON.stringify(errorDetails), times: i});
+        notify({error: JSON.stringify(errorDetails), times: i, screenshotPath});
         console.error('Error durante la automatización:', error);
+
+        const evidenceDir = path.join(__dirname, 'evidence');
+        await page.screenshot({path: screenshotPath});
+        console.log(`Screenshot guardado: ${screenshotPath}`);
+
     } finally {
         await browser.close();
     }

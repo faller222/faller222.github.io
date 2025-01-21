@@ -23,8 +23,11 @@ SMB_URL='https://someURL.com'
     }
 
     function loadEnv() {
-        const dotenv = require('dotenv');
-        dotenv.config();
+        const dotenv = require("dotenv");
+
+        const envPath = path.resolve(__dirname, ".env");
+        dotenv.config({ path: envPath });
+
         console.log('Environment variables loaded.');
         console.log('User:', process.env.SMB_USER);
     }
