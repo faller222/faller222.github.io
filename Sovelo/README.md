@@ -1,4 +1,3 @@
-
 # Dog API Project
 
 This project demonstrates a simple implementation of an API server using Node.js (v20.18.2). It provides endpoints to fetch random dog images from an external API. The server is implemented in **Express**, with a structured architecture, and includes testing and documentation with Swagger.
@@ -21,10 +20,10 @@ This project demonstrates a simple implementation of an API server using Node.js
 
 ### Start the Server
 To start the server, use the following command:
-   ```bash
-      npm start
-   ```
-   
+```bash
+npm start
+```
+
 This will start the server on port **3000**.
 
 
@@ -59,8 +58,8 @@ Fetches a random dog image and pipes the response directly to the client without
 ## Swagger API Documentation
 Swagger was configured with **OpenAPI** and is available at the following route:
 
-```bash
-   GET http://localhost:3000/api-docs
+```http request
+GET http://localhost:3000/api-docs
 ```
 ---
 ## Testing
@@ -70,38 +69,38 @@ The project uses **Jest**, **Supertest**, and **Nock** for testing and mocking A
 To execute the tests, use:
 
 ```bash
-   npm test
+npm test
 ```
 
 ---
 
 ## Koa vs Express Performance Comparison
-Both **Koa** and **Express** were evaluated for this project. 
-While the final implementation uses **Express**, a performance test on the PIPE endpoint 
+Both **Koa** and **Express** were evaluated for this project.
+While the final implementation uses **Express**, a performance test on the PIPE endpoint
 showed that **Koa** was approximately **10% faster** than Express.
 
 - Test file for Koa: `testKoaPipe.js`
 
-  - Run the test with:
-    ```bash
-    node testKoaPipe.js
-    ```
+    - Run the test with:
+      ```bash
+      node testKoaPipe.js
+      ```
 
-  - Test the endpoint:
-     ```http request
-     GET http://localhost:4000/random-dog
-     ```
+    - Test the endpoint:
+       ```http request
+       GET http://localhost:4000/random-dog
+       ```
 - Test file for Express: `testExpressPipe.js`
 
-  - Run the test with:
-    ```bash
-    node testExpressPipe.js
-    ```
-  - Test the endpoint:
-     ```http request
-     GET http://localhost:3500/random-dog
-     ```
-    
+    - Run the test with:
+      ```bash
+      node testExpressPipe.js
+      ```
+    - Test the endpoint:
+       ```http request
+       GET http://localhost:3500/random-dog
+       ```
+
 --- 
 
 ## Conclusion
