@@ -1,7 +1,7 @@
 # Todo
 
 - [x] Arreglar mobile
-- [ ] Componentes no imprimible
+- [x] Componentes no imprimible
 - [ ] Json <-> Form
 - [ ] Local storage
 - [ ] Esconder experiencias de menos
