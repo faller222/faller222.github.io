@@ -1,3 +1,15 @@
 #__nuxt {
-    width: 100%;
+    /*width: 100%;*/
+    /*min-height: 400px;*/
+    /*background-color: #00dc82;*/
+    /*border: red solid 2px;*/
+    overflow-x: scroll;
+}
+
+#style-test{
+    background-color: #7e8fff;
+    border: #ede441 solid 2px;
+    width: 210mm;
+    min-height: 100%;
+
 }
