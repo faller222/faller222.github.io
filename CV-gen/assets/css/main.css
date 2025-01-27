@@ -1,9 +1,14 @@
+:root {
+    --primary-color: #002C23;
+    --secondary-color: #00FFCE;
+}
+
 #__nuxt {
     /*width: 100%;*/
     /*min-height: 400px;*/
     /*background-color: #00dc82;*/
     /*border: red solid 2px;*/
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 #style-test{
@@ -12,4 +17,18 @@
     width: 210mm;
     min-height: 100%;
 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: inherit;
+}
+
+a:visited,
+a:hover,
+a:active,
+a:focus {
+    text-decoration: none;
+    color: inherit;
 }

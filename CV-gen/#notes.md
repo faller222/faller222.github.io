@@ -2,6 +2,11 @@
 
 - [x] Arreglar mobile
 - [x] Componentes no imprimible
+- [ ] Armar el CV
+  - [x] Informacion de Contacto
+  - [ ] Nombre y Summary
+  - [ ] Educacion y Goals
+  - [ ] Experiencia
 - [ ] Json <-> Form
 - [ ] Local storage
 - [ ] Esconder experiencias de menos
