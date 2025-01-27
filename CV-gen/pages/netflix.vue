@@ -1,21 +1,21 @@
 <template>
   <div class="dark">
     <div id="basic">
-
-      <a :href="data.basic.gitHubURL" target="_blank">
-        <i class="fab fa-github"></i> {{ data.basic.gitHubURL }}
-      </a>
-      <a :href="data.basic.linkedInURL" target="_blank">
-        <i class="fab fa-linkedin"></i> {{ data.basic.linkedInURL }}
+      <a :href="data.basic.addressUrl" target="_blank">
+        <i class="fas fa-map-marker-alt"></i> {{ data.basic.address }}
       </a>
       <a :href="'mailto:'+data.basic.email">
         <i class="fas fa-envelope"></i> {{ data.basic.email }}
       </a>
-      <a :href="data.basic.addressUrl" target="_blank">
-        <i class="fas fa-map-marker-alt"></i> {{ data.basic.address }}
-      </a>
+
       <a :href="'tel:'+ data.basic.phone">
         <i class="fas fa-phone"></i> {{ data.basic.phone }}
+      </a>
+      <a :href="data.basic.linkedInURL" target="_blank">
+        <i class="fab fa-linkedin"></i> {{ data.basic.linkedInURL }}
+      </a>
+      <a :href="data.basic.gitHubURL" target="_blank">
+        <i class="fab fa-github"></i> {{ data.basic.gitHubURL }}
       </a>
       <a :href="data.basic.web" target="_blank">
         <i class="fas fa-globe"></i> {{ data.basic.web }}
