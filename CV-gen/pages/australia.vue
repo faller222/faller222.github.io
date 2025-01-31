@@ -87,7 +87,7 @@ onBeforeMount(() => {
     <strong>End Date</strong>
     `;
 
-  data.experience.forEach(exp => {
+  data.experience.filter(e=>!e.hide).forEach(exp => {
     let legalNameElement = exp.legalName ? "<small>(" + exp.legalName + ")</small>" : ""
 
     li.innerHTML += `
@@ -101,11 +101,14 @@ onBeforeMount(() => {
 
 // Rellenar experiencia profesional
   const tasksElem = document.getElementById("tasks")
-  data.experience.forEach(exp => {
+  data.experience.filter(e=>!e.hide).forEach(exp => {
 
     let legalNameElement = exp.legalName ? "<small style='text-wrap: nowrap;'>(" + exp.legalName + ")</small>" : ""
     let tList = exp.tasks.slice(0, 4).map(t => `<li>${t}</li>`).join("")
-
+    if(exp.skills){
+      let skills = "<b>Tools:</b> "+exp.skills.slice(0, 5).join(", ")
+      tList+=`<li>${skills}</li>`
+    }
 
     tasksElem.innerHTML += `
   <b>${exp.company} ${legalNameElement}</b>

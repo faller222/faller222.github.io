@@ -19,6 +19,7 @@
     "CI/CD",
     "Microservices",
     "Micro Frontend",
+    "GraphQL",
     "NodeJS",
     "ReactJS",
     "Vue",
@@ -36,7 +37,6 @@
     "Kanban",
     "Swagger",
     "Cloud Foundry",
-    "Jira",
     "DevOps",
     "JAVAEE",
     "JPA",
@@ -55,10 +55,16 @@
         "Integration Testing for Legacy Application.",
         "Creation and Maintenance of Endpoints for a Menu Microservice.",
         "Discussions on Marketing Strategies."
-      ]
+      ],"skills": [
+      "Kotlin",
+      "Micronaut",
+      "AWS",
+      "Microservices",
+      "PHP"]
     },
     {
       "company": "SOFIS S.R.L.",
+      "hide": true,
       "legalName": null,
       "role": "Technical Leader",
       "startDate": "15/08/2023",
@@ -69,7 +75,35 @@
         "Manage the team and its needs.",
         "Follow customer needs.",
         "Sell solutions to current customers."
-      ]
+      ],"skills": [
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "Microservices",
+      "Micro Frontend",
+      "GraphQL",
+      "NodeJS",
+      "ReactJS",
+      "Vue",
+      "Angular",
+      "Spring-Boot",
+      "Express",
+      "Hibernate",
+      "Git",
+      "Gitlab",
+      "Postgres",
+      "MongoDB",
+      "MySQL",
+      "SQLServer",
+      "Scrum",
+      "Kanban",
+      "Swagger",
+      "Cloud Foundry",
+      "DevOps",
+      "JAVAEE",
+      "JPA",
+      "EJB"]
     },
     {
       "company": "Perficient",
@@ -83,7 +117,12 @@
         "Design the contracts and the solution for the given task.",
         "Writing unit testing for the delivered code.",
         "Collaborate in the sprint ceremonies."
-      ]
+      ],"skills": [
+      "Java",
+      "VueJS",
+      "Typescript",
+      "Micro Frontend",
+      "GraphQL"]
     },
     {
       "company": "BASF Services Americas S.R.L.",
@@ -97,7 +136,13 @@
         "Research third-party solutions to be integrated on the source.",
         "Review code from the rest of the team.",
         "Design the career path for the team."
-      ]
+      ],
+      "skills": [
+        "Java",
+        "NodeJS",
+        "VueJS",
+        "Microservices",
+        "Micro Frontend"]
     },
     {
       "company": "ANTEL",
@@ -111,7 +156,12 @@
         "Create a back-office web to manage system transactions.",
         "Integrate 3rd party services by b2b and w2w.",
         "Write Swagger YAML."
-      ]
+      ],"skills": [
+      "Java",
+      "Springboot",
+      "Microservices",
+      "GraphQL",
+      "ReactJS"]
     },
     {
       "company": "Urudata Software",
@@ -125,7 +175,12 @@
         "Develop new endpoints.",
         "Writing unit testing for the delivered code.",
         "Talk with internal business partners to understand their needs."
-      ]
+      ],"skills": [
+      "Java",
+      "Angular",
+      "Springboot",
+      "Javascript",
+      "MongoDB"]
     },
     {
       "company": "ANTEL",
@@ -139,7 +194,12 @@
         "Create a back-office web to manage system transactions.",
         "Integrate 3rd party services by b2b and w2w.",
         "Write Swagger YAML."
-      ]
+      ],"skills": [
+      "Java",
+      "JavaScript",
+      "EJB",
+      "JBoss",
+      "ReactJS"]
     }
   ],
   "education": [
