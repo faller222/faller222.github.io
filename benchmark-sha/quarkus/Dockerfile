@@ -1,12 +1,10 @@
-# Etapa 1: Construcción
-FROM maven:3.9.6-eclipse-temurin-17 AS build
-WORKDIR /app
-COPY . /app
-RUN mvn package -Pnative -Dquarkus.native.container-build=true -DskipTests
+FROM quay.io/quarkus/ubi-quarkus-native-image:22.3-java17 AS build
+WORKDIR /project
+COPY . .
+RUN ./mvnw package -Pnative -Dquarkus.native.container-build=true
 
-# Etapa 2: Ejecución Nativa
-FROM quay.io/quarkus/ubi-quarkus-mandrel:22.3-java17
-WORKDIR /app
-COPY --from=build /app/target/*-runner /app/application
-RUN chmod +x /app/application
-CMD ["/app/application"]
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1179
+WORKDIR /work/
+COPY --from=build /project/target/*-runner /work/application
+RUN chmod +x /work/application
+CMD ["/work/application"]
