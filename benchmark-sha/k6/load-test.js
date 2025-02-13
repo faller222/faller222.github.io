@@ -4,7 +4,7 @@ import { Trend } from "k6/metrics";
 
 const targets = [
     { name: "Rust", url: "http://localhost:8081/save" },
-    //{ name: "Quarkus", url: "http://localhost:8082/save" },
+    { name: "Quarkus", url: "http://localhost:8082/save" },
     // { name: "NodeJS", url: "http://localhost:8083/save" },
 ];
 
@@ -28,6 +28,7 @@ targets.forEach((target) => {
 export let options = {
     scenarios: {
         rust: { executor: "constant-vus", vus: 100, duration: "30s" },
+        quarkus: { executor: "constant-vus", vus: 100, duration: "30s" },
         // node: { executor: "constant-vus", startTime: "0s", vus: 100, duration: "30s" },
     },
 };

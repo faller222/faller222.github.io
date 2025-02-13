@@ -19,15 +19,15 @@ services:
     networks:
       - perf-test-net
 
-#  quarkus-api:
-#    build: ./quarkus
-#    container_name: quarkus-api
-#    ports:
-#      - "8082:8080"
-#    depends_on:
-#      - mongodb
-#    networks:
-#      - perf-test-net
+  quarkus-api:
+    build: ./quarkus
+    container_name: quarkus-api
+    ports:
+      - "8082:8080"
+    depends_on:
+      - mongodb
+    networks:
+      - perf-test-net
 
   node-api:
     build: ./node
