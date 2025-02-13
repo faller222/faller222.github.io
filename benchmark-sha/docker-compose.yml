@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - perf-test-net
+
+  rust-api:
+    build: ./rust
+    container_name: rust-api
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mongodb
+    networks:
+      - perf-test-net
+
+#  quarkus-api:
+#    build: ./quarkus
+#    container_name: quarkus-api
+#    ports:
+#      - "8082:8080"
+#    depends_on:
+#      - mongodb
+#    networks:
+#      - perf-test-net
+
+  node-api:
+    build: ./node
+    container_name: node-api
+    ports:
+      - "8083:8080"
+    depends_on:
+      - mongodb
+    networks:
+      - perf-test-net
+
+networks:
+  perf-test-net:
+    driver: bridge
