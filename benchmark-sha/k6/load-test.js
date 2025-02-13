@@ -31,23 +31,21 @@ targets.forEach((target) => {
 // Configurar escenarios independientes para cada servicio
 export let options = {
     scenarios: {
-        rust: {
-            executor: 'constant-vus',
-            exec: 'testRust',
-            vus: 50,
-            duration: '1m',
-        },
-        quarkus: {
-            executor: 'constant-vus',
-            exec: 'testQuarkus',
-            vus: 50,
-            duration: '1m',
-            startTime: '1m10s', // 10s de margen entre pruebas
-        },
         nodejs: {
             executor: 'constant-vus',
             exec: 'testNodeJS',
-            vus: 50,
+            vus: 100,
+            duration: '1m',
+        }, quarkus: {
+            executor: 'constant-vus',
+            exec: 'testQuarkus',
+            vus: 100,
+            duration: '1m',
+            startTime: '1m10s', // 10s de margen entre pruebas
+        }, rust: {
+            executor: 'constant-vus',
+            exec: 'testRust',
+            vus: 100,
             duration: '1m',
             startTime: '2m20s', // 10s de margen entre pruebas
         },

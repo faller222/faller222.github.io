@@ -2,6 +2,7 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const fastify = require('fastify')({
   logger: false,
+  bodyLimit: 1024*1024*2,
   disableRequestLogging: true,
   connectionTimeout: 3000,
   keepAliveTimeout: 30000,
@@ -31,7 +32,7 @@ fastify.register(require('@fastify/compress'), {
 let db;
 
 if (cluster.isMaster) {
-  console.log(`Master ${process.pid} is running`);
+  console.log(`Master ${process.pid} is running!!!`);
   
   // Optimizaciones a nivel de proceso
   process.env.UV_THREADPOOL_SIZE = numCPUs;
@@ -105,6 +106,7 @@ if (cluster.isMaster) {
       
       return hash;
     } catch (err) {
+      console.error(err)
       reply.code(500);
       return { error: 'Internal Server Error' };
     }
