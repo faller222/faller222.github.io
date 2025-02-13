@@ -31,6 +31,7 @@ services:
 
   quarkus-api:
     build: ./quarkus
+    platform: linux/amd64
     container_name: quarkus-api
     ports:
       - "8082:8080"
