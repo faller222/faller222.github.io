@@ -6,6 +6,11 @@ services:
     container_name: mongodb
     ports:
       - "27017:27017"
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
     networks:
       - perf-test-net
 
@@ -14,6 +19,11 @@ services:
     container_name: rust-api
     ports:
       - "8081:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
     depends_on:
       - mongodb
     networks:
@@ -24,6 +34,11 @@ services:
     container_name: quarkus-api
     ports:
       - "8082:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
     depends_on:
       - mongodb
     networks:
@@ -34,6 +49,11 @@ services:
     container_name: node-api
     ports:
       - "8083:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
     depends_on:
       - mongodb
     networks:
