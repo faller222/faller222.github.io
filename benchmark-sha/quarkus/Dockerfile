@@ -1,7 +1,7 @@
 FROM quay.io/quarkus/ubi-quarkus-native-image:22.3-java17 AS build
 WORKDIR /project
 COPY . .
-RUN ./mvnw package -Pnative -Dquarkus.native.container-build=true
+RUN ./mvnw package -Pnative -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-native-image:22.3-java17
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1179
 WORKDIR /work/
