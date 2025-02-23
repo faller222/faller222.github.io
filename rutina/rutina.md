@@ -78,4 +78,41 @@
 5. **Flexibilidad**:
    - Los bloques de tiempo mínimos son de 15 minutos
    - La rutina es consistente los 7 días de la semana
-   - Los períodos de descanso pueden utilizarse para ocio productivo 
+   - Los períodos de descanso pueden utilizarse para ocio productivo
+
+## Rutina de Skin Care
+
+### Fase Diurna (Mañana)
+1. **Limpieza durante la ducha**
+   - Usar jabón neutro CeraVe para piel grasa
+   - Temperatura de agua templada
+   - Usar una toalla exclusiva para el rostro
+
+2. **Afeitado** (si es necesario)
+   - Realizar después de la ducha con la piel limpia
+   - Usar técnica adecuada o rasuradora eléctrica
+   - Aplicar bálsamo reparador post-afeitado
+
+3. **Hidratación y Protección**
+   - Aplicar CeraVe Loción Hidratante Facial con SPF30
+   - Protege contra rayos UVA/UVB
+   - Contiene agentes oclusivos, emolientes y humectantes
+
+### Fase Nocturna
+1. **Limpieza Profunda**
+   - Remover protector solar y suciedad del día
+   - Usar nuevamente el limpiador CeraVe
+   - Secar suavemente con toalla facial limpia
+
+2. **Tratamiento**
+   - Aplicar CeraVe Resurfacing Retinol Serum
+   - Esperar unos minutos para que se absorba
+   - Para zonas sensibles, usar productos específicos
+
+### Consideraciones Importantes
+- Mantener una dieta baja en azúcares y grasas saturadas
+- Hidratarse adecuadamente durante el día
+- Evitar exposición prolongada al sol
+- Mantener las toallas faciales limpias
+- Cambiar la funda de almohada regularmente
+- Evitar tocar el rostro innecesariamente 
