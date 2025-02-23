@@ -136,28 +136,74 @@ Enfoque en ejercicios compuestos y grupos musculares principales:
    - Hombros
 
 ### Entrenamiento de Ciclismo Indoor (45 minutos)
-Estructura por bloques con intensidad progresiva:
+Estructura detallada minuto a minuto:
 
 1. **Calentamiento** (5 minutos)
-   - Pedaleo suave
-   - Movilidad articular
+   - 0:00-2:00 - Pedaleo suave (resistencia baja, 60-70 RPM)
+   - 2:00-3:30 - Incremento gradual de cadencia (70-80 RPM)
+   - 3:30-5:00 - Incremento ligero de resistencia, mantener 80 RPM
 
 2. **Bloque de Velocidad** (15 minutos)
-   - 3 bloques de 5 minutos
-   - Intervalos de alta intensidad
-   - Breves recuperaciones entre bloques
+   - Bloque 1 (4 minutos)
+     - 5:00-6:30 - Sprint (90+ RPM)
+     - 6:30-7:00 - Recuperación activa (70 RPM)
+     - 7:00-8:30 - Sprint (90+ RPM)
+     - 8:30-9:00 - Sprint final (95+ RPM)
+   
+   - Descanso (1 minuto)
+     - 9:00-10:00 - Pedaleo suave (60-70 RPM)
+   
+   - Bloque 2 (4 minutos)
+     - 10:00-11:30 - Sprint (90+ RPM)
+     - 11:30-12:00 - Recuperación activa (70 RPM)
+     - 12:00-13:30 - Sprint (90+ RPM)
+     - 13:30-14:00 - Sprint final (95+ RPM)
+   
+   - Descanso (1 minuto)
+     - 14:00-15:00 - Pedaleo suave (60-70 RPM)
+   
+   - Bloque 3 (4 minutos)
+     - 15:00-16:30 - Sprint (90+ RPM)
+     - 16:30-17:00 - Recuperación activa (70 RPM)
+     - 17:00-18:30 - Sprint (90+ RPM)
+     - 18:30-19:00 - Sprint final (95+ RPM)
+
+   - Descanso entre bloques principales (2 minutos)
+     - 19:00-21:00 - Pedaleo suave y recuperación (60-70 RPM)
 
 3. **Bloque de Fuerza** (15 minutos)
-   - 3 bloques de 5 minutos
-   - Sobrecarga progresiva
-   - Resistencia incrementada
+   - Bloque 1 (4 minutos)
+     - 21:00-22:30 - Resistencia alta (60-70 RPM)
+     - 22:30-23:00 - Recuperación (resistencia media, 70 RPM)
+     - 23:00-24:30 - Resistencia alta (60-70 RPM)
+     - 24:30-25:00 - Resistencia máxima (50-60 RPM)
+   
+   - Descanso (1 minuto)
+     - 25:00-26:00 - Pedaleo suave (70-80 RPM)
+   
+   - Bloque 2 (4 minutos)
+     - 26:00-27:30 - Resistencia alta (60-70 RPM)
+     - 27:30-28:00 - Recuperación (resistencia media, 70 RPM)
+     - 28:00-29:30 - Resistencia alta (60-70 RPM)
+     - 29:30-30:00 - Resistencia máxima (50-60 RPM)
+   
+   - Descanso (1 minuto)
+     - 30:00-31:00 - Pedaleo suave (70-80 RPM)
+   
+   - Bloque 3 (4 minutos)
+     - 31:00-32:30 - Resistencia alta (60-70 RPM)
+     - 32:30-33:00 - Recuperación (resistencia media, 70 RPM)
+     - 33:00-34:30 - Resistencia alta (60-70 RPM)
+     - 34:30-35:00 - Resistencia máxima (50-60 RPM)
 
-4. **Descanso Activo** (5 minutos)
-   - Distribuidos estratégicamente
-   - Hidratación
-   - Recuperación entre bloques
+4. **Enfriamiento** (10 minutos)
+   - 35:00-38:00 - Reducción gradual de resistencia, mantener 70-80 RPM
+   - 38:00-42:00 - Pedaleo suave con respiración controlada (60-70 RPM)
+   - 42:00-45:00 - Estiramientos sobre la bici
 
-5. **Enfriamiento** (5 minutos)
-   - Ejercicios de respiración
-   - Pedaleo suave
-   - Estiramientos finales 
+**Notas sobre intensidad:**
+- RPM = Revoluciones Por Minuto
+- Sprint: Resistencia baja-media, alta cadencia
+- Resistencia alta: Aumentar resistencia, mantener cadencia controlada
+- Recuperación activa: Mantener movimiento sin detenerse completamente
+- Los descansos entre bloques son fundamentales para mantener la intensidad 
