@@ -115,4 +115,49 @@
 - Evitar exposición prolongada al sol
 - Mantener las toallas faciales limpias
 - Cambiar la funda de almohada regularmente
-- Evitar tocar el rostro innecesariamente 
+- Evitar tocar el rostro innecesariamente
+
+## Rutina de Entrenamiento
+
+### Entrenamiento Alternado
+El entrenamiento se alterna entre días de fuerza y días de ciclismo indoor, manteniendo una estructura consistente para cada tipo de entrenamiento.
+
+### Entrenamiento de Fuerza
+Enfoque en ejercicios compuestos y grupos musculares principales:
+
+1. **Músculos Grandes**
+   - Press de Banca
+   - Remo Pendlay
+   - Prensa de Piernas
+
+2. **Músculos Complementarios**
+   - Tríceps
+   - Bíceps
+   - Hombros
+
+### Entrenamiento de Ciclismo Indoor (45 minutos)
+Estructura por bloques con intensidad progresiva:
+
+1. **Calentamiento** (5 minutos)
+   - Pedaleo suave
+   - Movilidad articular
+
+2. **Bloque de Velocidad** (15 minutos)
+   - 3 bloques de 5 minutos
+   - Intervalos de alta intensidad
+   - Breves recuperaciones entre bloques
+
+3. **Bloque de Fuerza** (15 minutos)
+   - 3 bloques de 5 minutos
+   - Sobrecarga progresiva
+   - Resistencia incrementada
+
+4. **Descanso Activo** (5 minutos)
+   - Distribuidos estratégicamente
+   - Hidratación
+   - Recuperación entre bloques
+
+5. **Enfriamiento** (5 minutos)
+   - Ejercicios de respiración
+   - Pedaleo suave
+   - Estiramientos finales 
