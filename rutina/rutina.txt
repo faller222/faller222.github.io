@@ -1,0 +1,49 @@
+Quiero que interpretes este archivo y generes en rutina.md una respuesta.
+Aqui guardaremos los cambios entre guiones (---)
+
+---
+
+Eres un coach de vida y vas a ayudarme a organizar una rutina
+Dime primero el sueño, recomiendas dormir 7 u 8 horas? Asumamos que hare ejercicio todos los dias y que trabajo como ingeniero de software
+Forcemoslo a 8 horas. Quiere decir q a las 23 estoy durmiendo y a las 7 levantando, correcto?
+Hagamos un offset de 30mins. Dormir 22:30 y levantanos 6:30.
+Me gusta, despertar, hidratacion, estiramiento. Ejercicio Ducha y desayuno Y para la previa, la desconexion no hace falta, me gusta lo del aseo, despues profundizamos en eso.
+Lo que quiero dejar claro es que vamos a hacer una rutina de 7 dias. Intnetar que todos los dias sean iguales. Con 8 horas de sueño, 2 de ejercicio, y 10 de trabajo separado en bloques Los bloques de desconexion aprovecharlos para ocio un capitulo de una serie o un video de you tube
+Vamos a ajustar a 3 tiempos de comidas. El desayuno tengo whey protein y leche, huevos y algo de carbohidratos. El almuerzo será principalmente atun, pollo o bistec; con verduras. La merienda sera otro batido multivitaminico que tengo. Puede agregarle un scoop de proteinas. Ademas si podemos hacer un ayuno 8-16, desayunar sobre las 8 y merendar sobre las 16. Otra cosa que debemos tener en cuenta es la hidratacion, en que momentos son ideales, yo no siento sed y seria bueno tener horas para beber agua, cada toma será medio litro
+Quiero carbohidratos que no eleven el nivel de glisemia, pico isulimico, o como sea.
+Yo le digo trabajar incluso a cosas de crecimiento profesional. Esas 10 horas de trabajo, deberiamos repartirlas en 6 de trabajo principal y 4 de actividades extras. Ya sea proyectos personales, buscar trabajo, escribir blogs. Me gustaria hacer esta actividad extra en las horas de la mañana. Al menos por ahora
+En algun descanso deberiamos incluir ir al supermercado y hacer la compraa
+Ademad quiero incluir una rutina de skin care despues de entrenar y otra antes de dormir
+
+Si yo te pregunto "que hago ahora" quiero que busques en internet el dia y la hora en Uruguay y me respondas en base a eso que toca en este momento en la rutina, OK?
+
+---
+
+hagamos unos ajustes, el bloque minimo de tiempo sera de 15 minutos.
+
+despertar 6:30. hidratacion, primer 0.5L(total 0.5) y estiramientos 15 minutos
+06:45 - 08:15. 1.5hs de ejercicio (fuerza o bici)
+08:15 - 08:30 0.25hs desayuno
+08:30 - 09:00 0.5hs ducha y skincare
+09:00 - 10:30 1.5hs Bloque Trabajo 1 (micro tareas)
+10:30 - 10:45. hidratacion, otro 0.5L(total 1), Desconexion
+10:45 - 12:15 1.5hs Bloque Trabajo 2 (tareas medianas)
+12:15 - 12:45 0.5hs Almuerzo
+12:45 - 14:15 1.5hs Bloque Trabajo 3 (tareas Importanes)
+14:15 - 14:30. Hidratacion, otro 0.5L(total 1.5), Desconexion
+14:30 - 16:30 1.5hs Bloque Trabajo 4 (tareas Importanes)
+16:30 - 16:45 0.25hs Merienda
+16:45 - 18:45 2hs Bloque Trabajo 5 (tareas Importanes)
+18:45 - 19:45 1hs Ocio
+19:45 - 21:45 2hs Bloque Trabajo 6 (tareas futuras)
+21:45. hidratacion, Otro 0.5L(total 2)
+21:45 - 22:30 0.75hs - Supermercado, Aseo nocturno, Skin care
+22:30 - Dormir
+
+
+---
+
+quiero un offset de una hora mas temprano, levantandome 5:30
+
+
+
