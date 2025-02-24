@@ -14,12 +14,12 @@
   - 💧 Hidratación (500ml)
   - 🧘‍♂️ Estiramientos (15 minutos)
 - **05:45 - 07:15** - Ejercicio (90 minutos)
-  - 🏋️‍♂️ Entrenamiento de fuerza o 🚴‍♂️ bicicleta
+  - 🏋️‍♂️ [Entrenamiento de fuerza](#-entrenamiento-de-fuerza) o 🚴‍♂️ [bicicleta](#-entrenamiento-de-ciclismo-indoor-45-minutos)
 - **07:15 - 07:30** - Desayuno
   - 🥛 Whey protein con leche
   - 🍳 Huevos
   - 🥖 Carbohidratos de bajo índice glucémico
-- **07:30 - 08:00** - Ducha y Skin Care
+- **07:30 - 08:00** - Ducha y [Skin Care](#-fase-matutina)
   - 🧴 Rutina de cuidado facial post-entrenamiento
 
 ### 💻 Bloque Matutino de Trabajo
@@ -50,7 +50,7 @@
   - 💧 Hidratación final (500ml)
   - 🛒 Compras (si es necesario)
   - 🚿 Aseo nocturno
-  - 🧴 Skin care nocturno
+  - 🧴 [Skin care nocturno](#-fase-nocturna)
 - **21:30** - 😴 Dormir
 
 ## 📝 Notas Importantes
@@ -82,7 +82,7 @@
 
 ## 🧴 Rutina de Skin Care
 
-### ☀️ Fase Diurna (Mañana)
+### ☀️ Fase Matutina
 1. **🚿 Limpieza durante la ducha**
    - Usar jabón neutro CeraVe para piel grasa
    - Temperatura de agua templada
