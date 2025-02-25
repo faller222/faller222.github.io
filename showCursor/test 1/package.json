@@ -1,0 +1,33 @@
+{
+  "name": "dog-api-proxy",
+  "version": "1.0.0",
+  "description": "Servidor proxy para la API de Dog CEO con documentación Swagger",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "jest --config jest.config.js",
+    "test:watch": "jest --watch --config jest.config.js",
+    "test:coverage": "jest --coverage --config jest.config.js"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "proxy",
+    "dog",
+    "nodejs",
+    "swagger",
+    "openapi"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  }
+}

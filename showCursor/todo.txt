@@ -1,0 +1,15 @@
+- quiero crear un procedimiento con NodeJS v22 que consuma la api documentada aqui https://dog.ceo/dog-api/ que la impirma en cosnola
+
+- quiero que sea express y haga de proxy y responda la info de la api
+
+- quiero que valide el header Authorization en principio hardcodeado al texto "holaPerro"
+
+- quiero que agregues el swagger de esta api
+
+- que me agregues un test con jest
+
+- quiero que me crees un tester.http con la llamada guardada
+
+- quiero que me agregues el readme para el repo
+
+- Agregar gitIgnore
