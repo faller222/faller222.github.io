@@ -1,9 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
-const protectedRoutes = require('./routes/protected');
-const smbAuthRoutes = require('./routes/smbAuth');
-const smbProtectedRoutes = require('./routes/smbProtected');
+const userRoutes = require('./routes/user');
+const { testConnection } = require('./config/database');
 
 // Load environment variables
 dotenv.config();
@@ -15,10 +14,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/protected', protectedRoutes);
-app.use('/api/smb', smbAuthRoutes);
-app.use('/api/smb/protected', smbProtectedRoutes);
+// Authentication route (public)
+app.use('/login', authRoutes);
+
+// Protected API routes
+app.use('/api/user', userRoutes);
 
 // Basic route for testing
 app.get('/', (req, res) => {
@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await testConnection();
   console.log(`Server running on port ${PORT}`);
 }); 

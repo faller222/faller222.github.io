@@ -1,10 +1,32 @@
 # SMB Project Tasks
 
 ## To-Do List
-- [ ] Add a `.gitignore` file for a Node.js project
-- [ ] Implement a login API with NodeJS
-- [ ] Implement a token validation API
-- [ ] Use Express, Axios, JWT
+- [x] Add a `.gitignore` file for a Node.js project
+- [x] Implement a login API with NodeJS
+- [x] Implement a token validation API
+- [x] Use Express, Axios, JWT
+- [x] Create 3 tables, Users, Images & Logins: where an User can have multiples images
+  - [x] Table Users has, id, email(unique), hash
+  - [x] Table Logins has, id, userId, timestamp
+  - [x] Table Images has, id, userId, url, isActivePost (boolean)
+- [x] Use a Postgres container.
+  -  docker-compose up -d
+  -  Data is persisted using a named volume: smb_postgres_data
+- [ ] Connect the dots
+  - [ ] apiLogin must: 
+    - autenticate in SMB, 
+    - if OK, check if user exists
+    - If NOT create one
+    - both cases, add a login for that user
+    - If not OK login respond 401 or whatever
+    - if ok create JWT an return it
+- [x] Las unicas rutas que den existir son:
+ - POST host:port/login --> recibe email y password, retorna el token
+ - GET host:port/api/user --> recibe el token en el header y retorna la info del user, con las imagenes y logins asciados
+ - PUT host:port/api/user/image/id, que recibe la URL y ActivePost y actualiza el estado para esa Image, el user lo tiene en el header, no puede actualizar una imagen que no sea de ese user
+- [ ] Quiero que las Rutas solo sean manejadoras de parametros y respuestas HTTP, una vez parseen el parametro y se sepa esta autorizaro, se llama a otro archivo.js que tenga la logica de negocio, llamemosle services. LoginService, UserService.
+
+
 
 ## Login Function Details
 The login function should bypass the SMB login and:

@@ -2,14 +2,22 @@ const jwt = require('jsonwebtoken');
 
 const auth = (req, res, next) => {
   // Get token from header
-  const token = req.header('x-auth-token');
+  const authHeader = req.header('Authorization');
 
   // Check if no token
-  if (!token) {
+  if (!authHeader) {
     return res.status(401).json({ message: 'No token, authorization denied' });
   }
 
+  // Check if token format is correct (Bearer token)
+  if (!authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ message: 'Invalid token format, use Bearer token' });
+  }
+
   try {
+    // Extract token from Bearer format
+    const token = authHeader.split(' ')[1];
+    
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     

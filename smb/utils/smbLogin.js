@@ -1,5 +1,4 @@
 const axios = require('axios');
-const CryptoJS = require('crypto-js');
 
 /**
  * Clean cookies from response headers
@@ -39,12 +38,11 @@ async function postRequest(url, formData) {
 /**
  * Login to SMB with email and password
  * @param {String} email - User email
- * @param {String} password - User password (plain text)
+ * @param {String} hashedPassword - User password (hashed)
  * @returns {Promise} - Login result
  */
-async function loginSMB(email, password) {
+async function loginSMB(email, hashedPassword) {
     try {
-        const hashedPassword = CryptoJS.MD5(password).toString();
         console.log(`Attempting login for ${email} with hashed password`);
 
         const formData = {
