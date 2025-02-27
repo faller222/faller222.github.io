@@ -1,4 +1,4 @@
-const { Pool } = require('pg');
+const {Pool} = require('pg');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -14,19 +14,28 @@ const pool = new Pool({
 
 // Test the database connection
 const testConnection = async () => {
-  const client = await pool.connect();
   try {
-    await client.query('SELECT NOW()');
+    await queryExecutor('SELECT NOW()');
     console.log('Database connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
-  } finally {
-    client.release();
   }
 };
+
+function queryExecutor(query, params = []) {
+  return pool.connect()
+    .then(client => {
+      return client.query(query, params)
+        .finally(() => client.release());
+    })
+    .catch(e => {
+      throw e;
+    });
+}
 
 
 module.exports = {
   pool,
-  testConnection
+  testConnection,
+  queryExecutor
 }; 

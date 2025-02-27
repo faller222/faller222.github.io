@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
-const { UserDAO, LoginDAO } = require('../daos');
-const { loginSMB } = require('../utils/smbLogin');
+const {UserDAO, LoginDAO} = require('../daos');
+const {loginSMB} = require('../utils/smbLogin');
 const CryptoJS = require('crypto-js');
 
 class AuthService {
@@ -13,21 +13,21 @@ class AuthService {
    */
   async login(email, password) {
     try {
-      // Hash the password with MD5
+      // Hash the password
       const hashedPassword = CryptoJS.MD5(password).toString();
-      
-      // Authenticate with SMB
+
+      // Authenticate with SMB using refactored loginSMB
       const smbLoginResult = await loginSMB(email, hashedPassword);
-      
-      if (!smbLoginResult.usuarioCorrecto) {
+
+      if (!smbLoginResult.success) {
         const error = new Error('Invalid credentials');
         error.statusCode = 401;
         throw error;
       }
-      
+
       // Check if user exists in our database
       let user = await UserDAO.findUserByEmail(email);
-      
+
       // If user doesn't exist, create one
       if (!user) {
         console.log('User does not exist, creating new user');
@@ -45,10 +45,14 @@ class AuthService {
       // Record login
       await LoginDAO.recordLogin(user.id);
 
-      // Create JWT payload
+      // Create JWT payload with URLs
       const payload = {
         user: {
-          id: user.id
+          email: user.email
+        },
+        urls: {
+          album: smbLoginResult.urls.album,
+          blog: smbLoginResult.urls.blog
         }
       };
 
@@ -57,13 +61,13 @@ class AuthService {
         jwt.sign(
           payload,
           process.env.JWT_SECRET || 'mysecrettoken',
-          { expiresIn: '1h' },
+          {expiresIn: '1h'},
           (err, token) => {
             if (err) {
               reject(err);
               return;
             }
-            
+
             resolve({
               token_type: 'Bearer',
               access_token: token,
@@ -77,12 +81,35 @@ class AuthService {
       if (error.statusCode) {
         throw error;
       }
-      
+
       // Otherwise log and throw a server error
       console.error('Login error:', error);
       const serverError = new Error('Server error');
       serverError.statusCode = 500;
       throw serverError;
+    }
+  }
+
+  /**
+   * Verify and decode a JWT token
+   * @param {string} token - JWT token to verify
+   * @returns {Object} - Decoded token data containing user email and URLs
+   * @throws {Error} - If token is invalid or verification fails
+   */
+  verifyToken(token) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'mysecrettoken');
+      return {
+        email: decoded.user.email,
+        urls: {
+          album: decoded.urls.album,
+          blog: decoded.urls.blog
+        }
+      };
+    } catch (err) {
+      const error = new Error('Token is not valid');
+      error.statusCode = 401;
+      throw error;
     }
   }
 }

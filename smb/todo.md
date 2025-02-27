@@ -98,3 +98,27 @@ async function loginSMB(email, password) {
 ## Test Data
 - Email: user@example.com 
 - Password: yourpassword
+
+
+## method to get URLS
+la idea ahora seria tener una api: api/user/cpanel y logre obtener del cpanel la url del blog y del album
+para eso tengo este metodo.
+la idea seria, el usuario invoca el endpoint, sabemos que usario es, vamos a nuestra base de datos, traemos el hash, usamos el login de SMB, nos quedamos con las cookies, y luego invocamos con axios y las cookies la URL  
+
+```
+async function cPanel(cookies) {
+
+    const response = await getRequest('https://www.sexomercadobcn.com/usercp.php', cookies)
+
+    // Mi Álbum de Fotos
+    let match = response.data.match(/<a\s+href="([^"]+)"[^>]*>Mi Álbum de Fotos<\/a>/i);
+    const album = match ? 'https://www.sexomercadobcn.com/' + match[1] : null;
+    // Mi Blog
+    match = response.data.match(/<a\s+href="([^"]+)"[^>]*>Mi Blog<\/a>/i);
+    const blog = match ? match[1] : null;
+
+    return { status: response.status, album, blog};
+}
+```
+
+/Users/faller222/projects/smb/src/smb.js

@@ -1,4 +1,4 @@
-const { pool } = require('../config/database');
+const {queryExecutor} = require('../config/database');
 
 class ImageDAO {
   /**
@@ -9,19 +9,16 @@ class ImageDAO {
    * @returns {Promise<Object>} - Created image record
    */
   async createImage(userId, url, isActivePost = false) {
-    const client = await pool.connect();
     try {
-      const result = await client.query(
+      const result = await queryExecutor(
         'INSERT INTO images (user_id, url, is_active_post) VALUES ($1, $2, $3) RETURNING id, user_id, url, is_active_post',
         [userId, url, isActivePost]
       );
-      
+
       return result.rows[0];
     } catch (error) {
       console.error('Error creating image:', error);
       throw error;
-    } finally {
-      client.release();
     }
   }
 
@@ -31,19 +28,16 @@ class ImageDAO {
    * @returns {Promise<Array>} - Array of image records
    */
   async getUserImages(userId) {
-    const client = await pool.connect();
     try {
-      const result = await client.query(
-        'SELECT id, user_id, url, is_active_post FROM images WHERE user_id = $1',
+      const result = await queryExecutor(
+        'SELECT id, url, is_active_post as active FROM images WHERE user_id = $1',
         [userId]
       );
-      
+
       return result.rows;
     } catch (error) {
       console.error('Error getting user images:', error);
       throw error;
-    } finally {
-      client.release();
     }
   }
 
@@ -53,19 +47,16 @@ class ImageDAO {
    * @returns {Promise<Array>} - Array of active image records
    */
   async getActiveImages(userId) {
-    const client = await pool.connect();
     try {
-      const result = await client.query(
-        'SELECT id, user_id, url, is_active_post FROM images WHERE user_id = $1 AND is_active_post = true',
+      const result = await queryExecutor(
+        'SELECT id, url FROM images WHERE user_id = $1 AND is_active_post = true',
         [userId]
       );
-      
+
       return result.rows;
     } catch (error) {
       console.error('Error getting active images:', error);
       throw error;
-    } finally {
-      client.release();
     }
   }
 
@@ -76,19 +67,16 @@ class ImageDAO {
    * @returns {Promise<Object|null>} - Updated image record or null if not found
    */
   async updateImageStatus(imageId, isActivePost) {
-    const client = await pool.connect();
     try {
-      const result = await client.query(
+      const result = await queryExecutor(
         'UPDATE images SET is_active_post = $1 WHERE id = $2 RETURNING id, user_id, url, is_active_post',
         [isActivePost, imageId]
       );
-      
+
       return result.rows[0] || null;
     } catch (error) {
       console.error('Error updating image status:', error);
       throw error;
-    } finally {
-      client.release();
     }
   }
 
@@ -98,19 +86,16 @@ class ImageDAO {
    * @returns {Promise<boolean>} - True if deleted, false if not found
    */
   async deleteImage(imageId) {
-    const client = await pool.connect();
     try {
-      const result = await client.query(
+      const result = await queryExecutor(
         'DELETE FROM images WHERE id = $1 RETURNING id',
         [imageId]
       );
-      
+
       return result.rowCount > 0;
     } catch (error) {
       console.error('Error deleting image:', error);
       throw error;
-    } finally {
-      client.release();
     }
   }
 }

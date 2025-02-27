@@ -45,6 +45,25 @@ async function testLogin() {
           console.error('Status:', error.response.status);
         }
       }
+
+      try {
+        const userDataResponse = await axios.post(`${API_URL}/api/user/image/sync`,{}, {
+          headers: {
+            'Authorization': `Bearer ${loginResponse.data.access_token}`
+          }
+        });
+
+        console.log('✅ Imagenes syncro correctamente!');
+        console.log('Información del request:');
+        console.log(JSON.stringify(userDataResponse.data, null, 2));
+      } catch (error) {
+        console.error('❌ Error al obtener datos del usuario:');
+        console.error(error.response?.data || error.message);
+        if (error.response) {
+          console.error('Status:', error.response.status);
+        }
+      }
+
     }
   } catch (error) {
     console.error('❌ Login fallido!');
