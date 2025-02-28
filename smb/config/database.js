@@ -2,15 +2,19 @@ const {Pool} = require('pg');
 const dotenv = require('dotenv');
 
 dotenv.config();
-
-// Database configuration
-const pool = new Pool({
+const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 5432,
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'postgres',
   database: process.env.DB_NAME || 'smb_db',
-});
+  ssl: { rejectUnauthorized: false }
+}
+
+console.log(dbConfig);
+
+// Database configuration
+const pool = new Pool(dbConfig);
 
 // Test the database connection
 const testConnection = async () => {

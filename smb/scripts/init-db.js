@@ -1,19 +1,6 @@
-const {Pool} = require('pg');
 const fs = require('fs');
 const path = require('path');
-const dotenv = require('dotenv');
-
-// Cargar variables de entorno
-dotenv.config();
-
-// Configuración de la base de datos
-const pool = new Pool({
-  host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || 5432,
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgres',
-  database: process.env.DB_NAME || 'smb_db',
-});
+const { pool } = require('../config/database');
 
 // Función para ejecutar el script DDL
 async function initializeDatabase() {

@@ -24,7 +24,17 @@
  - POST host:port/login --> recibe email y password, retorna el token
  - GET host:port/api/user --> recibe el token en el header y retorna la info del user, con las imagenes y logins asciados
  - PUT host:port/api/user/image/id, que recibe la URL y ActivePost y actualiza el estado para esa Image, el user lo tiene en el header, no puede actualizar una imagen que no sea de ese user
-- [ ] Quiero que las Rutas solo sean manejadoras de parametros y respuestas HTTP, una vez parseen el parametro y se sepa esta autorizaro, se llama a otro archivo.js que tenga la logica de negocio, llamemosle services. LoginService, UserService.
+- [x] Quiero que las Rutas solo sean manejadoras de parametros y respuestas HTTP, una vez parseen el parametro y se sepa esta autorizaro, se llama a otro archivo.js que tenga la logica de negocio, llamemosle services. LoginService, UserService.
+- [ ] quiero que este index renderice un login, que le va a pegar al login de nuestro server y guardar la cookie de token, si la cookie de token no esta muestra el login y si la cookie de token esta, llama aget user y mostrara los datos del usuario, solo email, y 2 tablas, una con los login y otra con las imagenes 
+- usar  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+- ahora quiero que retires los styles uses bootstap como te indique en el todo. si podes descargarlos y servirlos desde Static, mejor. 
+la fecha de los logins se me muestra formato yankee, quiero que sea yyyy/MM/dd HH:mm:ss
+y que las imagenes se muestren en una grilla de 6 imagenes para una pantalla normal
+
+quiero que seae responsive para mobile, la grilla de imagenes podria ser de 1 foto para mobile 3 para pantallas pequeñas y 6 para pantallas grandes
+
 
 
 

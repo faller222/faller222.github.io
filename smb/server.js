@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const path = require('path');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const { testConnection } = require('./config/database');
@@ -13,6 +14,9 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Routes
 // Authentication route (public)
 app.use('/login', authRoutes);
@@ -22,7 +26,7 @@ app.use('/api/user', userRoutes);
 
 // Basic route for testing
 app.get('/', (req, res) => {
-  res.send('API is running...');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start server

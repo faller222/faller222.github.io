@@ -25,12 +25,12 @@ class ImageDAO {
   /**
    * Get all images for a user
    * @param {number} userId - User ID
-   * @returns {Promise<Array>} - Array of image records
+   * @returns {Promise<Array>} - Array of image records ordered by URL
    */
   async getUserImages(userId) {
     try {
       const result = await queryExecutor(
-        'SELECT id, url, is_active_post as active FROM images WHERE user_id = $1',
+        'SELECT id, url, is_active_post as active FROM images WHERE user_id = $1 ORDER BY url DESC',
         [userId]
       );
 
@@ -44,12 +44,12 @@ class ImageDAO {
   /**
    * Get active post images for a user
    * @param {number} userId - User ID
-   * @returns {Promise<Array>} - Array of active image records
+   * @returns {Promise<Array>} - Array of active image records ordered by URL
    */
   async getActiveImages(userId) {
     try {
       const result = await queryExecutor(
-        'SELECT id, url FROM images WHERE user_id = $1 AND is_active_post = true',
+        'SELECT id, url FROM images WHERE user_id = $1 AND is_active_post = true ORDER BY url ASC',
         [userId]
       );
 

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMB Management</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/logo.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .loading {
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #09f;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .user-info {
+            display: none;
+        }
+        .image-card {
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+        .image-inactive img {
+            filter: blur(5px);
+        }
+        .image-url {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        /* Add monospace font for login table */
+        #login-table {
+            font-family: monospace;
+        }
+        /* Navbar logo styling */
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="/logo.png" alt="SMB Logo">
+                <span>SMB Management</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <!-- Login Form -->
+        <div id="login-section" class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Login</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="login-form">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <button type="button" id="login-btn" class="btn btn-primary">Login</button>
+                            <div id="login-error" class="text-danger mt-2"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+        
+        <!-- User Information (Hidden by default) -->
+        <div id="user-info" class="user-info">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="card flex-grow-1 me-2">
+                    <div class="card-header">
+                        <h2 class="card-title">User Information</h2>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Email:</strong> <span id="user-email"></span></p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="btn btn-danger">Logout</button>
+            </div>
+            
+            <!-- Images Grid - Moved before login history -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">Images</h3>
+                    <div>
+                        <button id="sync-images-btn" class="btn btn-primary d-flex align-items-center">
+                            <span class="me-2">Sync Images</span>
+                            <span id="sync-spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Sync Results Alert -->
+                    <div id="sync-results" class="alert alert-info mb-3 d-none">
+                        <h5 class="alert-heading">Sync Results</h5>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="mb-1"><strong>Total images found:</strong> <span id="total-found">0</span></p>
+                                <p class="mb-0"><strong>New images added:</strong> <span id="new-added">0</span></p>
+                            </div>
+                            <button type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('sync-results').classList.add('d-none')"></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Grid -->
+                    <div id="images-grid" class="row">
+                        <!-- Images will be populated here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Login History - Now after images grid -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">Login History</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="login-table" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Login history will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="pt-3 mt-4 text-muted border-top text-center">
+            <p>&copy; 2023 SMB Application. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // DOM Elements
+        const loginSection = document.getElementById('login-section');
+        const userInfoSection = document.getElementById('user-info');
+        const loadingSection = document.getElementById('loading');
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const syncImagesBtn = document.getElementById('sync-images-btn');
+        const loginError = document.getElementById('login-error');
+        const userEmail = document.getElementById('user-email');
+        const loginTable = document.getElementById('login-table').getElementsByTagName('tbody')[0];
+        const imagesGrid = document.getElementById('images-grid');
+        
+        // Format date to yyyy/MM/dd HH:mm:ss
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            
+            return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+        }
+        
+        // Check if token exists in cookies
+        function getToken() {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.startsWith('token=')) {
+                    return cookie.substring(6);
+                }
+            }
+            return null;
+        }
+        
+        // Set token in cookies
+        function setToken(token) {
+            // Set cookie to expire in 1 hour
+            const date = new Date();
+            date.setTime(date.getTime() + (60 * 60 * 1000));
+            document.cookie = `token=${token}; expires=${date.toUTCString()}; path=/`;
+        }
+        
+        // Clear token from cookies
+        function clearToken() {
+            document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        }
+        
+        // Show loading indicator
+        function showLoading() {
+            loginSection.style.display = 'none';
+            userInfoSection.style.display = 'none';
+            loadingSection.style.display = 'block';
+        }
+        
+        // Hide loading indicator
+        function hideLoading() {
+            loadingSection.style.display = 'none';
+        }
+        
+        // Show login form
+        function showLogin() {
+            loginSection.style.display = 'block';
+            userInfoSection.style.display = 'none';
+        }
+        
+        // Show user info
+        function showUserInfo() {
+            loginSection.style.display = 'none';
+            userInfoSection.style.display = 'block';
+        }
+        
+        // Login function
+        async function login(email, password) {
+            try {
+                showLoading();
+                
+                // For testing purposes, you can use these credentials:
+                // Email: vene356@gmail.com
+                // Password: @Venezolana356
+                
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.message || 'Login failed');
+                }
+                
+                // Save token in cookie
+                setToken(data.access_token);
+                
+                // Get user data
+                await getUserData();
+                
+            } catch (error) {
+                hideLoading();
+                showLogin();
+                loginError.textContent = error.message;
+            }
+        }
+        
+        // Get user data
+        async function getUserData() {
+            try {
+                const token = getToken();
+                
+                if (!token) {
+                    showLogin();
+                    return;
+                }
+                
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        // Token expired or invalid
+                        clearToken();
+                        showLogin();
+                        return;
+                    }
+                    throw new Error('Failed to fetch user data');
+                }
+                
+                const userData = await response.json();
+                
+                // Display user email
+                userEmail.textContent = userData.email;
+                
+                // Clear existing tables and grid
+                loginTable.innerHTML = '';
+                imagesGrid.innerHTML = '';
+                
+                // Populate login history table
+                if (userData.logins && userData.logins.length > 0) {
+                    userData.logins.forEach(login => {
+                        const row = loginTable.insertRow();
+                        row.insertCell(0).textContent = login.id;
+                        row.insertCell(1).textContent = formatDate(login.timestamp);
+                    });
+                } else {
+                    const row = loginTable.insertRow();
+                    const cell = row.insertCell(0);
+                    cell.colSpan = 2;
+                    cell.textContent = 'No login history available';
+                }
+                
+                // Populate images grid
+                if (userData.images && userData.images.length > 0) {
+                    userData.images.forEach(image => {
+                        // Add to grid
+                        const colDiv = document.createElement('div');
+                        colDiv.className = 'col-12 col-sm-4 col-lg-2 mb-4';
+                        
+                        const cardDiv = document.createElement('div');
+                        cardDiv.className = 'card image-card';
+                        // Add inactive class if image is not active
+                        if (!image.active) {
+                            cardDiv.classList.add('image-inactive');
+                        }
+                        
+                        const img = document.createElement('img');
+                        img.src = image.url;
+                        img.className = 'card-img-top';
+                        img.alt = 'Image ' + image.id;
+                        
+                        const cardBody = document.createElement('div');
+                        cardBody.className = 'card-body';
+                        
+                        const toggleGridBtn = document.createElement('button');
+                        toggleGridBtn.textContent = image.active ? 'Desactivar' : 'Activar';
+                        toggleGridBtn.className = 'btn btn-sm mt-2 ' + (image.active ? 'btn-danger' : 'btn-success');
+                        toggleGridBtn.dataset.imageId = image.id;
+                        toggleGridBtn.dataset.status = image.active;
+                        toggleGridBtn.addEventListener('click', toggleImageStatus);
+
+                        cardBody.appendChild(document.createElement('br'));
+                        cardBody.appendChild(toggleGridBtn);
+                        
+                        cardDiv.appendChild(img);
+                        cardDiv.appendChild(cardBody);
+                        
+                        colDiv.appendChild(cardDiv);
+                        imagesGrid.appendChild(colDiv);
+                    });
+                } else {
+                    // Empty grid message
+                    const emptyCol = document.createElement('div');
+                    emptyCol.className = 'col-12';
+                    emptyCol.innerHTML = '<div class="alert alert-info">No images available</div>';
+                    imagesGrid.appendChild(emptyCol);
+                }
+                
+                hideLoading();
+                showUserInfo();
+                
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                hideLoading();
+                showLogin();
+            }
+        }
+        
+        // Toggle image active status
+        async function toggleImageStatus(event) {
+            const imageId = event.target.dataset.imageId;
+            const currentStatus = event.target.dataset.status === 'true';
+            const newStatus = !currentStatus;
+            
+            try {
+                const token = getToken();
+                
+                if (!token) {
+                    showLogin();
+                    return;
+                }
+                
+                // Disable button during request
+                event.target.disabled = true;
+                
+                const response = await fetch(`/api/user/image/${imageId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ isActivePost: newStatus })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to update image status');
+                }
+                
+                // Refresh user data to update all UI elements
+                await getUserData();
+                
+            } catch (error) {
+                console.error('Error updating image status:', error);
+                alert('Failed to update image status. Please try again.');
+                event.target.disabled = false;
+            }
+        }
+        
+        // Sync images
+        async function syncImages() {
+            try {
+                const token = getToken();
+                
+                if (!token) {
+                    showLogin();
+                    return;
+                }
+                
+                // Update UI to show syncing
+                const syncSpinner = document.getElementById('sync-spinner');
+                syncImagesBtn.disabled = true;
+                syncSpinner.classList.remove('d-none');
+                
+                const response = await fetch('/api/user/image/sync', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to sync images');
+                }
+                
+                const result = await response.json();
+                
+                // Update UI with sync results
+                const syncResults = document.getElementById('sync-results');
+                const totalFound = document.getElementById('total-found');
+                const newAdded = document.getElementById('new-added');
+                
+                totalFound.textContent = result.totalFound;
+                newAdded.textContent = result.newAdded;
+                
+                // Show the results alert with appropriate styling
+                syncResults.classList.remove('d-none', 'alert-info', 'alert-success', 'alert-warning');
+                
+                if (result.newAdded > 0) {
+                    syncResults.classList.add('alert-success');
+                } else if (result.totalFound > 0) {
+                    syncResults.classList.add('alert-info');
+                } else {
+                    syncResults.classList.add('alert-warning');
+                }
+                
+                // Refresh user data to show new images
+                await getUserData();
+                
+            } catch (error) {
+                console.error('Error syncing images:', error);
+                
+                // Show error in the results alert
+                const syncResults = document.getElementById('sync-results');
+                syncResults.classList.remove('d-none', 'alert-info', 'alert-success', 'alert-warning');
+                syncResults.classList.add('alert-danger');
+                syncResults.innerHTML = `
+                    <h5 class="alert-heading">Sync Failed</h5>
+                    <p class="mb-0">Failed to sync images. Please try again.</p>
+                    <button type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('sync-results').classList.add('d-none')"></button>
+                `;
+            } finally {
+                // Hide spinner and enable button
+                const syncSpinner = document.getElementById('sync-spinner');
+                syncImagesBtn.disabled = false;
+                syncSpinner.classList.add('d-none');
+            }
+        }
+        
+        // Event Listeners
+        loginBtn.addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                loginError.textContent = 'Please enter both email and password';
+                return;
+            }
+            
+            login(email, password);
+        });
+        
+        logoutBtn.addEventListener('click', () => {
+            clearToken();
+            showLogin();
+        });
+        
+        syncImagesBtn.addEventListener('click', syncImages);
+        
+        // Check if user is already logged in on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = getToken();
+            if (token) {
+                getUserData();
+            } else {
+                showLogin();
+            }
+        });
+    </script>
+</body>
+</html> 

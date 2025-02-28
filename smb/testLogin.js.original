@@ -11,10 +11,10 @@ async function testLogin() {
   try {
     console.log('Testing login endpoint...');
     
-    // Use credentials from .env file
+    // Replace with valid credentials
     const credentials = {
-      email: process.env.SMB_EMAIL || 'vene356@gmail.com',
-      password: process.env.SMB_PASSWORD || '@Venezolana356'
+      email: 'vene356@gmail.com',
+      password: 'test123'
     };
     
     const response = await axios.post('http://localhost:3000/login', credentials);
