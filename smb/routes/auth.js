@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
     const statusCode = error.statusCode || 500;
     const message = error.message || 'Server error';
 
+    console.error(`Error: $statusCode - $message`)
     res.status(statusCode).json({message});
   }
 });
