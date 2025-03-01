@@ -8,13 +8,7 @@ const config = {
   email: process.argv[2] || process.env.SMB_EMAIL || 'user@example.com',
   password: process.argv[3] || process.env.SMB_PASSWORD || 'yourpassword',
   urls: {
-    main: 'https://www.sexomercadobcn.com/',
-    login: 'https://www.sexomercadobcn.com/login.php?do=login',
-    cPanel: 'https://www.sexomercadobcn.com/usercp.php',
-    messages: 'https://www.sexomercadobcn.com/private.php',
-    highlights: 'https://www.sexomercadobcn.com/profile.php?do=highlights',
-    advertisingStats: 'https://www.sexomercadobcn.com/profile.php?do=advertisingStats',
-    stats: 'https://www.sexomercadobcn.com/estadisticas.php'
+    login: 'https://www.sexomercadobcn.com/login.php?do=login'
   },
   headers: {
     base: {
@@ -25,9 +19,6 @@ const config = {
     }
   }
 };
-
-// State
-let cookies = '';
 
 /**
  * Clean cookies from Set-Cookie header
@@ -45,7 +36,7 @@ const cleanCookies = (setCookieHeader) => {
 };
 
 /**
- * Login to SMB
+ * Login to SMB and return cookies
  */
 const login = async () => {
   try {
@@ -70,47 +61,24 @@ const login = async () => {
       }
     );
     
-    // Save cookies
+    // Get cookies
+    let cookies = '';
     if (response.headers['set-cookie']) {
       cookies = cleanCookies(response.headers['set-cookie']);
     }
     
-    return response.data.includes("Gracias por iniciar sesión");
+    const loginSuccess = response.data.includes("Gracias por iniciar sesión");
+    
+    return {
+      success: loginSuccess,
+      cookies: cookies
+    };
   } catch (error) {
     console.error('Login failed:', error.message);
-    return false;
-  }
-};
-
-/**
- * Check if user is authenticated
- */
-const checkAuth = async () => {
-  try {
-    const response = await axios.get(
-      config.urls.cPanel, 
-      {
-        headers: { 
-          ...config.headers.base, 
-          'Cookie': cookies 
-        },
-        withCredentials: true
-      }
-    );
-    
-    // Check for authentication indicators
-    const albumMatch = response.data.match(/<a\s+href="([^"]+)"[^>]*>Mi Álbum de Fotos<\/a>/i);
-
-    const isAuthenticated = !!albumMatch ;
-    
-    if (albumMatch) {
-      console.log('Album URL:', albumMatch[1]);
-    }
-    
-    return isAuthenticated;
-  } catch (error) {
-    console.error('Auth check failed:', error.message);
-    return false;
+    return {
+      success: false,
+      cookies: ''
+    };
   }
 };
 
@@ -120,21 +88,15 @@ const checkAuth = async () => {
 const main = async () => {
   console.log(`Attempting login with: ${config.email}`);
   
-  const isLoggedIn = await login();
+  const loginResult = await login();
   
-  if (isLoggedIn) {
+  if (loginResult.success) {
     console.log('Login successful');
-    console.log('Cookies:', cookies);
-    
-    // Wait for session establishment
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    const isAuthenticated = await checkAuth();
-    console.log('Authentication status:', isAuthenticated ? 'Authenticated' : 'Not authenticated');
+    console.log('Cookies:', loginResult.cookies);
   } else {
     console.log('Login failed');
   }
 };
 
 // Run the main function
-main();
+main(); 
