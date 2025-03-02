@@ -39,3 +39,10 @@ heroku logs --tail -a smb-gestion
 
 echo -e "\n${GREEN}Deployment complete!${NC}"
 echo -e "Your application is now available at: ${YELLOW}https://smb-gestion-117c7c904c44.herokuapp.com/${NC}" 
+
+
+
+#// heroku login
+#// git subtree push --prefix smb heroku master
+# heroku config:set NOMBRE_VARIABLE=valor
+# git push heroku `git subtree split --prefix=smb master`:master --force
