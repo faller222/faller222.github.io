@@ -4,13 +4,19 @@ class LoginDAO {
   /**
    * Record a new login for a user
    * @param {number} userId - User ID
+   * @param {Object} deviceInfo - Device information (ip, device, os, browser)
    * @returns {Promise<Object>} - Created login record
    */
-  async recordLogin(userId) {
+  async recordLogin(userId, deviceInfo = {}) {
     try {
+      const { ip = null, device = null, os = null, browser = null } = deviceInfo;
+      
       const result = await queryExecutor(
-        'INSERT INTO logins (user_id) VALUES ($1) RETURNING id, user_id, timestamp',
-        [userId]
+        `INSERT INTO logins 
+         (user_id, ip, device, os, browser) 
+         VALUES ($1, $2, $3, $4, $5) 
+         RETURNING id, user_id, timestamp, ip, device, os, browser`,
+        [userId, ip, device, os, browser]
       );
 
       return result.rows[0];
@@ -29,7 +35,11 @@ class LoginDAO {
   async getLoginHistory(userId, limit = 10) {
     try {
       const result = await queryExecutor(
-        'SELECT id, user_id, timestamp FROM logins WHERE user_id = $1 ORDER BY timestamp DESC LIMIT $2',
+        `SELECT id, user_id, timestamp, ip, device, os, browser 
+         FROM logins 
+         WHERE user_id = $1 
+         ORDER BY timestamp DESC 
+         LIMIT $2`,
         [userId, limit]
       );
 
@@ -48,7 +58,11 @@ class LoginDAO {
   async getLastLogin(userId) {
     try {
       const result = await queryExecutor(
-        'SELECT id, user_id, timestamp FROM logins WHERE user_id = $1 ORDER BY timestamp DESC LIMIT 1',
+        `SELECT id, user_id, timestamp, ip, device, os, browser 
+         FROM logins 
+         WHERE user_id = $1 
+         ORDER BY timestamp DESC 
+         LIMIT 1`,
         [userId]
       );
 

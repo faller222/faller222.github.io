@@ -1,6 +1,6 @@
 const AuthService = require('../services/AuthService');
 
-const auth = (req, res, next) => {
+const auth = async (req, res, next) =>  {
   // Get token from header
   const authHeader = req.header('Authorization');
 
@@ -19,11 +19,10 @@ const auth = (req, res, next) => {
     const token = authHeader.split(' ')[1];
 
     // Use AuthService to verify and decode the token
-    const decodedData = AuthService.verifyToken(token);
+    const decodedData = await AuthService.verifyToken(token);
 
     // Add decoded data to request
     req.user = {email: decodedData.email};
-    req.urls = decodedData.urls;
 
     next();
   } catch (err) {

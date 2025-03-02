@@ -22,7 +22,7 @@ router.get('/', auth, async (req, res) => {
     const statusCode = error.statusCode || 500;
     const message = error.message || 'Server error';
 
-    console.error(`Error: $statusCode - $message`)
+    console.error(`Error: ${statusCode} - ${message}`)
     res.status(statusCode).json({ message });
   }
 });
@@ -50,7 +50,7 @@ router.put('/image/:id', auth, async (req, res) => {
     const statusCode = error.statusCode || 500;
     const message = error.message || 'Server error';
 
-    console.error(`Error: $statusCode - $message`)
+    console.error(`Error: ${statusCode} - ${message}`)
     res.status(statusCode).json({ message });
   }
 });
@@ -61,7 +61,7 @@ router.put('/image/:id', auth, async (req, res) => {
 router.post('/image/sync', auth, async (req, res) => {
   try {
     // Use UserService to sync images
-    const images = await UserService.syncImages(req.user.email, req.urls.album);
+    const images = await UserService.syncImages(req.user.email);
     res.json(images);
     
   } catch (error) {
@@ -69,7 +69,7 @@ router.post('/image/sync', auth, async (req, res) => {
     const statusCode = error.statusCode || 500;
     const message = error.message || 'Server error';
 
-    console.error(`Error: $statusCode - $message`)
+    console.error(`Error: ${statusCode} - ${message}`)
     res.status(statusCode).json({ message });
   }
 });

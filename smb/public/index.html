@@ -146,7 +146,9 @@
                         <i class="bi bi-person-circle me-1"></i>
                         <span id="user-email-navbar"></span>
                     </span>
-                    <button id="logout-btn" class="btn btn-sm btn-danger">Logout</button>
+                    <button id="logout-btn" class="btn btn-sm btn-danger">
+                        <i class="bi bi-box-arrow-right me-1"></i>Logout
+                    </button>
                 </div>
             </div>
         </div>
@@ -199,6 +201,7 @@
                     <h3 class="card-title mb-0">Images</h3>
                     <div>
                         <button id="sync-images-btn" class="btn btn-primary d-flex align-items-center">
+                            <i class="bi bi-arrow-repeat me-2"></i>
                             <span class="me-2">Sync Images</span>
                             <span id="sync-spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
@@ -227,21 +230,95 @@
             <!-- Login History - Now after images grid -->
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="card-title mb-0">Login History</h3>
+                    <h3 class="card-title mb-0">
+                        <button class="btn btn-link text-decoration-none text-dark p-0" type="button" data-bs-toggle="collapse" data-bs-target="#loginHistoryCollapse" aria-expanded="false" aria-controls="loginHistoryCollapse">
+                            <i class="bi bi-caret-right-fill me-2"></i>Login History
+                        </button>
+                    </h3>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="login-table" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Login history will be populated here -->
-                            </tbody>
-                        </table>
+                <div class="collapse" id="loginHistoryCollapse">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="login-table" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>IP</th>
+                                        <th>Device</th>
+                                        <th>OS</th>
+                                        <th>Browser</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Login history will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Saludos Table -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">
+                        <button class="btn btn-link text-decoration-none text-dark p-0" type="button" data-bs-toggle="collapse" data-bs-target="#saludosCollapse" aria-expanded="false" aria-controls="saludosCollapse">
+                            <i class="bi bi-caret-right-fill me-2"></i>Saludos
+                        </button>
+                    </h3>
+                </div>
+                <div class="collapse" id="saludosCollapse">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="saludos-table" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Saludo</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Saludos will be populated here -->
+                                    <tr>
+                                        <td colspan="3" class="text-center">No hay saludos disponibles</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Frases Table -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">
+                        <button class="btn btn-link text-decoration-none text-dark p-0" type="button" data-bs-toggle="collapse" data-bs-target="#frasesCollapse" aria-expanded="false" aria-controls="frasesCollapse">
+                            <i class="bi bi-caret-right-fill me-2"></i>Frases
+                        </button>
+                    </h3>
+                </div>
+                <div class="collapse" id="frasesCollapse">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="frases-table" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Frase</th>
+                                        <th>Autor</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Frases will be populated here -->
+                                    <tr>
+                                        <td colspan="4" class="text-center">No hay frases disponibles</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -282,6 +359,8 @@
         const userEmailNavbar = document.getElementById('user-email-navbar');
         const navbarUserInfo = document.getElementById('navbar-user-info');
         const loginTable = document.getElementById('login-table').getElementsByTagName('tbody')[0];
+        const saludosTable = document.getElementById('saludos-table').getElementsByTagName('tbody')[0];
+        const frasesTable = document.getElementById('frases-table').getElementsByTagName('tbody')[0];
         const imagesGrid = document.getElementById('images-grid');
         const togglePasswordBtn = document.getElementById('toggle-password');
         
@@ -380,7 +459,10 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email, password })
+                    body: JSON.stringify({ 
+                        email, 
+                        password
+                    })
                 });
                 
                 const data = await response.json();
@@ -442,13 +524,16 @@
                 if (userData.logins && userData.logins.length > 0) {
                     userData.logins.forEach(login => {
                         const row = loginTable.insertRow();
-                        row.insertCell(0).textContent = login.id;
-                        row.insertCell(1).textContent = formatDate(login.timestamp);
+                        row.insertCell(0).textContent = formatDate(login.timestamp);
+                        row.insertCell(1).textContent = login.ip;
+                        row.insertCell(2).textContent = login.device;
+                        row.insertCell(3).textContent = login.os;
+                        row.insertCell(4).textContent = login.browser;
                     });
                 } else {
                     const row = loginTable.insertRow();
                     const cell = row.insertCell(0);
-                    cell.colSpan = 2;
+                    cell.colSpan = 5;
                     cell.textContent = 'No login history available';
                 }
                 
@@ -657,10 +742,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             const token = getToken();
             if (token) {
+                showLoading(); // Show loading screen while checking token validity
                 getUserData();
             } else {
                 showLogin();
             }
+            
+            // Add event listeners for collapse buttons to change icons
+            document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('bi-caret-down-fill')) {
+                        icon.classList.replace('bi-caret-down-fill', 'bi-caret-right-fill');
+                    } else {
+                        icon.classList.replace('bi-caret-right-fill', 'bi-caret-down-fill');
+                    }
+                });
+            });
         });
     </script>
 </body>

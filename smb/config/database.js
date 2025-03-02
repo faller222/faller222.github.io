@@ -27,6 +27,11 @@ if (process.env.DATABASE_URL) {
 // Database configuration
 const pool = new Pool(dbConfig);
 
+// Set default schema to 'smb'
+pool.on('connect', (client) => {
+  client.query('SET search_path TO smb, public');
+});
+
 // Test the database connection
 const testConnection = async () => {
   try {

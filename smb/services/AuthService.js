@@ -1,25 +1,29 @@
 const jwt = require('jsonwebtoken');
 const {UserDAO, LoginDAO} = require('../daos');
-const {loginSMB, getBlogReplyUrl} = require('../utils/smbLogin');
 const CryptoJS = require('crypto-js');
+
+const smbFactory = require('../utils/smbFactory');
 
 class AuthService {
   /**
    * Authenticate a user with email and password
    * @param {string} email - User's email
    * @param {string} password - User's password
+   * @param {Object} deviceInfo - Device information (ip, device, os, browser)
    * @returns {Promise<Object>} - Authentication result with token
    * @throws {Error} - If credentials are invalid or server error occurs
    */
-  async login(email, password) {
+  async login(email, password, deviceInfo = {}) {
+    const smbService = smbFactory(email);
+
     try {
       // Hash the password
       const hashedPassword = CryptoJS.MD5(password).toString();
 
       // Authenticate with SMB using refactored loginSMB
-      const smbLoginResult = await loginSMB(email, hashedPassword);
+      const smbLoginResult = await smbService.login(email, password);
 
-      if (!smbLoginResult.success) {
+      if (!smbLoginResult.isAuthenticated) {
         const error = new Error('Invalid credentials');
         error.statusCode = 401;
         throw error;
@@ -31,7 +35,7 @@ class AuthService {
       // If user doesn't exist, create one
       if (!user) {
         console.log('User does not exist, creating new user');
-        user = await UserDAO.createUser(email, password);
+        user = await UserDAO.createUser(email, hashedPassword);
       } else {
         // If the user exists but the hash is different, update it
         if (user.hash !== hashedPassword) {
@@ -42,59 +46,20 @@ class AuthService {
         }
       }
 
-      // Record login
-      await LoginDAO.recordLogin(user.id);
+      // Record login with device information
+      await LoginDAO.recordLogin(user.id, deviceInfo);
 
-      // Get reply URL from blog if blog URL exists
-      let replyUrl = null;
-      if (smbLoginResult.urls.blog) {
-        const blogResult = await getBlogReplyUrl(smbLoginResult.urls.blog, smbLoginResult.cookies);
-        replyUrl = blogResult.reply;
-      }
+      // Generate JWT token
+      const token = this.generateToken(email);
 
-      // Create JWT payload with URLs
-      const payload = {
-        user: {
-          email: user.email
-        },
-        urls: {
-          album: smbLoginResult.urls.album,
-          blog: smbLoginResult.urls.blog,
-          reply: replyUrl
-        }
+      return {
+        access_token: token,
+        token_type: 'Bearer',
+        expires_in: process.env.JWT_EXPIRATION || 3600
       };
-
-      // Sign and return token
-      return new Promise((resolve, reject) => {
-        jwt.sign(
-          payload,
-          process.env.JWT_SECRET || 'mysecrettoken',
-          {expiresIn: '1h'},
-          (err, token) => {
-            if (err) {
-              reject(err);
-              return;
-            }
-
-            resolve({
-              token_type: 'Bearer',
-              access_token: token,
-              expires_in: 3600
-            });
-          }
-        );
-      });
     } catch (error) {
-      // Rethrow with status code if it's already set
-      if (error.statusCode) {
-        throw error;
-      }
-
-      // Otherwise log and throw a server error
       console.error('Login error:', error);
-      const serverError = new Error('Server error');
-      serverError.statusCode = 500;
-      throw serverError;
+      throw error;
     }
   }
 
@@ -104,22 +69,45 @@ class AuthService {
    * @returns {Object} - Decoded token data containing user email and URLs
    * @throws {Error} - If token is invalid or verification fails
    */
-  verifyToken(token) {
+  async verifyToken(token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET || 'mysecrettoken');
+      const smbService = smbFactory(decoded.user.email);
+
+      let user = await UserDAO.findUserByEmail(decoded.user.email);
+      if (!smbService.getAuthenticationStatus()) {
+        await smbService.loginHash(user.email, user.hash);
+      }
+
       return {
-        email: decoded.user.email,
-        urls: {
-          album: decoded.urls.album,
-          blog: decoded.urls.blog,
-          reply: decoded.urls.reply
-        }
+        email: decoded.user.email
       };
     } catch (err) {
       const error = new Error('Token is not valid');
       error.statusCode = 401;
       throw error;
     }
+  }
+
+  /**
+   * Generate a JWT token for a user
+   * @param {string} email - User's email
+   * @returns {string} - JWT token
+   */
+  generateToken(email) {
+    // Create JWT payload
+    const payload = {
+      user: {
+        email: email
+      }
+    };
+
+    // Sign and return token
+    return jwt.sign(
+      payload,
+      process.env.JWT_SECRET || 'mysecrettoken',
+      { expiresIn: process.env.JWT_EXPIRATION || '48h' }
+    );
   }
 }
 

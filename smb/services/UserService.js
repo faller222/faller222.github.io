@@ -1,5 +1,6 @@
 const {UserDAO, ImageDAO, LoginDAO} = require('../daos');
-const {loginSMB, getRequest, client} = require('../utils/smbLogin');
+
+const smbFactory = require('../utils/smbFactory');
 
 class UserService {
   /**
@@ -94,7 +95,7 @@ class UserService {
    * @returns {Promise<Array>} - Array of synced images
    * @throws {Error} - If user not found or server error occurs
    */
-  async syncImages(email, albumURL) {
+  async syncImages(email) {
     try {
       const userData = await UserDAO.findUserByEmail(email);
 
@@ -105,9 +106,10 @@ class UserService {
       }
 
       // Call the SMB utils function to get images
-      const {getImagesFromURL} = require('../utils/smbLogin');
-      const imagesResult = await getImagesFromURL(albumURL);
-      
+      const smbService = smbFactory(email);
+      const smbUserData = await smbService.getUserData();
+      const imagesResult = smbUserData.albumImages;
+
       console.log('Syncing images for user:', email);
       
       // Get existing images for the user to avoid duplicates
@@ -115,7 +117,7 @@ class UserService {
       const existingUrls = existingImages.map(img => img.url);
       
       // Filter out images that already exist in the database
-      const newImages = imagesResult.images.filter(url => !existingUrls.includes(url));
+      const newImages = imagesResult.filter(url => !existingUrls.includes(url));
       
       // Save new images to the database with is_active_post=false by default
       const savedImages = [];
@@ -125,7 +127,7 @@ class UserService {
       }
       
       return {
-        totalFound: imagesResult.images.length,
+        totalFound: imagesResult.length,
         newAdded: savedImages.length,
         newImages: savedImages
       };

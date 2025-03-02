@@ -9,19 +9,16 @@
  * - Por defecto: 13:00 y 16:00
  * - Para personalizar: Establecer variable de entorno ALLOWED_HOURS con valores separados por comas
  *   Ejemplo: ALLOWED_HOURS=9,13,16,20
- * 
- * Para forzar la ejecución independientemente de la hora (útil para pruebas):
- * - Establecer variable de entorno FORCE_EXECUTION=true
+ *
  */
 
 const axios = require('axios');
-const CryptoJS = require('crypto-js');
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 
-// Import SmbProxy class
-const SmbProxy = require('../utils/smbProxy');
+// Import SmbService class
+const SmbService = require('../utils/smbService');
 
 // Configuration
 const config = {
@@ -30,7 +27,7 @@ const config = {
   apiUrl: 'https://smb-gestion-117c7c904c44.herokuapp.com',
   // Horas permitidas para la ejecución (formato 24h)
   // Si se proporciona en .env, debe ser una lista separada por comas, ej: "13,16,19"
-  allowedHours: process.env.ALLOWED_HOURS ? process.env.ALLOWED_HOURS.split(',').map(h => parseInt(h.trim())) : [10, 13, 16],
+  allowedHours: process.env.ALLOWED_HOURS ? process.env.ALLOWED_HOURS.split(',').map(h => parseInt(h.trim())) : [7, 10, 13, 16, 19],
   // Opción para forzar la ejecución independientemente de la hora
   forceExecution: process.env.FORCE_EXECUTION === 'true'
 };
@@ -124,69 +121,6 @@ class ApiService {
   }
 }
 
-// ===== Token Service =====
-class TokenService {
-  /**
-   * Decode a JWT token and return its payload
-   * @param {String} token - JWT token
-   * @returns {Object} - Decoded token payload
-   */
-  decodeJwtToken(token) {
-    try {
-      console.log('Decoding JWT token');
-      
-      // JWT tokens are split into three parts: header.payload.signature
-      const parts = token.split('.');
-      if (parts.length !== 3) {
-        console.error('Invalid JWT token format');
-        return null;
-      }
-      
-      // The payload is the second part, base64 encoded
-      const payload = parts[1];
-      
-      // Decode the base64 payload
-      // Need to replace characters for proper base64 decoding
-      const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
-      const jsonPayload = Buffer.from(base64, 'base64').toString('utf8');
-      
-      return JSON.parse(jsonPayload);
-    } catch (error) {
-      console.error('Error decoding JWT token:', error.message);
-      return null;
-    }
-  }
-
-  /**
-   * Extract URLs from token payload
-   * @param {Object} decodedToken - Decoded token payload
-   * @returns {Array} - Array of URLs found in token
-   */
-  extractUrlsFromToken(decodedToken) {
-    if (!decodedToken) return [];
-    
-    const urls = [];
-    
-    // Look for URLs in common JWT claim fields
-    Object.keys(decodedToken).forEach(key => {
-      const value = decodedToken[key];
-      if (typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'))) {
-        urls.push({ field: key, url: value });
-      } else if (typeof value === 'object' && value !== null) {
-        // Look for URLs in nested objects
-        Object.keys(value).forEach(nestedKey => {
-          const nestedValue = value[nestedKey];
-          if (typeof nestedValue === 'string' && (nestedValue.startsWith('http://') || nestedValue.startsWith('https://'))) {
-            urls.push({ field: `${key}.${nestedKey}`, url: nestedValue });
-          }
-        });
-      }
-    });
-    
-    return urls;
-  }
-}
-
 // ===== Database Service =====
 class DatabaseService {
   /**
@@ -276,7 +210,8 @@ class MessageService {
 // ===== Forum Service =====
 class ForumService {
   constructor() {
-    this.smbProxy = new SmbProxy();
+    this.smbService = new SmbService();
+    this.isAuthenticated = false;
   }
 
   /**
@@ -288,122 +223,71 @@ class ForumService {
   async login(email, password) {
     try {
       console.log('Logging in to forum');
-      const hashedPassword = CryptoJS.MD5(password).toString();
-      const result = await this.smbProxy.login(email, hashedPassword);
-      return result.status === 200;
+      const result = await this.smbService.login(email, password);
+      this.isAuthenticated = result.isAuthenticated;
+      console.log(`Login result: ${this.isAuthenticated ? 'Authenticated' : 'Not authenticated'}`);
+      return result.status === 200 && this.isAuthenticated;
     } catch (error) {
       console.error('Error logging in to forum:', error.message);
+      this.isAuthenticated = false;
       return false;
     }
   }
 
   /**
-   * Get the responder form and its parameters
-   * @param {String} url - URL of the responder form
-   * @returns {Promise<Object>} - Form data, parameters and action URL
+   * Check if user is currently authenticated
+   * @returns {Boolean} - True if authenticated, false otherwise
    */
-  async getResponderForm(url) {
-    console.log('Getting responder form from URL:', url);
-    
+  isUserAuthenticated() {
+    return this.isAuthenticated;
+  }
+
+  /**
+   * Get user data including reply URL
+   * @returns {Promise<Object>} - User data
+   */
+  async getUserData() {
     try {
-      // Make GET request using SmbProxy
-      const response = await this.smbProxy.customGET(url);
-      console.log(`Response status: ${response.status}`);
-      
-      // Find the response form
-      const formMatch = response.data.match(/<form[^>]*action="newreply\.php[^>]*>([\s\S]*?)<\/form>/i);
-      
-      if (!formMatch) {
-        console.error('No form found in the response');
-        return { params: {}, actionValue: null };
-      }
-      
-      // Extract the form action URL
-      const actionMatch = formMatch[0].match(/<form[^>]*action=["']([^"']*)["']/);
-      
-      let actionValue;
-      if (actionMatch) {
-        actionValue = 'https://www.sexomercadobcn.com/' + actionMatch[1].replace(/&amp;/g, '&');
-        console.log('Form action URL:', actionValue);
-      } else {
-        console.error('No action URL found in the form');
-      }
-      
-      const params = {};
-      
-      // Extract form parameters
-      if (formMatch) {
-        const formContent = formMatch[1];  // Content inside the form
-        
-        const inputs = [...formContent.matchAll(/<input[^>]+>/gi)];
-        
-        inputs.forEach(input => {
-          const nameMatch = input[0].match(/name="([^"]+)"/);
-          const valueMatch = input[0].match(/value="([^"]*)"/);
-          const typeMatch = input[0].match(/type="([^"]+)"/);
-          
-          // Exclude submit or button inputs
-          if (nameMatch && valueMatch && (!typeMatch || (typeMatch[1] !== 'submit' && typeMatch[1] !== 'button'))) {
-            params[nameMatch[1]] = valueMatch[1];
-            console.log(`Found form parameter: ${nameMatch[1]} = ${valueMatch[1]}`);
-          }
-        });
-      }
-      
-      return { params, actionValue };
+      console.log('Getting user data from forum');
+      return await this.smbService.getUserData();
     } catch (error) {
-      console.error('Error getting responder form:', error.message);
-      throw error;
+      console.error('Error getting user data from forum:', error.message);
+      return {
+        success: false,
+        message: `Error getting user data: ${error.message}`
+      };
     }
   }
 
   /**
-   * Post a message to the forum
+   * Publish a message to the forum
    * @param {String} message - Message to post
    * @param {String} replyUrl - Reply URL
    * @returns {Promise<Object>} - Post result
    */
-  async postMessage(message, replyUrl) {
-    console.log('Posting message to forum');
+  async publishMessage(message, replyUrl) {
+    console.log('Publishing message to forum:', replyUrl);
     
     try {
-      // Get the responder form and its parameters
-      const responder = await this.getResponderForm(replyUrl);
-      
-      if (!responder.actionValue) {
-        console.error('No action URL found, cannot post message');
-        return { success: false, message: 'No action URL found' };
+      // Check authentication first
+      if (!this.isAuthenticated) {
+        console.error('Not authenticated. Cannot publish message.');
+        return { success: false, message: 'Not authenticated' };
       }
       
-      // Extract the relative part of the action URL
-      const actionUrl = responder.actionValue.replace('https://www.sexomercadobcn.com/', '');
+      const result = await this.smbService.publishMessage(message, replyUrl);
       
-      // Add the message to the form parameters
-      const newParams = {
-        message: message,
-        ...responder.params,
-        parseame: 1,
-        parseame_check: 1,
-        emailupdate: 1
-      };
+      // Update authentication status based on the response
+      if (result && result.isAuthenticated !== undefined) {
+        this.isAuthenticated = result.isAuthenticated;
+      }
       
-      console.log('Posting with parameters:', Object.keys(newParams).join(', '));
-      
-      // Submit the form using SmbProxy
-      const result = await this.smbProxy.customPOST(actionUrl, newParams);
-      
-      console.log(`Post result status: ${result.status}`);
-      
-      return {
-        success: result.status === 200,
-        status: result.status,
-        data: result.data
-      };
+      return result;
     } catch (error) {
-      console.error('Error posting message:', error.message);
+      console.error('Error publishing message:', error.message);
       return {
         success: false,
-        message: `Error posting: ${error.message}`
+        message: `Error publishing: ${error.message}`
       };
     }
   }
@@ -414,7 +298,6 @@ class Application {
   constructor(config) {
     this.config = config;
     this.apiService = new ApiService(config.apiUrl);
-    this.tokenService = new TokenService();
     this.databaseService = new DatabaseService();
     this.messageService = new MessageService();
     this.forumService = new ForumService();
@@ -455,7 +338,6 @@ class Application {
       }
       
       console.log('Hora permitida. Continuando con la ejecución...');
-      console.log('Starting authentication with SMB Gestion API');
       
       // Step 1: Login to API
       console.log('Step 1: Logging in to API');
@@ -470,30 +352,6 @@ class Application {
       }
       
       console.log('Successfully logged in to API');
-      console.log('Token:', apiLoginResult.token.substring(0, 20) + '...');
-      
-      // Decode and display the JWT token
-      console.log('\nDecoding JWT token:');
-      const decodedToken = this.tokenService.decodeJwtToken(apiLoginResult.token);
-      if (!decodedToken) {
-        console.error('Failed to decode JWT token');
-        return;
-      }
-      
-      console.log('Decoded token payload:');
-      console.log(JSON.stringify(decodedToken, null, 2));
-      
-      // Extract and display URLs from token
-      console.log('\nURLs in token (if any):');
-      const urls = this.tokenService.extractUrlsFromToken(decodedToken);
-      
-      if (urls.length > 0) {
-        urls.forEach((item, index) => {
-          console.log(`${index + 1}. ${item.field}: ${item.url}`);
-        });
-      } else {
-        console.log('No URLs found in the token');
-      }
       
       // Step 2: Get images from API
       console.log('\nStep 2: Getting images from API');
@@ -542,30 +400,43 @@ class Application {
       console.log(message);
       console.log('\n------------------------------\n');
       
-      // Step 5: Post message to forum
-      if (decodedToken && decodedToken.urls && decodedToken.urls.reply) {
-        console.log('\nStep 5: Posting message to forum');
-        const replyUrl = decodedToken.urls.reply;
-        console.log(`Reply URL from token: ${replyUrl}`);
-        
-        try {
-          await this.forumService.login(config.email, config.password);
-
-          // Post message
-          console.log('Posting message to forum...');
-          const postResult = await this.forumService.postMessage(message, replyUrl);
-          
-          if (postResult.success) {
-            console.log('Message posted successfully!');
-          } else {
-            console.error('Failed to post message:', postResult.message);
-          }
-          
-        } catch (error) {
-          console.error('Error posting to forum:', error.message);
-        }
+      // Step 5: Login to forum and get user data
+      console.log('\nStep 5: Logging in to forum and getting user data');
+      const loginSuccess = await this.forumService.login(config.email, config.password);
+      
+      if (!loginSuccess) {
+        console.error('Failed to login to forum. Cannot post message.');
+        return;
+      }
+      
+      console.log('Forum login successful. Authentication status:', this.forumService.isUserAuthenticated());
+      
+      // Get user data including reply URL
+      const forumUserData = await this.forumService.getUserData();
+      
+      if (!forumUserData.success) {
+        console.error('Failed to get user data from forum:', forumUserData.message);
+        return;
+      }
+      
+      const replyUrl = forumUserData.urls.replyUrl;
+      
+      if (!replyUrl) {
+        console.error('No reply URL found in user data');
+        return;
+      }
+      
+      console.log(`Reply URL from forum: ${replyUrl}`);
+      
+      // Step 6: Post message to forum
+      console.log('\nStep 6: Posting message to forum');
+      
+      const postResult = await this.forumService.publishMessage(message, replyUrl);
+      
+      if (postResult.success) {
+        console.log('Message posted successfully!');
       } else {
-        console.log('No reply URL found in token');
+        console.error('Failed to post message:', postResult.message);
       }
       
       console.log('\nProcess completed successfully');

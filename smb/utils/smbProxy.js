@@ -2,7 +2,7 @@ const axios = require('axios');
 const querystring = require('querystring');
 
 /**
- * SmbProxy class for handling interactions with sexomercadobcn.com
+ * SmbProxy class for handling HTTP interactions with cookies
  * Each instance maintains its own cookies and axios instance
  */
 class SmbProxy {
@@ -12,16 +12,7 @@ class SmbProxy {
    */
   constructor(options = {}) {
     // Base configuration
-    this.baseURL = 'https://www.sexomercadobcn.com';
-    this.urls = {
-      main: '/',
-      login: '/login.php?do=login',
-      cPanel: '/usercp.php',
-      messages: '/private.php',
-      highlights: '/profile.php?do=highlights',
-      advertisingStats: '/profile.php?do=advertisingStats',
-      stats: '/estadisticas.php'
-    };
+    this.baseURL = options.baseURL || 'https://www.sexomercadobcn.com';
     
     // Default headers
     this.headers = {
@@ -82,7 +73,7 @@ class SmbProxy {
         this.cookies[name] = value;
       }
     });
-    console.log("Cookies updated",this.cookies);
+    console.log("Cookies updated", this._getCookieString());
   }
   
   /**
@@ -169,74 +160,6 @@ class SmbProxy {
       console.error(`Error in customPOST for ${url}:`, error.message);
       throw error;
     }
-  }
-  
-  /**
-   * Visit the main page
-   * @returns {Promise} - Axios response
-   */
-  async main() {
-    return this.customGET(this.urls.main);
-  }
-  
-  /**
-   * Login to SMB with email and password
-   * @param {string} email - User email
-   * @param {string} hashedPassword - User password (hashed with MD5)
-   * @returns {Promise} - Axios response
-   */
-  async login(email, hashedPassword) {
-    const formData = {
-      vb_login_username: email,
-      vb_login_password: '',
-      s: '',
-      securitytoken: 'guest',
-      do: 'login',
-      vb_login_md5password: hashedPassword,
-      vb_login_md5password_utf: hashedPassword
-    };
-    
-    return this.customPOST(this.urls.login, formData);
-  }
-  
-  /**
-   * Visit the control panel
-   * @returns {Promise} - Axios response
-   */
-  async cPanel() {
-    return this.customGET(this.urls.cPanel);
-  }
-  
-  /**
-   * Visit the messages page
-   * @returns {Promise} - Axios response
-   */
-  async messages() {
-    return this.customGET(this.urls.messages);
-  }
-  
-  /**
-   * Visit the highlights page
-   * @returns {Promise} - Axios response
-   */
-  async highlights() {
-    return this.customGET(this.urls.highlights);
-  }
-  
-  /**
-   * Visit the advertising stats page
-   * @returns {Promise} - Axios response
-   */
-  async advertisingStats() {
-    return this.customGET(this.urls.advertisingStats);
-  }
-  
-  /**
-   * Visit the stats page
-   * @returns {Promise} - Axios response
-   */
-  async stats() {
-    return this.customGET(this.urls.stats);
   }
   
   /**
