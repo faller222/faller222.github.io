@@ -13,7 +13,7 @@ const smbProxy = new SmbProxy();
 async function loginSMB(email, hashedPassword) {
   try {
     console.log(`Attempting login for ${email}`);
-    
+
     // Make login request using the shared smbProxy instance
     const loginResponse = await smbProxy.login(email, hashedPassword);
 
@@ -74,16 +74,16 @@ async function loginSMB(email, hashedPassword) {
 async function getImagesFromURL(url) {
   try {
     console.log(`Getting images from URL: ${url}`);
-    
+
     // Make request to the URL using the shared smbProxy instance
     const response = await smbProxy.customGET(url);
-    
+
     // Extract image URLs using regex pattern
     const imageUrls = [...response.data.matchAll(/<a[^>]*href="\.(\/albumpics\/[^"]*)"[^>]*>/gi)]
       .map(match => "https://www.sexomercadobcn.com" + match[1]);
-    
+
     console.log(`Found ${imageUrls.length} images`);
-    
+
     return {
       data: response.data,
       status: response.status,
@@ -106,17 +106,17 @@ async function getImagesFromURL(url) {
  */
 async function getBlogReplyUrl(url) {
   try {
-    console.log(`Getting reply URL from blog: ${url}`);
-    
+    // console.log(`Getting reply URL from blog: ${url}`);
+
     // Make request to the URL using the shared smbProxy instance
     const response = await smbProxy.customGET(url);
-    
+
     // Extract reply URL using regex pattern
     const match = response.data.match(/<a\s+[^>]*href="([^"]+)"[^>]*>\s*Responder\s*<\/a>/i);
     const replyUrl = match ? match[1].replace(/&amp;/g, '&') : null;
-    
-    console.log(`Reply URL found: ${replyUrl}`);
-    
+
+    // console.log(`Reply URL found: ${replyUrl}`);
+
     return {
       data: response.data,
       cookies: smbProxy.getCookieString(),

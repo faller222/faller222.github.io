@@ -22,7 +22,7 @@ if (process.env.DATABASE_URL) {
   };
 }
 
-console.log('Database config:', process.env.DATABASE_URL ? 'Using DATABASE_URL' : dbConfig);
+// console.log('Database config:', process.env.DATABASE_URL ? 'Using DATABASE_URL' : dbConfig);
 
 // Database configuration
 const pool = new Pool(dbConfig);
