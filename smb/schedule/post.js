@@ -1,3 +1,19 @@
+/**
+ * SMB Post Scheduler
+ * 
+ * Este script se encarga de publicar mensajes automáticamente en el foro.
+ * Está diseñado para ejecutarse periódicamente (por ejemplo, cada hora),
+ * pero solo realizará acciones en las horas específicas configuradas.
+ * 
+ * Configuración de horas:
+ * - Por defecto: 13:00 y 16:00
+ * - Para personalizar: Establecer variable de entorno ALLOWED_HOURS con valores separados por comas
+ *   Ejemplo: ALLOWED_HOURS=9,13,16,20
+ * 
+ * Para forzar la ejecución independientemente de la hora (útil para pruebas):
+ * - Establecer variable de entorno FORCE_EXECUTION=true
+ */
+
 const axios = require('axios');
 const CryptoJS = require('crypto-js');
 const fs = require('fs');
@@ -12,6 +28,11 @@ const config = {
   email: process.env.SMB_EMAIL || 'user@example.com',
   password: process.env.SMB_PASSWORD || 'yourpassword',
   apiUrl: 'https://smb-gestion-117c7c904c44.herokuapp.com',
+  // Horas permitidas para la ejecución (formato 24h)
+  // Si se proporciona en .env, debe ser una lista separada por comas, ej: "13,16,19"
+  allowedHours: process.env.ALLOWED_HOURS ? process.env.ALLOWED_HOURS.split(',').map(h => parseInt(h.trim())) : [10, 13, 16],
+  // Opción para forzar la ejecución independientemente de la hora
+  forceExecution: process.env.FORCE_EXECUTION === 'true'
 };
 
 // ===== API Service =====
@@ -400,10 +421,40 @@ class Application {
   }
 
   /**
+   * Verifica si la hora actual está permitida para la ejecución
+   * @returns {Boolean} - True si la hora actual está permitida, False en caso contrario
+   */
+  isAllowedTime() {
+    // Si se ha configurado para forzar la ejecución, siempre retornar true
+    if (this.config.forceExecution) {
+      console.log('Ejecución forzada activada. Ignorando restricción de hora.');
+      return true;
+    }
+    
+    const now = new Date();
+    const currentHour = now.getHours();
+    
+    console.log(`Hora actual: ${currentHour}:${now.getMinutes()}`);
+    console.log(`Horas permitidas: ${this.config.allowedHours.join(', ')}`);
+    
+    return this.config.allowedHours.includes(currentHour);
+  }
+
+  /**
    * Run the application
    */
   async run() {
     try {
+      const now = new Date();
+      console.log(`=== Iniciando aplicación: ${now.toLocaleString()} ===`);
+      
+      // Verificar si la hora actual está permitida
+      if (!this.isAllowedTime()) {
+        console.log('No es hora de ejecutar la aplicación. Finalizando.');
+        return;
+      }
+      
+      console.log('Hora permitida. Continuando con la ejecución...');
       console.log('Starting authentication with SMB Gestion API');
       
       // Step 1: Login to API
