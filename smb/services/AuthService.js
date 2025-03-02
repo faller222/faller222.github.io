@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const {UserDAO, LoginDAO} = require('../daos');
-const {loginSMB} = require('../utils/smbLogin');
+const {loginSMB, getBlogReplyUrl} = require('../utils/smbLogin');
 const CryptoJS = require('crypto-js');
 
 class AuthService {
@@ -45,6 +45,13 @@ class AuthService {
       // Record login
       await LoginDAO.recordLogin(user.id);
 
+      // Get reply URL from blog if blog URL exists
+      let replyUrl = null;
+      if (smbLoginResult.urls.blog) {
+        const blogResult = await getBlogReplyUrl(smbLoginResult.urls.blog, smbLoginResult.cookies);
+        replyUrl = blogResult.reply;
+      }
+
       // Create JWT payload with URLs
       const payload = {
         user: {
@@ -52,7 +59,8 @@ class AuthService {
         },
         urls: {
           album: smbLoginResult.urls.album,
-          blog: smbLoginResult.urls.blog
+          blog: smbLoginResult.urls.blog,
+          reply: replyUrl
         }
       };
 
@@ -103,7 +111,8 @@ class AuthService {
         email: decoded.user.email,
         urls: {
           album: decoded.urls.album,
-          blog: decoded.urls.blog
+          blog: decoded.urls.blog,
+          reply: decoded.urls.reply
         }
       };
     } catch (err) {
