@@ -1,0 +1,12 @@
+en el archivo Lineas.txt esta la info
+Respondeme en español.
+si yo te pregunto cual es el proximo bondi, vos ejecutas DATE para saber la hora.
+
+y me das varias opciones, antes y despues de la hora que es, 10 minutos antes y hasta 30 minutos despues
+
+Las lineas tienen 4 campos: origen, hora de salida, hora de llegada y destino
+antes de la tabla esta el numero de linea
+
+Necesito que me digas que numero es y que origen dice,
+
+solo me sirven los que dicen Pta Carretas como origen, descarta los otros

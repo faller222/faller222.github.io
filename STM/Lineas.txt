@@ -1,0 +1,141 @@
+la consulta es https://www.montevideo.gub.uy/app/stm/horarios/pages/consultar.xhtml
+
+191
+Pta Carretas /Ter	06:27	07:20	Ciudadela			
+Pta Carretas /Ter	07:00	07:53	Ciudadela			
+Pta Carretas /Ter	07:27	08:20	Ciudadela			
+Pta Carretas /Ter	08:03	09:00	Ciudadela			
+Pta Carretas /Ter	08:37	09:35	Ciudadela			
+Pta Carretas /Ter	09:08	09:59	Palacio De La Luz			
+Pta Carretas /Ter	09:40	10:31	Palacio De La Luz			
+Pta Carretas /Ter	10:02	10:53	Palacio De La Luz			
+Pta Carretas /Ter	10:25	11:17	Palacio De La Luz			
+Pta Carretas /Ter	10:51	11:43	Palacio De La Luz			
+Pta Carretas /Ter	11:12	12:04	Palacio De La Luz			
+Pta Carretas /Ter	11:36	12:28	Palacio De La Luz			
+Pta Carretas /Ter	12:01	12:53	Palacio De La Luz			
+Pta Carretas /Ter	12:27	13:19	Palacio De La Luz			
+Pta Carretas /Ter	12:51	13:47	Palacio De La Luz			
+Pta Carretas /Ter	13:12	14:08	Palacio De La Luz			
+Pta Carretas /Ter	13:36	14:32	Palacio De La Luz			
+Pta Carretas /Ter	14:02	14:58	Palacio De La Luz			
+Pta Carretas /Ter	14:27	15:23	Palacio De La Luz			
+Pta Carretas /Ter	14:55	15:51	Palacio De La Luz			
+Pta Carretas /Ter	15:19	16:15	Palacio De La Luz			
+Pta Carretas /Ter	15:40	16:36	Palacio De La Luz			
+Pta Carretas /Ter	16:06	17:02	Palacio De La Luz			
+Pta Carretas /Ter	16:31	17:27	Palacio De La Luz			
+Pta Carretas /Ter	16:59	17:55	Palacio De La Luz			
+Pta Carretas /Ter	17:23	18:19	Palacio De La Luz			
+Pta Carretas /Ter	17:44	18:40	Palacio De La Luz			
+Pta Carretas /Ter	17:58	18:54	Palacio De La Luz			
+Pta Carretas /Ter	18:10	19:06	Palacio De La Luz			
+Pta Carretas /Ter	18:26	19:22	Palacio De La Luz			
+Pta Carretas /Ter	18:45	19:41	Palacio De La Luz			
+Pta Carretas /Ter	19:03	19:56	Palacio De La Luz			
+Pta Carretas /Ter	19:31	20:24	Palacio De La Luz			
+Pta Carretas /Ter	20:02	20:55	Palacio De La Luz			
+Pta Carretas /Ter	20:18	21:09	Palacio De La Luz			
+Pta Carretas /Ter	21:02	21:53	Palacio De La Luz			
+Pta Carretas /Ter	22:03	22:54	Palacio De La Luz			
+Pta Carretas /Ter	22:18	23:09	Palacio De La Luz			
+Pta Carretas /Ter	23:01	23:52	Palacio De La Luz
+
+328
+Pta Carretas /Ter	00:01	01:05	Mendoza E Instrucciones			
+Pta Carretas /Ter	06:26	07:42	Mendoza E Instrucciones			
+Pta Carretas /Ter	06:50	08:06	Mendoza E Instrucciones			
+Pta Carretas /Ter	07:46	09:01	Mendoza E Instrucciones			
+Pta Carretas /Ter	08:17	09:33	Mendoza E Instrucciones			
+Pta Carretas /Ter	08:43	09:59	Mendoza E Instrucciones			
+Pta Carretas /Ter	09:00	10:16	Mendoza E Instrucciones			
+Pta Carretas /Ter	09:21	10:37	Mendoza E Instrucciones			
+Pta Carretas /Ter	09:40	10:56	Mendoza E Instrucciones			
+Pta Carretas /Ter	09:55	11:11	Mendoza E Instrucciones			
+Pta Carretas /Ter	10:08	11:28	Mendoza E Instrucciones			
+Pta Carretas /Ter	10:22	11:42	Mendoza E Instrucciones			
+Pta Carretas /Ter	10:40	11:56	Mendoza E Instrucciones			
+Pta Carretas /Ter	10:57	12:13	Mendoza E Instrucciones			
+Pta Carretas /Ter	11:17	12:33	Mendoza E Instrucciones			
+Pta Carretas /Ter	11:40	12:59	Mendoza E Instrucciones			
+Pta Carretas /Ter	11:58	13:17	Mendoza E Instrucciones			
+Pta Carretas /Ter	12:21	13:40	Mendoza E Instrucciones			
+Pta Carretas /Ter	12:52	14:08	Mendoza E Instrucciones			
+Pta Carretas /Ter	13:14	14:30	Mendoza E Instrucciones			
+Pta Carretas /Ter	13:28	14:44	Mendoza E Instrucciones			
+Pta Carretas /Ter	13:56	15:12	Mendoza E Instrucciones			
+Pta Carretas /Ter	14:22	15:39	Mendoza E Instrucciones			
+Pta Carretas /Ter	14:44	16:03	Mendoza E Instrucciones			
+Pta Carretas /Ter	15:05	16:21	Mendoza E Instrucciones			
+Pta Carretas /Ter	15:27	16:45	Mendoza E Instrucciones			
+Pta Carretas /Ter	15:48	17:07	Mendoza E Instrucciones			
+Pta Carretas /Ter	16:10	17:28	Mendoza E Instrucciones			
+Pta Carretas /Ter	16:30	17:48	Mendoza E Instrucciones			
+Pta Carretas /Ter	16:54	18:15	Mendoza E Instrucciones			
+Pta Carretas /Ter	17:13	18:29	Mendoza E Instrucciones			
+Pta Carretas /Ter	17:31	18:47	Mendoza E Instrucciones			
+Pta Carretas /Ter	17:51	19:07	Mendoza E Instrucciones			
+Pta Carretas /Ter	18:11	19:27	Mendoza E Instrucciones			
+Pta Carretas /Ter	18:40	19:58	Mendoza E Instrucciones			
+Pta Carretas /Ter	19:00	20:18	Mendoza E Instrucciones			
+Pta Carretas /Ter	19:23	20:39	Mendoza E Instrucciones			
+Pta Carretas /Ter	19:45	21:01	Mendoza E Instrucciones			
+Pta Carretas /Ter	20:08	21:24	Mendoza E Instrucciones			
+Pta Carretas /Ter	20:52	22:05	Mendoza E Instrucciones			
+Pta Carretas /Ter	21:08	22:23	Mendoza E Instrucciones			
+Pta Carretas /Ter	21:49	22:59	Mendoza E Instrucciones			
+Pta Carretas /Ter	22:05	23:09	Mendoza E Instrucciones			
+Pta Carretas /Ter	23:07	00:07	Mendoza E Instrucciones
+
+
+
+329
+8 Octubregaribaldi	06:05	07:06	Aviación Civil			
+Pta Carretas /Ter	06:06	07:30	Aviación Civil			
+Pta Carretas /Ter	06:19	07:55	Fauquet			
+8 Octubregaribaldi	06:57	07:55	Aviación Civil			
+Pta Carretas /Ter	06:59	08:23	Aviación Civil			
+Pta Carretas /Ter	07:41	09:10	Aviación Civil			
+8 Octubregaribaldi	07:52	08:50	Aviación Civil			
+Pta Carretas /Ter	08:12	09:42	Hospital Saint Bois			
+8 Octubregaribaldi	08:28	09:26	Aviación Civil			
+Pta Carretas /Ter	08:35	10:05	Aviación Civil			
+Pta Carretas /Ter	08:54	10:24	Aviación Civil			
+Pta Carretas /Ter	09:14	10:44	Aviación Civil			
+Pta Carretas /Ter	09:34	11:06	Hospital Saint Bois			
+Pta Carretas /Ter	09:53	11:21	Aviación Civil			
+Pta Carretas /Ter	10:16	11:46	Aviación Civil			
+Pta Carretas /Ter	10:33	12:03	Hospital Saint Bois			
+Pta Carretas /Ter	10:50	12:20	Aviación Civil			
+Pta Carretas /Ter	11:07	12:37	Aviación Civil			
+Pta Carretas /Ter	11:26	12:56	Hospital Saint Bois			
+Pta Carretas /Ter	11:47	13:17	Aviación Civil			
+Pta Carretas /Ter	12:06	13:36	Aviación Civil			
+Pta Carretas /Ter	12:28	13:58	Hospital Saint Bois			
+Pta Carretas /Ter	12:45	14:16	Aviación Civil			
+Pta Carretas /Ter	13:07	14:39	Aviación Civil			
+Pta Carretas /Ter	13:35	15:07	Hospital Saint Bois			
+Pta Carretas /Ter	13:49	15:21	Aviación Civil			
+Pta Carretas /Ter	14:10	15:42	Aviación Civil			
+Pta Carretas /Ter	14:30	16:02	Aviación Civil			
+Pta Carretas /Ter	14:51	16:23	Hospital Saint Bois			
+Pta Carretas /Ter	15:10	16:43	Aviación Civil			
+Pta Carretas /Ter	15:34	17:08	Aviación Civil			
+Pta Carretas /Ter	15:55	17:29	Aviación Civil			
+Pta Carretas /Ter	16:18	17:52	Hospital Saint Bois			
+Pta Carretas /Ter	16:38	18:14	Aviación Civil			
+Pta Carretas /Ter	17:02	18:38	Aviación Civil			
+Pta Carretas /Ter	17:21	18:57	Hospital Saint Bois			
+Pta Carretas /Ter	17:38	19:14	Aviación Civil			
+Pta Carretas /Ter	17:59	19:32	Aviación Civil			
+Pta Carretas /Ter	18:20	19:53	Aviación Civil			
+Pta Carretas /Ter	18:50	20:23	Hospital Saint Bois			
+Pta Carretas /Ter	19:15	20:47	Aviación Civil			
+Pta Carretas /Ter	19:40	21:12	Aviación Civil			
+Pta Carretas /Ter	20:15	21:47	Aviación Civil			
+Pta Carretas /Ter	20:44	22:20	Aviación Civil			
+Pta Carretas /Ter	21:08	22:30	Aviación Civil			
+Pta Carretas /Ter	21:48	23:15	Aviación Civil			
+Pta Carretas /Ter	22:05	23:33	Aviación Civil			
+Pta Carretas /Ter	23:09	00:33	Aviación Civil			
+Pta Carretas /Ter	23:43	00:59	Aviación Civil
