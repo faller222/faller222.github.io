@@ -1,65 +1,98 @@
-I’m shocked why most people don’t use AI for getting hired.
+For Backend developers:
 
-Here are 10 websites to get a remote job that pays in USD.
+LLD Topics:
+------------
+1. Solid Principles, 🔥
+2. Strategy Design Pattern,
+3. Design Notify Me, Observer pattern,
+4. Decorator Pattern,
+5. Factory Pattern,
+6. Abstract Factory Pattern,
+7. LLD of Parking Lot,🔥
+8. LLD of Snake and Ladder, 🔥
+9. LLD of Elevator System, 🔥
+10. LLD of Car Rental System, 🔥
+11. LLD of Logging System, Chain of Responsibility,
+12. Design Tic-Tac-Toe,
+13. Proxy Design Pattern,
+14. LLD of BookMyShow, 🔥
+15. Null object Pattern,
+16. Design Vending Machine,🔥
+17. LLD of ATM,🔥
+18. Design Chess Game,🔥
+19. Design File System,
+20. Adapter Design Pattern,
+21. LLD Of Splitwise, 🔥
+22. Splitwise Simplification Algorithm
+23. Builder Design Pattern
+24. LLD of Cricbuzz🔥
+25. Facade Design Pattern
+26. Bridge Design Pattern
+27. LLD of Zepto
+28. Flyweight Design Pattern
+29. Command Design pattern 
+30. Iterative Design Pattern 
+31. Mediator Design Pattern 
+32. Visitor Design Pattern
+33. Memento Design Pattern
+34. MVC Design Pattern
+35. LLD of Apply Coupon code system
+36. LLD of Payment Gateway System
+37. Object Pool Design Pattern
 
-1. Interview Sidekick
+HLD Topics:
+--------------
+1. Network Protocols
+2. Cap Theorem 💥
+3. Microservices Design Pattern
+4. Scale from 0 to Millions Users💥
+5. Consistent Hashing💥
+6. Design URL Shortening💥
+7. Back of the Envelope Estimation
+8. Design Key Value Store
+9. SQL vs NoSQL💥
+10. WhatsApp System Design💥
+11. Design Rate Limiter
+12. Zoom Video Calling App System Design
+13. Design Idempotent POST API
+14. Design High Availability System
+15. Design Kafka (Messaging Queue) 💥
+16. Proxy vs Reverse Proxy
+17. Load Balancer and its algo
+18. Distributed Caching
+19. Distributed Transaction
+20. Database Indexing💥
+21. Distributed Concurrency Control💥
+22. Distributed Locking
+23. OAuth 2.0 💥
+24. Symmetric and Asymmetric Encryption 
+25. JWT Explained 
+26. API Gateway 💥
+27. Microservices Architecture 
+28. Services Mesh
+29. DNS💥
 
-Your Personal AI Interview Assistant. Receive real-time, discreet feedback during live interviews.
-
-📍 https://interviewsidekick.com/
-
-2. Cover Letter Copilot
-
-Craft cover letters in under a minute using your resume and job description.
-
-📍 https://coverlettercopilot.ai/
-
-3. Eztrackr
-
-Track your job applications effortlessly, gain valuable insights, all in one place
-
-📍https://www.eztrackr.app/
-
-4. Resume builder
-
-Now you don't have to waste hours on building a resume. This tool can help you out in minutes.
-
-📍https://www.gotresumebuilder.com/
-
-5. BetterPic
-
-Transform any selfie into a professional LinkedIn headshot.
-
-📍https://www.betterpic.io
-
-6. Truly Remote
-
-Features jobs that allow you to work from anywhere, with new listings added daily.
-
-📍https://trulyremote.co/
-
-7. RemoteCo
-
-Offers a variety of remote international jobs across multiple industries, including tech, marketing, and customer support.
-
-📍https://remote.co/
-
-8. Remotive
-
-Provides a curated list of remote jobs in tech, customer support, marketing, and more, accessible to candidates worldwide.
-
-📍https://remotive.com/
-
-9. Jobspresso
-
-Features a wide range of remote job opportunities in tech, marketing, customer service, and other sectors, open to international applicants.
-
-📍https://jobspresso.co/
-
-10. SkipTheDrive
-
-Aggregates remote job listings from various industries, including IT, project management, and healthcare, suitable for global candidates.
-
-📍https://www.skipthedrive.com/
-
-These resources can assist you in finding remote roles without the need for U.S. citizenship.
+Java Topics:
+------------
+- Fundamentals: 4 pillars
+- Procedural vs OOPs
+- JDK vs JRE vs JVM
+- Classes
+- Variables
+- String Pool
+- String Immutability
+- Access Specifiers
+- Type Casting
+- Overloading and Overriding
+- Pass by value vs pass by reference
+- Garbage Collector
+- Understand Constructor
+- Operators
+- Control Flow Statements
+- Multithreading
+- Exception Handling
+- Generic Programming
+- Collections
+- Functional Interface
+- Lambda Expression
+- Stream APIs
