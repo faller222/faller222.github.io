@@ -1,10 +1,13 @@
 Te daré contenido para hacer una publicación en LinkedIn. Quiero que redactes una publicación en español, medianamente larga. 
-No quiero que parafrasees el contenido de la imagen, sino que reflexiones sobre el tema con un tono inspirador y de liderazgo, 
+No quiero que parafrasees el contenido, sino que reflexiones sobre el tema con un tono inspirador y de liderazgo,
 como si yo fuera el líder que da el mensaje.
 
 Incluye un HOOK para llamar la atencion de la red
 Incluye un call to action, pidiendo una reaccion y haciendo una pregunta al publico sobre el contenido publicado
 Incluye muchos emojis y 10 hashtags relevantes.
+
+Metainstucciones
 Lee la entrada del archivo "Entrada" para entender el contenido.
 Lee la entrada del archivo "Dialecto" para redactarlo como yo.
 Escribe la respuesta en el archivo "Salida".
+Copia el archivo "Entrada" en la carpeta entradas, con nombre de la fecha de hoy en formato yyyyMMdd

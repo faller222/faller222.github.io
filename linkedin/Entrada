@@ -1,98 +1,23 @@
-For Backend developers:
-
-LLD Topics:
-------------
-1. Solid Principles, 🔥
-2. Strategy Design Pattern,
-3. Design Notify Me, Observer pattern,
-4. Decorator Pattern,
-5. Factory Pattern,
-6. Abstract Factory Pattern,
-7. LLD of Parking Lot,🔥
-8. LLD of Snake and Ladder, 🔥
-9. LLD of Elevator System, 🔥
-10. LLD of Car Rental System, 🔥
-11. LLD of Logging System, Chain of Responsibility,
-12. Design Tic-Tac-Toe,
-13. Proxy Design Pattern,
-14. LLD of BookMyShow, 🔥
-15. Null object Pattern,
-16. Design Vending Machine,🔥
-17. LLD of ATM,🔥
-18. Design Chess Game,🔥
-19. Design File System,
-20. Adapter Design Pattern,
-21. LLD Of Splitwise, 🔥
-22. Splitwise Simplification Algorithm
-23. Builder Design Pattern
-24. LLD of Cricbuzz🔥
-25. Facade Design Pattern
-26. Bridge Design Pattern
-27. LLD of Zepto
-28. Flyweight Design Pattern
-29. Command Design pattern 
-30. Iterative Design Pattern 
-31. Mediator Design Pattern 
-32. Visitor Design Pattern
-33. Memento Design Pattern
-34. MVC Design Pattern
-35. LLD of Apply Coupon code system
-36. LLD of Payment Gateway System
-37. Object Pool Design Pattern
-
-HLD Topics:
---------------
-1. Network Protocols
-2. Cap Theorem 💥
-3. Microservices Design Pattern
-4. Scale from 0 to Millions Users💥
-5. Consistent Hashing💥
-6. Design URL Shortening💥
-7. Back of the Envelope Estimation
-8. Design Key Value Store
-9. SQL vs NoSQL💥
-10. WhatsApp System Design💥
-11. Design Rate Limiter
-12. Zoom Video Calling App System Design
-13. Design Idempotent POST API
-14. Design High Availability System
-15. Design Kafka (Messaging Queue) 💥
-16. Proxy vs Reverse Proxy
-17. Load Balancer and its algo
-18. Distributed Caching
-19. Distributed Transaction
-20. Database Indexing💥
-21. Distributed Concurrency Control💥
-22. Distributed Locking
-23. OAuth 2.0 💥
-24. Symmetric and Asymmetric Encryption 
-25. JWT Explained 
-26. API Gateway 💥
-27. Microservices Architecture 
-28. Services Mesh
-29. DNS💥
-
-Java Topics:
-------------
-- Fundamentals: 4 pillars
-- Procedural vs OOPs
-- JDK vs JRE vs JVM
-- Classes
-- Variables
-- String Pool
-- String Immutability
-- Access Specifiers
-- Type Casting
-- Overloading and Overriding
-- Pass by value vs pass by reference
-- Garbage Collector
-- Understand Constructor
-- Operators
-- Control Flow Statements
-- Multithreading
-- Exception Handling
-- Generic Programming
-- Collections
-- Functional Interface
-- Lambda Expression
-- Stream APIs
+ La importancia de los hábitos de éxito
+Iniciar es lo más importante. Muchas veces, el mayor obstáculo es simplemente empezar. La acción es clave, aunque no sea perfecta o ideal desde el principio.
+La consistencia es más importante que la perfección. Los pequeños pasos diarios suman, y aunque al principio no veas grandes resultados, el hábito de hacer algo regularmente es lo que crea el cambio real a largo plazo.
+2. Enfoque en el proceso, no en los resultados inmediatos
+Si te centras demasiado en los resultados rápidos, como perder peso o volverte viral, es probable que te frustres y abandones.
+El ejemplo de YouTube ilustra esto perfectamente: al principio, los resultados pueden ser mínimos (por ejemplo, solo 5 vistas), pero la clave es la tendencia a largo plazo. Si sigues publicando con constancia, al cabo de meses los resultados empiezan a ser visibles.
+Confiar en el proceso es fundamental. Si eres impaciente, no mires los resultados constantemente. Confía en que lo que estás haciendo a largo plazo te llevará a donde quieres llegar.
+3. Superar la incomodidad y salir de la zona de confort
+Salir de la zona de confort no es siempre fácil, pero es necesario para crecer. Hacer cosas incómodas o desafiantes, como hacer ejercicio o aprender nuevas habilidades, es parte del proceso de mejora.
+Sin embargo, no todo tiene que ser una tortura. Encuentra actividades que disfrutes (como bailar, caminar, o hacer ciclismo) si no te gusta el gimnasio. No es necesario forzarse a hacer algo que odias, lo importante es empezar con algo.
+El concepto de "mejor hecho que perfecto" se aplica aquí: no tienes que hacerlo perfectamente al principio, solo hacerlo. Luego mejorarás con el tiempo.
+4. Enseñar a disfrutar el proceso
+El disfrutar el proceso es una habilidad en sí misma, y como cualquier habilidad, no es fácil y lleva tiempo. Al principio, tal vez no se disfrute, pero es crucial aprender a disfrutar de la mejora continua.
+Esto se puede aplicar a cualquier área de la vida: ejercicio, estudio, trabajo, etc. Si te enfocas en que el proceso sea placentero, será mucho más fácil sostener el hábito a largo plazo.
+5. Resiliencia y paciencia
+La paciencia es clave. Cuando no se ven resultados inmediatos, la tendencia es frustrarse y abandonar. Sin embargo, si entendemos que el proceso toma tiempo y tenemos la resiliencia para seguir, los resultados llegarán eventualmente.
+La resiliencia está en poder aceptar que no todo va a ser perfecto, que habrá altibajos, y aún así continuar, aprendiendo de los errores y ajustes que se presenten.
+6. Adaptaciones graduales y empezar con lo más fácil
+Si alguien tiene miedo o resistencia a empezar, se puede aconsejar hacer una adaptación gradual. Empezar con algo pequeño y accesible puede facilitar el arranque, como por ejemplo, hacer 15 minutos de ejercicio si nunca has hecho nada.
+El objetivo inicial es solo empezar, lo demás es secundario al principio. El progreso se acumula poco a poco, y el tiempo se encargará de hacer visible el cambio.
+7. Confianza en uno mismo
+Confiar en ti mismo es esencial. Aunque los resultados no sean inmediatos, es importante saber que estás en el camino correcto. El simple hecho de que estés tomando acción ya te está acercando a tus metas.
+Al final, los hábitos consistentes y la confianza en el proceso te llevarán al éxito, independientemente del campo (ejercicio, negocio, estudio, etc.).

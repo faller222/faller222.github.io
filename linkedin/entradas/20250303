@@ -1,0 +1,98 @@
+For Backend developers:
+
+LLD Topics:
+------------
+1. Solid Principles, 🔥
+2. Strategy Design Pattern,
+3. Design Notify Me, Observer pattern,
+4. Decorator Pattern,
+5. Factory Pattern,
+6. Abstract Factory Pattern,
+7. LLD of Parking Lot,🔥
+8. LLD of Snake and Ladder, 🔥
+9. LLD of Elevator System, 🔥
+10. LLD of Car Rental System, 🔥
+11. LLD of Logging System, Chain of Responsibility,
+12. Design Tic-Tac-Toe,
+13. Proxy Design Pattern,
+14. LLD of BookMyShow, 🔥
+15. Null object Pattern,
+16. Design Vending Machine,🔥
+17. LLD of ATM,🔥
+18. Design Chess Game,🔥
+19. Design File System,
+20. Adapter Design Pattern,
+21. LLD Of Splitwise, 🔥
+22. Splitwise Simplification Algorithm
+23. Builder Design Pattern
+24. LLD of Cricbuzz🔥
+25. Facade Design Pattern
+26. Bridge Design Pattern
+27. LLD of Zepto
+28. Flyweight Design Pattern
+29. Command Design pattern 
+30. Iterative Design Pattern 
+31. Mediator Design Pattern 
+32. Visitor Design Pattern
+33. Memento Design Pattern
+34. MVC Design Pattern
+35. LLD of Apply Coupon code system
+36. LLD of Payment Gateway System
+37. Object Pool Design Pattern
+
+HLD Topics:
+--------------
+1. Network Protocols
+2. Cap Theorem 💥
+3. Microservices Design Pattern
+4. Scale from 0 to Millions Users💥
+5. Consistent Hashing💥
+6. Design URL Shortening💥
+7. Back of the Envelope Estimation
+8. Design Key Value Store
+9. SQL vs NoSQL💥
+10. WhatsApp System Design💥
+11. Design Rate Limiter
+12. Zoom Video Calling App System Design
+13. Design Idempotent POST API
+14. Design High Availability System
+15. Design Kafka (Messaging Queue) 💥
+16. Proxy vs Reverse Proxy
+17. Load Balancer and its algo
+18. Distributed Caching
+19. Distributed Transaction
+20. Database Indexing💥
+21. Distributed Concurrency Control💥
+22. Distributed Locking
+23. OAuth 2.0 💥
+24. Symmetric and Asymmetric Encryption 
+25. JWT Explained 
+26. API Gateway 💥
+27. Microservices Architecture 
+28. Services Mesh
+29. DNS💥
+
+Java Topics:
+------------
+- Fundamentals: 4 pillars
+- Procedural vs OOPs
+- JDK vs JRE vs JVM
+- Classes
+- Variables
+- String Pool
+- String Immutability
+- Access Specifiers
+- Type Casting
+- Overloading and Overriding
+- Pass by value vs pass by reference
+- Garbage Collector
+- Understand Constructor
+- Operators
+- Control Flow Statements
+- Multithreading
+- Exception Handling
+- Generic Programming
+- Collections
+- Functional Interface
+- Lambda Expression
+- Stream APIs
