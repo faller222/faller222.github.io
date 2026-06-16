@@ -1,244 +1,249 @@
 <template>
-  <div class="container">
-    <button @click="saveFile">Save</button>
-    <div class="left-div">
-        <textarea id="editor-md" @keyup="generate">
-# Main Title
+  <div class="editor-page">
+    <header class="editor-toolbar">
+      <div class="editor-toolbar__left">
+        <nuxt-link class="editor-toolbar__back" to="/">← Inicio</nuxt-link>
+        <span class="editor-toolbar__title">Editor Markdown</span>
+        <span v-if="loadedSlug" class="editor-toolbar__slug">/blog/{{ loadedSlug }}</span>
+      </div>
+      <div class="editor-toolbar__actions">
+        <button type="button" class="btn" @click="saveFile">Descargar .md</button>
+      </div>
+    </header>
 
-## Subtitle
+    <div v-if="loadError" class="editor-error">{{ loadError }}</div>
 
-### Smaller Subtitle
-
----
-
----
-
-*Italic text* or _also like this_
-
-**Bold text** or __also like this__
-
-***Italic and bold text***
-
----
-
-## Lists
-
-### Unordered List
-
-- Element 1
-- Element 2
-  - Subelement 2.1
-  - Subelement 2.2
-- Element 3
-
-### Ordered List
-
-1. First element
-2. Second element
-   1. Subelement 2.1
-   2. Subelement 2.2
-3. Third element
-
----
-
-## Links and Images
-
-[Link to Google](https://www.google.com)
-
-![Image](https://picsum.photos/800/600)
-
----
-
-## Quotes and Code Blocks
-
-> This is a quote
-
-```python
-def hello_world():
-    print("Hello, World!")
-```
----
-
-## Tables
-
-| Header 1 | Header 2 |
-|----------|----------|
-| Cell 1,1 | Cell 1,2 |
-| Cell 2,1 | Cell 2,2 |
-
----
-
-## Inline Code Lines
-
-`print("Hello, world!")`
-
----
-
-## Horizontal Lines
-
----
-
----
-
-## Escape Characters
-
-\*Italic text\*
-
----
-
-## Footnotes
-
-Text with a footnote.[^1]
-
-[^1]: This is the footnote.
-
----
-
-## Block Elements
-
-<details>
-  <summary>Click to see content</summary>
-
-  This is a block element that is initially hidden and shown when clicked.
-</details>
-
----
-
-## Superscript and Subscript
-
-Superscript: 2^3^
-Subscript: H~2~O
-
----
-
-## Checkboxes
-
-- [x] Task completed
-- [ ] Task pending
-        </textarea></div>
-    <div class="right-div">
-      <div id="render-md"></div>
+    <div class="editor-layout">
+      <div class="editor-panel editor-panel--source">
+        <label class="editor-panel__label" for="editor-md">Fuente</label>
+        <textarea
+          id="editor-md"
+          v-model="source"
+          spellcheck="false"
+          @input="onInput"
+        />
+      </div>
+      <div class="editor-panel editor-panel--preview">
+        <label class="editor-panel__label">Vista previa</label>
+        <div class="editor-panel__content">
+          <markdown-content :source="source" variant="light" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// TODO - Mejorar los estilos del MD, normalizar con el resto de la app, mejorar el boton de guardar
+import { DEFAULT_MARKDOWN, fetchMarkdown } from '@/common/markdown'
 
 export default {
   name: 'EditorPage',
 
-  mounted() {
-    this.generate()
+  data() {
+    return {
+      source: DEFAULT_MARKDOWN,
+      loadedSlug: null,
+      loadError: null
+    }
   },
+
+  async mounted() {
+    const slug = this.$route.query.file
+
+    if (slug) {
+      await this.loadFromSlug(slug)
+    }
+  },
+
+  watch: {
+    '$route.query.file': {
+      immediate: false,
+      async handler(slug) {
+        if (slug) {
+          await this.loadFromSlug(slug)
+        } else {
+          this.loadedSlug = null
+          this.loadError = null
+          this.source = DEFAULT_MARKDOWN
+        }
+      }
+    }
+  },
+
   methods: {
-    generate() {
+    onInput() {
+      this.loadError = null
+    },
+
+    async loadFromSlug(slug) {
       try {
-        console.log("Generating")
-        const editor = document.getElementById('editor-md');
-        const render = document.getElementById('render-md');
-        console.log(editor)
-        render.innerHTML = this.$marked.parse(editor.value);
-      } catch (e) {
-        console.error(e)
+        this.loadError = null
+        this.source = await fetchMarkdown(slug)
+        this.loadedSlug = slug.replace(/^\/+|\/+$/g, '')
+      } catch (error) {
+        this.loadError = error.message
+        this.loadedSlug = null
       }
     },
+
     saveFile() {
-      const editor = document.getElementById('editor-md');
-      const blob = new Blob([editor.value], {type: "text/plain;charset=utf-8"});
-      this.saveAs(blob, "file.md");
-    },
-    saveAs(blob, filename) {
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      link.download = filename;
-      link.click();
+      const filename = this.loadedSlug ? `${this.loadedSlug.split('/').pop()}.md` : 'file.md'
+      const blob = new Blob([this.source], { type: 'text/plain;charset=utf-8' })
+      const link = document.createElement('a')
+      link.href = window.URL.createObjectURL(blob)
+      link.download = filename
+      link.click()
+      window.URL.revokeObjectURL(link.href)
     }
   }
 }
 </script>
 
-<style lang="scss">
-button {
-  padding: 0.5rem;
+<style lang="scss" scoped>
+.editor-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #002C23;
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0, 255, 206, 0.2);
+  background: rgba(0, 0, 0, 0.15);
+  flex-wrap: wrap;
+}
+
+.editor-toolbar__left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.editor-toolbar__back {
+  color: #00FFCE;
+  font-weight: 500;
+
+  &:hover {
+    color: #FFFFFF;
+  }
+}
+
+.editor-toolbar__title {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.editor-toolbar__slug {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.editor-toolbar__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem 0.9rem;
   border-radius: 0.5rem;
-  border: 1px solid #002C23;
-  background-color: #FFFFFF;
-  color: #002C23;
-  text-decoration: none;
-  text-align: center;
+  border: 1px solid #00FFCE;
+  background: transparent;
+  color: #00FFCE;
+  font-weight: 600;
   cursor: pointer;
 
   &:hover {
-    background-color: #002C23;
-    color: #FFFFFF;
-    border-color: #FFFFFF;
+    background: #00FFCE;
+    color: #002C23;
   }
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
+.editor-error {
+  margin: 0.75rem 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 120, 120, 0.4);
+  color: #ffb4b4;
+}
 
-  #editor-md {
+.editor-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.editor-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: calc(100vh - 57px);
+}
+
+.editor-panel__label {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.editor-panel--source {
+  border-right: 1px solid rgba(0, 255, 206, 0.15);
+
+  .editor-panel__label {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  textarea {
+    flex: 1;
     width: 100%;
-    height: calc(100% - 5px);
-    //height: auto;
-    max-height: 100%;
+    min-height: 0;
     resize: none;
     padding: 1rem;
     border: 0;
-  }
-
-  #render-md img {
-    max-width: 100%;
-  }
-
-  #render-md {
-    padding: 1rem;
-
-    img {
-      max-width: 100%;
-    }
+    background: #FFFFFF;
+    color: #002C23;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 }
 
-.left-div, .right-div {
-  flex: 1; /* Ambos divs tomarán el mismo espacio */
-  min-width: 0; /* Asegura que los divs puedan reducirse de tamaño */
-}
-
-.left-div {
-  background-color: #FFFFFF;
-}
-
-.right-div {
-  //background-color: lightgreen;
-  overflow: scroll;
-  max-height: 100%;
-
-  a {
-    text-decoration: none;
-    color: #00FFCE;
-
-    &:visited {
-      color: #00FFCE;
-    }
-
-    &.active,
-    &:hover {
-      color: #FFFFFF;
-    }
+.editor-panel--preview {
+  .editor-panel__label {
+    background: rgba(0, 0, 0, 0.12);
   }
 }
 
-@media (max-width: 800px) {
-  .container {
-    flex-direction: column; /* Cambia la dirección de los divs cuando la pantalla es estrecha */
-    .left-div {
-      max-height: 30%;
-    }
+.editor-panel__content {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem 1.25rem;
+  background: #f8fafa;
+}
+
+@media (max-width: 900px) {
+  .editor-layout {
+    flex-direction: column;
+  }
+
+  .editor-panel {
+    min-height: 45vh;
+  }
+
+  .editor-panel--source {
+    border-right: 0;
+    border-bottom: 1px solid rgba(0, 255, 206, 0.15);
   }
 }
 </style>

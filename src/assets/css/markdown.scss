@@ -1,0 +1,349 @@
+// Estilos de prose para contenido Markdown renderizado.
+// Usar la clase .markdown-body en el contenedor del HTML generado.
+
+.markdown-body {
+  color: #FFFFFF;
+  font-size: 1rem;
+  line-height: 1.7;
+  word-wrap: break-word;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 2rem 0 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #FFFFFF;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(0, 255, 206, 0.35);
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(0, 255, 206, 0.2);
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  h4 {
+    font-size: 1.15rem;
+  }
+
+  h5, h6 {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  p {
+    margin: 0 0 1rem;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  del {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  a {
+    color: #00FFCE;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:visited {
+      color: #7dffe8;
+    }
+
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+
+  hr {
+    height: 0;
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 255, 206, 0.25);
+  }
+
+  ul, ol {
+    margin: 0 0 1rem;
+    padding-left: 1.75rem;
+  }
+
+  li {
+    margin: 0.35rem 0;
+
+    > ul,
+    > ol {
+      margin-top: 0.35rem;
+      margin-bottom: 0;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+
+    ul {
+      list-style-type: circle;
+
+      ul {
+        list-style-type: square;
+      }
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li > p {
+    margin-bottom: 0.5rem;
+  }
+
+  blockquote {
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid #00FFCE;
+    background: rgba(0, 255, 206, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.35);
+    color: #00FFCE;
+    border: 1px solid rgba(0, 255, 206, 0.2);
+  }
+
+  pre {
+    margin: 1rem 0;
+    padding: 1rem;
+    overflow-x: auto;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(0, 255, 206, 0.15);
+
+    code {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #e8fff9;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+  }
+
+  table {
+    width: 100%;
+    margin: 1rem 0;
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+  }
+
+  th, td {
+    padding: 0.6rem 0.9rem;
+    border: 1px solid rgba(0, 255, 206, 0.25);
+    text-align: left;
+  }
+
+  th {
+    font-weight: 700;
+    background: rgba(0, 255, 206, 0.12);
+    color: #FFFFFF;
+  }
+
+  tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 255, 206, 0.15);
+    pointer-events: auto;
+  }
+
+  details {
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(0, 255, 206, 0.2);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #00FFCE;
+      outline: none;
+
+      &:hover {
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  // Task lists (GitHub-style checkboxes)
+  input[type='checkbox'] {
+    margin-right: 0.5rem;
+    accent-color: #00FFCE;
+  }
+
+  // Footnotes (si marked las genera)
+  .footnotes {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 255, 206, 0.2);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  sup, sub {
+    font-size: 0.75em;
+  }
+
+  kbd {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.85em;
+    padding: 0.1em 0.45em;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 206, 0.3);
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 1px 0 rgba(0, 255, 206, 0.15);
+  }
+
+  mark {
+    background: rgba(0, 255, 206, 0.35);
+    color: #002C23;
+    padding: 0.1em 0.25em;
+    border-radius: 2px;
+  }
+}
+
+// Variante clara (panel del editor)
+.markdown-body--light {
+  color: #002C23;
+
+  h1, h2, h3, h4, h5, h6,
+  strong {
+    color: #002C23;
+  }
+
+  h1 {
+    border-bottom-color: rgba(0, 44, 35, 0.2);
+  }
+
+  h2 {
+    border-bottom-color: rgba(0, 44, 35, 0.12);
+  }
+
+  h5, h6 {
+    color: rgba(0, 44, 35, 0.85);
+  }
+
+  del {
+    text-decoration: line-through;
+    color: rgba(0, 44, 35, 0.55);
+  }
+
+  a {
+    color: #007a63;
+
+    &:visited {
+      color: #005a4a;
+    }
+
+    &:hover {
+      color: #002C23;
+    }
+  }
+
+  hr {
+    border-top-color: rgba(0, 44, 35, 0.15);
+  }
+
+  blockquote {
+    border-left-color: #007a63;
+    background: rgba(0, 44, 35, 0.06);
+    color: rgba(0, 44, 35, 0.9);
+  }
+
+  code {
+    background: rgba(0, 44, 35, 0.08);
+    color: #007a63;
+    border-color: rgba(0, 44, 35, 0.15);
+  }
+
+  pre {
+    background: #f4f7f6;
+    border-color: rgba(0, 44, 35, 0.12);
+
+    code {
+      color: #002C23;
+    }
+  }
+
+  th, td {
+    border-color: rgba(0, 44, 35, 0.15);
+  }
+
+  th {
+    background: rgba(0, 44, 35, 0.08);
+    color: #002C23;
+  }
+
+  tr:nth-child(even) td {
+    background: rgba(0, 44, 35, 0.03);
+  }
+
+  img {
+    border-color: rgba(0, 44, 35, 0.12);
+  }
+
+  details {
+    border-color: rgba(0, 44, 35, 0.15);
+    background: rgba(0, 44, 35, 0.04);
+
+    summary {
+      color: #007a63;
+
+      &:hover {
+        color: #002C23;
+      }
+    }
+  }
+}
