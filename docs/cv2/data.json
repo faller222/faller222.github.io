@@ -1,0 +1,159 @@
+{
+  "basic": {
+    "firstName": "Germán",
+    "lastName": "Faller",
+    "dateOfBirth": "19/02/1993",
+    "maritalStatus": "Single",
+    "nationality": "Uruguayan",
+    "languages": ["Spanish", "English"],
+    "passportNumber": "D252910",
+    "passportExpiryDate": "19/02/2029",
+    "linkedInURL": "https://www.linkedin.com/in/faller222/",
+    "gitHubURL": "https://github.com/faller222",
+    "portfolioURL": "https://faller.com.uy",
+    "email": "german@faller.com.uy",
+    "phone": "+59898937326",
+    "address": "Artigas 1122, 75100 Dolores Soriano Uruguay",
+    "summary": "German has more than 10 years working on all the development cycle collaborating with IT and business partners to design, develop, and troubleshoot end-to-end technical solutions. More than two years leading teams; his main expertise is in the JAVA stack with its different frameworks; also has experience in NodeJs, Vue, DevOps, cloud, and Kubernetes and really loves knowledge. He is passionate about software development and has the ability to work under pressure in interdisciplinary teams with the capacity to face and overcome constant challenges.",
+    "objectives": [
+      "Expand and Deepen Technical Knowledge",
+      "Develop Leadership and Project Management Skills",
+      "Foster Innovation and Creativity in Software Development"
+    ]
+  },
+  "experience": [
+    {
+      "company": "Favor Delivery",
+      "legalName": null,
+      "position": "Backend Developer",
+      "projectOrClient": "Menu Microservice",
+      "location": "Remote",
+      "startDate": "29/01/2024",
+      "endDate": "Current",
+      "summary": "Worked on infrastructure updates, integration testing, and endpoint creation."
+    },
+    {
+      "company": "SOFIS S.R.L.",
+      "legalName": null,
+      "position": "Technical Leader",
+      "projectOrClient": "Various Clients",
+      "location": "Montevideo, Uruguay",
+      "startDate": "15/08/2023",
+      "endDate": "04/10/2023",
+      "summary": "Led a team, gathered requirements, and designed systems using Structurizr."
+    },
+    {
+      "company": "Perficient",
+      "legalName": "SOFT OA S.R.L.",
+      "position": "Senior Backend Developer",
+      "projectOrClient": null,
+      "location": "Montevideo, Uruguay",
+      "startDate": "21/02/2022",
+      "endDate": "31/07/2023",
+      "summary": "Designed solutions and wrote unit tests for various backend services."
+    },
+    {
+      "company": "BASF Services Americas S.R.L.",
+      "legalName": null,
+      "position": "Software Developer Specialist",
+      "projectOrClient": "Internal Systems",
+      "location": "Montevideo, Uruguay",
+      "startDate": "11/11/2019",
+      "endDate": "16/02/2022",
+      "summary": "Moderated sprint ceremonies and designed career paths for the team."
+    },
+    {
+      "company": "ANTEL",
+      "legalName": null,
+      "position": "System Analyst",
+      "projectOrClient": "Telecommunication Systems",
+      "location": "Montevideo, Uruguay",
+      "startDate": "07/04/2014",
+      "endDate": "08/11/2019",
+      "summary": "Designed CI pipelines and integrated 3rd party services."
+    }
+  ],
+  "education": [
+    {
+      "institute": "Universidad de la Republica",
+      "location": "Montevideo, Uruguay",
+      "degree": "Computer Engineering",
+      "endDate": "2021",
+      "relevantCoursework": "Advanced Algorithms, Software Engineering"
+    },
+    {
+      "institute": "Universidad de la Republica",
+      "location": "Montevideo, Uruguay",
+      "degree": "Computer Science Bachelor",
+      "endDate": "2019",
+      "relevantCoursework": "Database Systems, Operating Systems"
+    },
+    {
+      "institute": "Universidad de la Republica",
+      "location": "Montevideo, Uruguay",
+      "degree": "Computer Analyst",
+      "endDate": "2018",
+      "relevantCoursework": "Software Design, Data Structures"
+    },
+    {
+      "institute": "ORT Uruguay",
+      "location": "Montevideo, Uruguay",
+      "degree": "Ethical Hacking and Incident Management",
+      "endDate": "2019",
+      "relevantCoursework": "Cybersecurity, Incident Response"
+    }
+  ],
+  "skills": {
+    "technical": [
+      "AWS", "Docker", "Kubernetes", "CI/CD", "Microservices", "NodeJS", "ReactJS",
+      "Vue", "Angular", "Spring-Boot", "Express", "Hibernate", "Git", "Gitlab",
+      "Postgres", "MongoDB", "MySQL", "SQLServer", "JPA", "EJB"
+    ],
+    "functional": ["Scrum", "Kanban", "DevOps", "System Design"]
+  },
+  "projectsInformation": [
+    {
+      "title": "Menu Microservice",
+      "startDate": "29/01/2024",
+      "endDate": "04/10/2024",
+      "link": "https://github.com/germanfaller/menu-microservice",
+      "summary": "Created and maintained endpoints for a menu management system."
+    }
+  ],
+  "achievements": [
+    "Led a team of 10+ developers at SOFIS S.R.L.",
+    "Designed and implemented CI/CD pipelines at ANTEL."
+  ],
+  "references": [
+    {
+      "name": "Santiago Ingold",
+      "contact": "https://www.linkedin.com/in/experto-ciber/",
+      "relation": "University"
+    },
+    {
+      "name": "Matt Voytko",
+      "contact": "https://www.linkedin.com/in/matt-voytko-01794418/",
+      "relation": "Perficient"
+    },
+    {
+      "name": "Fred Lintz",
+      "contact": "https://www.linkedin.com/in/fred-lintz/",
+      "relation": "Client"
+    },
+    {
+      "name": "Rachel Ramones",
+      "contact": "https://www.linkedin.com/in/rachel-ramones-a62120105/",
+      "relation": "Client"
+    },
+    {
+      "name": "Danica Villalobos",
+      "contact": "https://www.linkedin.com/in/danica-faye-villalobos-77a09a22b/",
+      "relation": "Friend"
+    },
+    {
+      "name": "Diego Gavilanes",
+      "contact": "https://www.linkedin.com/in/diego-gavilanes-azambuya/",
+      "relation": "Antel"
+    }
+  ]
+}
