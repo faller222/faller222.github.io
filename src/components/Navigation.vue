@@ -11,6 +11,7 @@
       <nuxt-link @click.native='handler' :class="{'active':$route.hash==='#skills'}" :to="{ path: '/', hash:'#skills'}">Skills</nuxt-link>
       <nuxt-link @click.native='handler' :class="{'active':$route.hash==='#experience'}" :to="{ path: '/', hash:'#experience'}">Experience</nuxt-link>
       <nuxt-link @click.native='handler' :class="{'active':$route.hash==='#contact'}" :to="{ path: '/', hash:'#contact'}">Contact me</nuxt-link>
+      <nuxt-link @click.native='handler' :class="{'active':$route.path.startsWith('/blog')}" to="/blog/welcome">Blog</nuxt-link>
     </div>
   </nav>
 </template>
