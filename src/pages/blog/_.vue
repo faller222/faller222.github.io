@@ -1,13 +1,10 @@
 <template>
-  <div class="blog-viewer">
-    <header class="blog-viewer__header">
-      <nuxt-link class="blog-viewer__back" to="/">← Inicio</nuxt-link>
-      <span class="blog-viewer__path">/content/blog/{{ slug }}.md</span>
-    </header>
+  <div class="blog-shell">
+    <blog-sidebar :current-slug="slug" mode="viewer" />
 
-    <main class="blog-viewer__main">
-      <div v-if="loading" class="blog-viewer__state">Cargando…</div>
-      <div v-else-if="error" class="blog-viewer__state blog-viewer__state--error">{{ error }}</div>
+    <main class="blog-shell__main">
+      <div v-if="loading" class="blog-shell__state">Cargando…</div>
+      <div v-else-if="error" class="blog-shell__state blog-shell__state--error">{{ error }}</div>
       <markdown-content v-else :source="source" variant="dark" />
     </main>
   </div>
@@ -29,7 +26,13 @@ export default {
 
   computed: {
     slug() {
-      return this.$route.params.slug
+      const pathMatch = this.$route.params.pathMatch
+
+      if (Array.isArray(pathMatch)) {
+        return pathMatch.join('/')
+      }
+
+      return (pathMatch || this.$route.params.slug || '').replace(/^\/+|\/+$/g, '')
     }
   },
 
@@ -44,6 +47,12 @@ export default {
 
   methods: {
     async loadPost() {
+      if (!this.slug) {
+        this.loading = false
+        this.error = 'No se indicó ningún post.'
+        return
+      }
+
       this.loading = true
       this.error = null
       this.source = ''
@@ -67,43 +76,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.blog-viewer {
+.blog-shell {
+  display: flex;
   min-height: 100vh;
   background: #002C23;
 }
 
-.blog-viewer__header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(0, 255, 206, 0.2);
-  background: rgba(0, 0, 0, 0.15);
-}
+.blog-shell__main {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 3.5rem 1rem 4rem;
+  overflow-x: hidden;
 
-.blog-viewer__back {
-  color: #00FFCE;
-  font-weight: 500;
-
-  &:hover {
-    color: #FFFFFF;
+  @media (min-width: 900px) {
+    padding: 2rem 2rem 4rem 1rem;
   }
 }
 
-.blog-viewer__path {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.55);
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-}
-
-.blog-viewer__main {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
-}
-
-.blog-viewer__state {
+.blog-shell__state {
   color: rgba(255, 255, 255, 0.7);
   font-size: 1.1rem;
 

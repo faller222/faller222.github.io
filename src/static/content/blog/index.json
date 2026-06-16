@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-06-16T21:48:14.266Z",
+  "posts": [
+    {
+      "slug": "firebase",
+      "title": "Primera app en Firebase — lo que nadie te cuenta"
+    },
+    {
+      "slug": "formatos",
+      "title": "Guía de formatos Markdown"
+    },
+    {
+      "slug": "notas/deploy",
+      "title": "Deploy en GitHub Pages"
+    },
+    {
+      "slug": "proyectos/firebase-hosting",
+      "title": "Firebase Hosting"
+    },
+    {
+      "slug": "welcome",
+      "title": "Showcase Markdown del blog"
+    }
+  ],
+  "tree": {
+    "name": "",
+    "children": {
+      "notas": {
+        "name": "notas",
+        "children": {},
+        "posts": [
+          {
+            "slug": "notas/deploy",
+            "title": "Deploy en GitHub Pages"
+          }
+        ]
+      },
+      "proyectos": {
+        "name": "proyectos",
+        "children": {},
+        "posts": [
+          {
+            "slug": "proyectos/firebase-hosting",
+            "title": "Firebase Hosting"
+          }
+        ]
+      }
+    },
+    "posts": [
+      {
+        "slug": "firebase",
+        "title": "Primera app en Firebase — lo que nadie te cuenta"
+      },
+      {
+        "slug": "formatos",
+        "title": "Guía de formatos Markdown"
+      },
+      {
+        "slug": "welcome",
+        "title": "Showcase Markdown del blog"
+      }
+    ]
+  }
+}

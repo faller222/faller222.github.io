@@ -8,10 +8,11 @@
     "url": "https://github.com/faller222/faller222.github.io.git"
   },
   "scripts": {
-    "dev": "nuxt --port 3000 --mode development",
-    "build": "nuxt build",
+    "blog:index": "node scripts/generate-blog-index.js",
+    "dev": "npm run blog:index && nuxt --port 3000 --mode development",
+    "build": "npm run blog:index && nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "generate": "npm run blog:index && nuxt generate",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "lintfix": "npm run lint:js -- --fix",

@@ -1,32 +1,29 @@
 <template>
-  <div class="editor-page">
-    <header class="editor-toolbar">
-      <div class="editor-toolbar__left">
-        <nuxt-link class="editor-toolbar__back" to="/">← Inicio</nuxt-link>
-        <span class="editor-toolbar__title">Editor Markdown</span>
-        <span v-if="loadedSlug" class="editor-toolbar__slug">/blog/{{ loadedSlug }}</span>
-      </div>
-      <div class="editor-toolbar__actions">
-        <button type="button" class="btn" @click="saveFile">Descargar .md</button>
-      </div>
-    </header>
+  <div class="blog-shell blog-shell--editor">
+    <blog-sidebar
+      :current-slug="loadedSlug"
+      mode="editor"
+      @download="saveFile"
+    />
 
-    <div v-if="loadError" class="editor-error">{{ loadError }}</div>
+    <div class="blog-shell__content">
+      <div v-if="loadError" class="editor-error">{{ loadError }}</div>
 
-    <div class="editor-layout">
-      <div class="editor-panel editor-panel--source">
-        <label class="editor-panel__label" for="editor-md">Fuente</label>
-        <textarea
-          id="editor-md"
-          v-model="source"
-          spellcheck="false"
-          @input="onInput"
-        />
-      </div>
-      <div class="editor-panel editor-panel--preview">
-        <label class="editor-panel__label">Vista previa</label>
-        <div class="editor-panel__content">
-          <markdown-content :source="source" variant="light" />
+      <div class="editor-layout">
+        <div class="editor-panel editor-panel--source">
+          <label class="editor-panel__label" for="editor-md">Fuente</label>
+          <textarea
+            id="editor-md"
+            v-model="source"
+            spellcheck="false"
+            @input="onInput"
+          />
+        </div>
+        <div class="editor-panel editor-panel--preview">
+          <label class="editor-panel__label">Vista previa</label>
+          <div class="editor-panel__content">
+            <markdown-content :source="source" variant="light" />
+          </div>
         </div>
       </div>
     </div>
@@ -100,67 +97,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.editor-page {
+.blog-shell {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
   background: #002C23;
 }
 
-.editor-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(0, 255, 206, 0.2);
-  background: rgba(0, 0, 0, 0.15);
-  flex-wrap: wrap;
-}
+.blog-shell--editor {
+  .blog-shell__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 3.25rem;
 
-.editor-toolbar__left {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.editor-toolbar__back {
-  color: #00FFCE;
-  font-weight: 500;
-
-  &:hover {
-    color: #FFFFFF;
-  }
-}
-
-.editor-toolbar__title {
-  font-weight: 700;
-  color: #FFFFFF;
-}
-
-.editor-toolbar__slug {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.editor-toolbar__actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.btn {
-  padding: 0.5rem 0.9rem;
-  border-radius: 0.5rem;
-  border: 1px solid #00FFCE;
-  background: transparent;
-  color: #00FFCE;
-  font-weight: 600;
-  cursor: pointer;
-
-  &:hover {
-    background: #00FFCE;
-    color: #002C23;
+    @media (min-width: 900px) {
+      padding-top: 0;
+    }
   }
 }
 
@@ -184,7 +137,11 @@ export default {
   flex-direction: column;
   flex: 1;
   min-width: 0;
-  min-height: calc(100vh - 57px);
+  min-height: calc(100vh - 3.25rem);
+
+  @media (min-width: 900px) {
+    min-height: 100vh;
+  }
 }
 
 .editor-panel__label {
@@ -232,7 +189,7 @@ export default {
   background: #f8fafa;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 899px) {
   .editor-layout {
     flex-direction: column;
   }
